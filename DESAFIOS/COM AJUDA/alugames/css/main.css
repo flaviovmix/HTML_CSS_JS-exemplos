@@ -101,7 +101,7 @@
     position: absolute;
     top: 0;
     
-    background-color: rgba(1, 8, 14, 0.4);
+    background-color: rgba(1, 8, 14, 0.8);
 }
 
 .dashboard__item__name {
