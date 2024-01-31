@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+:root {
+    --cor-primaria: #000000;
+    --cor-secundaria: #F6F6F6;
+    --cor-terceciaria: #cde709;
+
+    --font-primaria: 'Krona One', sans-serif;
+    --font-secundaria: 'Montserrat', sans-serif;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* height: 100vh; */
+    box-sizing: border-box;
+    background-color: var(--cor-primaria);
+    color: #F6F6F6;
+}
+
+.cabecalho {
+    padding: 2% 0 0 15%;
+}
+
+.cabecalho__menu {
+    display: flex;
+    gap: 80px;
+}
+.cabecalho__menu_link {
+    font-family: var(--font-secundaria);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.apresentacao{
+    /* margin: 10% 15%; */
+    padding: 8% 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.apresentacao__conteudo{
+    width: 615px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.apresentacao__conteudo__titulo{
+    font-size: 36px;
+    font-family: var(--font-primaria);
+}
+
+.titulo-destaque{
+    color: var(--cor-terceciaria);
+}
+
+.apresentacao__conteudo__texto{
+    font-size: 24px;
+    font-family: var(--font-secundaria);
+}
+
+.apresentacao__links{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.apresentacao__links__subtitulos {
+    font-family: var(--font-primaria);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.apresentacao__links__link {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    background-color: transparent;
+    width: 378px;
+    padding: 21.5px 0;
+    border-radius: 8px;
+    border: 2px solid var(--cor-terceciaria);
+
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--cor-secundaria);
+    font-family: var(--font-secundaria);
+}
+
+.apresentacao__links__link:hover {
+    background-color: #272727;
+}
+
+.rodape {
+    background-color: var(--cor-terceciaria);
+    color: var(--cor-primaria);
+    padding: 28px;
+    text-align: center;
+    font-family: var(--font-secundaria);
+    font-size: 18px;
+    font-weight: 600;
+}
