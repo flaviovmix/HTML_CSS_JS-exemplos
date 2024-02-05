@@ -17,11 +17,12 @@
     --fonte-secundario: "Josefin Sans";
     --preto: #000000;
     --cinza: #474646;
-    --cinza-claro: #858585;
+    --cinza-claro: #dadada;
 
     /* --fonte-primaria: "Poppins"; */
     --fonte-primaria: 'Krona One', sans-serif;
     --fonte-secundaria: 'Montserrat', sans-serif;
+    --fonte-titulo: 'Josefin Sans', sans-serif;
 }
 
 body {
