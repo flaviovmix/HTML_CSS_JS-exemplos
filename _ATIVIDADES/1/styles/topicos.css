@@ -1,0 +1,35 @@
+.tópicos {
+    background: var(--azul-degrade);
+    text-align: center;
+    color: var(--branco);    
+    padding: 2rem 1rem;
+}
+
+.tópicos__titulos{
+    font-family: var(--fonte-primaria);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tópicos__lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tópicos__item {
+    margin: .25em;
+    width: 30%;
+}
+
+.tópico__link{
+    display: block;
+    color: var(--branco);
+    background-color: var(--laranja);
+    text-decoration: none;
+    padding: .7rem;
+    font-family: var(--fonte-secundaria);
+    font-size: .85rem;
+    font-weight: 700;
+    border-radius: .25rem;
+}
