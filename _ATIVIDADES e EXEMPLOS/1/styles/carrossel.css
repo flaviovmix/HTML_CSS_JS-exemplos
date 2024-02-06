@@ -34,23 +34,33 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.descrição {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.estrela {
+    width: 60%;
+    max-width: 15rem;
 }
 
 .descrição__titulo {
-    padding-bottom: .7rem;
     text-transform: uppercase;
     color: var(--laranja);
     font-family: var(--fonte-primaria);
     font-size: 1rem;
     margin: .4rem 0 .75rem 0;
     font-weight: 500;
+    margin-top: -.3rem;
 }
 
 .descrição__titulo-livro {
-    padding-bottom: .2rem;
     color: var(--azul);
-    margin-bottom: .2rem;
     font-size: 1.3rem;
     
     font-family: var(--fonte-secundaria);
@@ -64,6 +74,7 @@
     line-height: 1.5;
     font-family: var(--fonte-secundaria);
     font-size: 1rem;    
+    margin-top: -.5rem;
 }
 
 .descrição__imagem {
@@ -87,4 +98,74 @@
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    align-items: center;
 }
+
+@media screen and (min-width: 1024px) {
+
+    .carrossel_area {
+        box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+        background: var(--branco);
+        padding: 3rem;
+    }
+    .swiper {
+        width: 90%;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+        display: block;
+        top: 85%;
+        color: var(--branco);
+    }
+
+    .card {
+        width: 55%;
+        margin: 1rem auto;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .swiper {
+        width: 60%;
+    }
+    
+    .carrossel_area {
+        padding: 1rem;
+    }
+    
+    .card {
+        width: 45%;
+    }
+    
+    .estrela {
+        width: 40%;
+    }
+    .cartoes {
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        width: 60%;
+    }
+
+    .carrossel_area {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin: auto;
+        background: var(--branco);
+        padding: 0 20rem 3rem 20rem;
+        height: 40%;
+    }
+}
+
+@media screen and (min-width: 2200px) {
+
+    .swiper {
+        width: 48%;
+    }
+    .cartoes {
+        width: 50%;
+    }
+}
+
+
