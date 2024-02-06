@@ -105,7 +105,7 @@
 
     .carrossel_area {
         box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-        background-color: #aed1ea69;
+        background: var(--branco);
         padding: 3rem;
     }
     .swiper {
@@ -146,6 +146,16 @@
         margin: auto;
         width: 60%;
     }
+
+    .carrossel_area {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin: auto;
+        background: var(--branco);
+        padding: 0 20rem 3rem 20rem;
+        height: 40%;
+    }
 }
 
 @media screen and (min-width: 2200px) {
@@ -157,3 +167,5 @@
         width: 50%;
     }
 }
+
+

@@ -14,14 +14,14 @@
 </head>
 
 <body>
-    
+
     <header class="cabeçalho">
 
         <div class="container">
 
             <input type="checkbox" id="menu" class="container__batao">
 
-            <label for="menu">
+            <label class="container__rotulo" for="menu">
                 <span class="cabeçalho__menu-hamburguer container__imagem"></span>
             </label>
 
@@ -53,32 +53,24 @@
 
         <ul class="opções">
             <input class="opções__boão" type="checkbox" id="opções-menu">
-            <label for="opções-menu">
+            <label class="opções_rorulo" for="opções-menu">
                 <li class="opções__item">Categorias</a></li>
             </label>
 
             <ul class="lista-menu">
-                <li class="lista-menu__item">
-                    <hr>
-                </li>
+                <hr>
                 <li class="lista-menu__item">
                     <a class="lista-menu__link" href="">Front-end</a>
                 </li>
-                <li class="lista-menu__item">
-                    <hr>
-                </li>
+                <hr>
                 <li class="lista-menu__item">
                     <a class="lista-menu__link" href="">Back-end</a>
                 </li>
-
-
-                <li class="lista-menu__item">
-                    <hr>
-                </li>
+                <hr>
             </ul>
 
-            <li class="opções__item"><a class="opções__link" href="#">Favoritos</a></li>
-            <li class="opções__item"><a class="opções__link" href="#">Minha estante</a></li>
+            <li class="opções__item"><a class="opções__link" href="#">Front-end</a></li>
+            <li class="opções__item"><a class="opções__link" href="#">Back-end</a></li>
         </ul>
 
         <div class="container icones">
@@ -95,18 +87,18 @@
                 <p class="container__texto ocuptar">Meu perfil</p>
             </a>
         </div>
-   
+
     </header>
 
 
     <section class="banner">
-        <h2 class="banner__titulo">- Atividade -</h2>
-        <p class="banner__texto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo!</p>
+        <h2 class="banner__titulo"><span class="atividade">- Atividade -</span><br />Mobile First</h2>
+        <p class="banner__texto">Mobile First, conceito aplicado em projetos web onde o foco é dispositivos móveis.</p>
         <input class="banner__pesquisa" type="search" placeholder="não está funcionando.">
     </section>
 
     <section class="carrossel">
-        <h2 class="carrossel__titulo">Fotos da viajem</h2>
+        <h2 class="carrossel__titulo">Fotos da viagem</h2>
 
         <div class="carrossel_area">
             <div class="swiper">
@@ -268,131 +260,83 @@
             <div class="swiper-scrollbar"></div>-->
 
             </div>
+
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">Filhote</h3>
+                        <h2 class="descrição__titulo-livro">Pedro H. dos Passos</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/1.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
+                    </div>
+                </div>
+            </div><!-- fim do card -->
         </div>
 
         <div class="cartoes">
 
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Filhote</h3>
-                    <h2 class="descrição__titulo-livro">Pedro Henrique B. dos Passos</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">Esposa</h3>
+                        <h2 class="descrição__titulo-livro">Adriely B. dos Passos</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/2.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
                     </div>
                 </div>
+            </div><!-- fim do card -->
 
-                <div>
-                    <img class="descrição__imagem" src="./img/card/1.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
-                </div>
-            </div>
-        </div><!-- fim do card -->
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">Me</h3>
+                        <h2 class="descrição__titulo-livro">Flávio J. dos Passos</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
 
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Filhote</h3>
-                    <h2 class="descrição__titulo-livro">Pedro Henrique B. dos Passos</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/3.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
                     </div>
                 </div>
+            </div><!-- fim do card -->
 
-                <div>
-                    <img class="descrição__imagem" src="./img/card/1.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
-                </div>
-            </div>
-        </div><!-- fim do card -->
-
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Filhote</h3>
-                    <h2 class="descrição__titulo-livro">Pedro Henrique B. dos Passos</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <img class="descrição__imagem" src="./img/card/1.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
-                </div>
-            </div>
-        </div><!-- fim do card -->
-
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Filhote</h3>
-                    <h2 class="descrição__titulo-livro">Pedro Henrique B. dos Passos</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <img class="descrição__imagem" src="./img/card/1.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
-                </div>
-            </div>
-        </div><!-- fim do card -->
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Filhote</h3>
-                    <h2 class="descrição__titulo-livro">Pedro Henrique B. dos Passos</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <img class="descrição__imagem" src="./img/card/1.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
-                </div>
-            </div>
-        </div><!-- fim do card -->
-
-
-    </div>
+        </div>
 
 
 
@@ -403,6 +347,9 @@
     <section class="carrossel">
         <h2 class="carrossel__titulo">Meus Amores</h2>
         <div class="carrossel_area">
+
+
+
             <div class="swiper">
 
                 <!-- Additional required wrapper -->
@@ -635,61 +582,113 @@
             <div class="swiper-scrollbar"></div>-->
 
             </div>
+
+
+        </div>
         </div>
 
 
         <div class="cartoes">
 
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Bom dia amor</h3>
-                    <h2 class="descrição__titulo-livro">Angular 11 e Ferebase</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">Bom dia amor</h3>
+                        <h2 class="descrição__titulo-livro">Mas que preguiça</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/6.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
                     </div>
                 </div>
+            </div><!-- fim do card -->
 
-                <div>
-                    <img class="descrição__imagem" src="./img/card/6.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
-                </div>
-            </div>
-        </div><!-- fim do card -->
-        <div class="card">
-            <div class="card__descrição">
-                <div class="descrição">
-                    <img class="estrela" src="./img/Estrelinhas.svg" alt="">
-                    <h3 class="descrição__titulo">Bom dia amor</h3>
-                    <h2 class="descrição__titulo-livro">Angular 11 e Ferebase</h2>
-                    <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
-                        praesentium.
-                    </p>
-                    <div class="card__botões">
-                        <ul class="botões">
-                            <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
-                            <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
-                        </ul>
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">Espera o papai</h3>
+                        <h2 class="descrição__titulo-livro">Uma cervejinha</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/7.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
                     </div>
                 </div>
+            </div><!-- fim do card -->
 
-                <div>
-                    <img class="descrição__imagem" src="./img/card/6.jpg">
-                    <a class="botôes__ancora" href="#">Saiba mais</a>
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">pra mamãe</h3>
+                        <h2 class="descrição__titulo-livro">Olha o passarinho</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/9.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
+                    </div>
                 </div>
-            </div>
-        </div><!-- fim do card -->
+            </div><!-- fim do card -->
+
+            <div class="card">
+                <div class="card__descrição">
+                    <div class="descrição">
+                        <img class="estrela" src="./img/Estrelinhas.svg" alt="">
+                        <h3 class="descrição__titulo">Beijo</h3>
+                        <h2 class="descrição__titulo-livro">Saudade amor</h2>
+                        <p class="descrição__texto">Lorem ipsum dolor, amet consectetur adipisicing elit. Iure
+                            praesentium.
+                        </p>
+                        <div class="card__botões">
+                            <ul class="botões">
+                                <li class="botões__item"><img src="./img/Favoritos.svg" alt=""></li>
+                                <li class="botões__item"><img src="./img/Compras.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="descrição__imagem" src="./img/card/10.jpg">
+                        <a class="botôes__ancora" href="#">Saiba mais</a>
+                    </div>
+                </div>
+            </div><!-- fim do card -->
 
         </div>
 
-       
+
 
     </section>
 
@@ -738,7 +737,7 @@
     <section class="rodapé">
         <p class="rodapé__titulo">Grupo Alura</samp></p>
         <div class="lista_rodape">
-            
+
             <ul class="lista-rodapé">
                 <li class="lista-rodapé__titulo">Educação</li>
                 <li class="lista-rodapé__item">
