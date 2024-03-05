@@ -1,0 +1,24 @@
+
+.area-formulario {
+    background-color: rgb(241, 241, 241);
+    padding: 5rem;
+    margin-top: 2rem;
+}
+
+.area-formulario h3 {
+    margin-bottom: 2rem;
+}
+
+.area-formulario label {
+    font-weight: 500;
+    margin: 0rem 0 -5rem 0.3rem;
+}
+
+.area-formulario button {
+    width: 10rem;
+    padding: 0.5rem 1rem;
+}
+
+.area-tabela h3 {
+    margin-top: 3rem;
+}
