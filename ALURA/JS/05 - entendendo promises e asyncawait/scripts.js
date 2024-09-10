@@ -35,3 +35,21 @@ inputUpload.addEventListener("change", async (evento) => {
         }
     }
 });
+
+const inputTags = document.getElementById("input-tags");
+const listaTags = document.getElementById("lista-tags");
+
+inputTags.addEventListener("keypress", (evento) => {
+    if(evento.key === "Enter") {
+        evento.preventDefault();
+        const tagTexto = inputTags.value.trim();
+
+        if(tagTexto !== "") {
+            const tagNova = document.createElement("li");
+            tagNova.innerHTML = `<p>${tagTexto}</p> <img src="./img/close-black.svg" class="remove-tag" alt="">`;
+            listaTags.appendChild(tagNova);
+            inputTags.value = "";
+        }
+
+    }
+});
