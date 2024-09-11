@@ -246,3 +246,7 @@ textarea {
 .container-imagem-nome img {
     margin-top: 4px;
 }
+
+.lista-tags li {
+    margin: 2px;
+}
