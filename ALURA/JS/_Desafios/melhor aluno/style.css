@@ -1,0 +1,104 @@
+/* style.css */
+.titulo {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.form-label {
+    margin-bottom: 0px;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.area-formulario {
+    margin: 2rem 0;
+}
+
+.area-formulario-divisao{
+    display: flex;
+}
+
+input {
+    margin: .2rem 0 1rem 0;
+}
+
+h3 {
+    margin: 2rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.btn-primary {
+    margin: 1rem 0;
+}
+
+.de-maior {
+    color: green;
+}
+
+.de-menor {
+    color: red;
+}
+
+.check-booleano {
+    margin-top: 0.5rem;
+}
+
+.hr-final {
+    margin-top: 1.25rem;
+}
+
+th, td{
+    vertical-align: middle;
+}
+
+.caracteristicas-fisicas {
+    text-align: right;
+}
+
+.coluna-id {
+    width: 5%;
+}
+
+.coluna-nome {
+    width: 20%;
+}
+
+.coluna-nota1, .coluna-nota2, .coluna-nota3, .coluna-media, .coluna-idade {
+    width: 15%;
+    text-align: center;
+}
+
+.colunaCF {
+    width: 15%;
+}
+
+.colunaAC {
+    width: 50px;
+    text-align: left;
+}
+
+.icone {
+    width: 50px;
+}
+
+.icone-ac {
+    width: 30px;
+}
+
+
+
+.check-booleano {
+    margin-top: 1.5rem;
+}
+
+.form-imagem {
+    max-width: 70%;
+}
+
+.form-imagem-botao {
+    margin-top: 0.25rem;
+}
+
