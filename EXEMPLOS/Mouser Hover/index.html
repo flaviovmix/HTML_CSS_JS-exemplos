@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efeito com Degradê</title>
+  <style>
+    .card {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .card-body {
+      padding: 16px;
+      position: relative;
+    }
+
+    .info-nome {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -120%);
+      background: linear-gradient(90deg, #000000, #ff758c00); /* Degradê da esquerda para a direita */
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
+    }
+
+    .card-body:hover .info-nome {
+      transform: translate(-50%, 20px); /* Desce e estaciona */
+      opacity: 1;
+      background: linear-gradient(90deg, #000000, #ff7eb400); /* Inverte o degradê ao hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Título do Card</h1>
+      <p class="card-text">Descrição curta do card.</p>
+      <div class="info-nome">Texto com degradê no fundo!</div>
+    </div>
+  </div>
+</body>
+</html>
