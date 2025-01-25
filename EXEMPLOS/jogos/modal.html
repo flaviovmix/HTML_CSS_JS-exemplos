@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo no Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #puzzleCanvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão para abrir o modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gameModal">
+        Abrir Jogo
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gameModalLabel">Jogo de Quebra-Cabeça</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do jogo -->
+                    <div id="game-container">
+                        <canvas id="puzzleCanvas" width="1920" height="1080"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("puzzleCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const rows = 3; // Número de linhas
+        const cols = 3; // Número de colunas
+        const pieceWidth = 1280 / cols;
+        const pieceHeight = 720 / rows;
+
+        const image = new Image();
+        image.src = "jogo.png"; // Use uma imagem qualquer
+
+        let pieces = [];
+        let draggingPiece = null;
+        let offsetX, offsetY;
+
+        class Piece {
+            constructor(imgX, imgY, canvasX, canvasY) {
+                this.imgX = imgX; // Posição da peça na imagem
+                this.imgY = imgY;
+                this.canvasX = canvasX; // Posição da peça no canvas
+                this.canvasY = canvasY;
+                this.width = pieceWidth;
+                this.height = pieceHeight;
+                this.locked = false; // Indica se a peça está no lugar certo
+            }
+
+            draw() {
+                ctx.drawImage(
+                    image,
+                    this.imgX,
+                    this.imgY,
+                    this.width,
+                    this.height,
+                    this.canvasX,
+                    this.canvasY,
+                    this.width,
+                    this.height
+                );
+            }
+
+            isClicked(x, y) {
+                return (
+                    !this.locked &&
+                    x > this.canvasX &&
+                    x < this.canvasX + this.width &&
+                    y > this.canvasY &&
+                    y < this.canvasY + this.height
+                );
+            }
+
+            isInCorrectPosition() {
+                // Verifica se a peça está dentro de uma área de 50px da posição correta
+                return (
+                    Math.abs(this.canvasX - (this.imgX + 300)) < 50 &&
+                    Math.abs(this.canvasY - (this.imgY + 150)) < 50
+                );
+            }
+
+            lockPosition() {
+                this.canvasX = this.imgX + 300;
+                this.canvasY = this.imgY + 150;
+                this.locked = true;
+            }
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        image.onload = function () {
+            // Criar peças
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    pieces.push(
+                        new Piece(
+                            col * pieceWidth,
+                            row * pieceHeight,
+                            Math.random() * (canvas.width - pieceWidth), // Aleatoriamente dentro da tela
+                            Math.random() * (canvas.height - pieceHeight) // Aleatoriamente dentro da tela
+                        )
+                    );
+                }
+            }
+
+            // Embaralhar peças
+            shuffle(pieces);
+
+            drawAll();
+        };
+
+        function drawAll() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Área de montagem (1280x720)
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(300, 150, 1280, 720); // Área onde as peças devem ser encaixadas
+
+            // Desenha todas as peças
+            pieces.forEach(piece => piece.draw());
+        }
+
+        canvas.addEventListener("mousedown", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            for (let i = pieces.length - 1; i >= 0; i--) {
+                if (pieces[i].isClicked(mouseX, mouseY)) {
+                    draggingPiece = pieces[i];
+                    offsetX = mouseX - draggingPiece.canvasX;
+                    offsetY = mouseY - draggingPiece.canvasY;
+
+                    // Mover a peça para frente (última no array)
+                    pieces.splice(i, 1);
+                    pieces.push(draggingPiece);
+
+                    drawAll();
+                    break;
+                }
+            }
+        });
+
+        canvas.addEventListener("mousemove", (e) => {
+            if (draggingPiece) {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                draggingPiece.canvasX = mouseX - offsetX;
+                draggingPiece.canvasY = mouseY - offsetY;
+
+                drawAll();
+            }
+        });
+
+        canvas.addEventListener("mouseup", () => {
+            if (draggingPiece) {
+                // Verifica se a peça foi colocada no lugar certo
+                if (draggingPiece.isInCorrectPosition()) {
+                    draggingPiece.lockPosition(); // Fixar a peça no lugar
+                }
+                draggingPiece = null;
+                drawAll();
+            }
+        });
+    </script>
+</body>
+</html>

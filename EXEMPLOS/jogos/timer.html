@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .timer {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h3 id="timer">01:10</h3>
+
+  <script>
+    let totalSeconds = 100; // Valor inicial do timer
+
+    const timerElement = document.getElementById('timer');
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+      const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+      timerElement.textContent = `${minutes}:${seconds}`;
+    }
+
+    function startCountdown() {
+      const timerInterval = setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          alert('Tempo esgotado!');
+        }
+      }, 1000);
+    }
+
+    updateTimerDisplay(); // Inicializa o display
+    startCountdown(); // Inicia a contagem regressiva automaticamente
+  </script>
+</body>
+</html>

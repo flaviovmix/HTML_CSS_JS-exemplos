@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Qiyi Puzzle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f3f4f6;
+        }
+
+        #game-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+        }
+
+        .tile {
+            width: 100px;
+            height: 100px;
+            background-size: 300px 300px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .empty {
+            background: none;
+            border: 1px dashed #ccc;
+            cursor: default;
+        }
+
+        #game-container.won .tile {
+            cursor: default;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="game-container"></div>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const imageSrc = "300.png"; // Substitua pela URL da imagem desejada
+        const gridSize = 3;
+
+        const gameContainer = document.getElementById("game-container");
+        const message = document.getElementById("message");
+
+        let tiles = [];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function createTiles() {
+            tiles = [];
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    const index = row * gridSize + col;
+                    const tile = document.createElement("div");
+
+                    tile.className = "tile";
+                    tile.style.backgroundImage = `url(${imageSrc})`;
+                    tile.style.backgroundPosition = `-${col * 100}px -${row * 100}px`;
+
+                    tiles.push({ element: tile, index });
+                }
+            }
+
+            tiles[tiles.length - 1].element.classList.add("empty");
+            tiles[tiles.length - 1].index = null; // Define o último como vazio
+        }
+
+        function renderTiles() {
+            gameContainer.innerHTML = "";
+            tiles.forEach(({ element }) => gameContainer.appendChild(element));
+        }
+
+        function isSolved() {
+            return tiles.every((tile, i) => tile.index === i || tile.index === null);
+        }
+
+        function swapTiles(index1, index2) {
+            [tiles[index1], tiles[index2]] = [tiles[index2], tiles[index1]];
+        }
+
+        function handleTileClick(index) {
+            const emptyIndex = tiles.findIndex(tile => tile.element.classList.contains("empty"));
+
+            const isAdjacent = [
+                index - 1, // left
+                index + 1, // right
+                index - gridSize, // above
+                index + gridSize // below
+            ].includes(emptyIndex);
+
+            if (isAdjacent) {
+                swapTiles(index, emptyIndex);
+                renderTiles();
+
+                if (isSolved()) {
+                    gameContainer.classList.add("won");
+                    message.textContent = "Parabéns! Você completou o quebra-cabeça!";
+                }
+            }
+        }
+
+        function initGame() {
+            createTiles();
+            shuffle(tiles);
+            renderTiles();
+
+            gameContainer.addEventListener("click", (e) => {
+                const index = Array.from(gameContainer.children).indexOf(e.target);
+                if (index !== -1) {
+                    handleTileClick(index);
+                }
+            });
+        }
+
+        initGame();
+    </script>
+</body>
+</html>
