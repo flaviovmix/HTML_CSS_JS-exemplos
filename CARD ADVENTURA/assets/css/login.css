@@ -1,0 +1,257 @@
+* {
+    font-family: var(--font-principal);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #03a9f4;   
+    background-image: url('../img/login-left.png'); /* Substitua pelo caminho da sua imagem */
+    background-size: auto 100%; /* Altura 100%, largura ajustável automaticamente */
+    background-position: right center; /* Alinha à esquerda e centraliza verticalmente */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página (opcional) */
+    transition: .6s;
+}
+
+body.ativa {
+    background: #f43648;
+    background-image: url('../img/login-right.png'); /* Substitua pelo caminho da sua imagem */
+    background-size: auto 100%; /* Altura 100%, largura ajustável automaticamente */
+    background-position: left center; /* Alinha à esquerda e centraliza verticalmente */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página (opcional) */
+}
+
+.container {
+    position: relative;
+    width: 800px;
+    margin: 20px;
+    margin-left: -380px;
+    height: 500px;
+    transition: 1s;
+}
+
+.mensagem-18 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    background: #f8f8f850;
+}
+
+.mensagem-18 span {
+    position: absolute;
+    margin-left: -450px;
+    margin-top: -7px;
+    font-size: 60px;
+}
+
+.container.ativa {
+    margin-left: 380px;
+}
+
+.container .blueBg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 420px;
+    /*background: rgba(255,255,255,0.2);*/
+    background: rgba(0,0,0,0.2);
+    box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+}
+
+.container .blueBg .box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.signinBtn  {
+    width: 260px;
+}
+
+.signupBtn {
+    width: 260px;
+}
+
+.container .blueBg .signup {
+    margin-right: -30px;
+}
+
+.container .blueBg .signin {
+    margin-right: 30px;
+}
+
+.container .blueBg .box h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+.container .blueBg .box h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.container .blueBg .box button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #fff;  
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+}
+
+.container .blueBg span {
+    font-size: 70px;
+    margin-top: -100px;
+}
+
+.container .formBx {
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0 5px 45px rgba(0,0,0,.25);
+    top: 0;
+    left: 40px;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    transition: 1.25s ease;
+    z-index: 1;
+}
+
+.container .formBx.ativa {
+    left: 45%;
+}
+
+.formBx .form {
+    position: absolute;
+    left 0;
+    width: 100%;
+    padding: 50px;
+    transition: 1.2s;
+    
+}
+
+.formBx .signinForm {
+    transition-delay: 0.25s;
+}
+
+.formBx.ativa .signinForm {
+    left: -100%;
+    transition-delay: 0s;
+}
+
+.formBx .signupForm {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    transition-delay: 0s;
+}
+
+.formBx .form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;    
+}
+
+.formBx .form form h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.formBx .form form input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    
+}
+
+.formBx .form form .btn-logar {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    text-decoration: none;
+    background: #f0f0f0;
+    border: 1px solid #333;
+}
+
+.formBx .form form .link {
+    color: #333;
+    text-decoration: none;
+}
+.formBx .form form .link:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+.input-container {
+    position: relative;
+    width: 300px;
+}
+
+#nomeInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    /*border: 1px solid #ccc;*/
+    border-radius: 5px;
+}
+
+#textoPlaceholder {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 16px;
+    color: #aaa;
+    pointer-events: none;
+}
+
+#nomeInput:focus + #textoPlaceholder {
+    display: none;
+}
+
+.apelido {
+    color: #333;
+    font-weight: 600;
+}
+
+

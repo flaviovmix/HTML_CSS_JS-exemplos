@@ -1,0 +1,45 @@
+button {
+    box-shadow: 0px 0px 3px #bbb;
+    font-size: .9rem !important;
+}
+
+.card-img-top-fase {
+    height: 130px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.85s ease, object-position 0.85s ease;
+}
+
+.card-img-top-fase-final {
+    height: 350px;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+}
+
+.card-fases {
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.card-body {
+    padding: 10px !important;
+    position: relative;
+    z-index: 1;
+    background-color: white; /* Define o fundo branco para evitar transparência */
+}
+
+.area-efeito:hover .card-img-top-fase {
+    transform: scale(1.5);
+    object-position: top; /* Centraliza a imagem ao aplicar o efeito */
+}
+
+.campo-largura-altura {
+    padding: 0;
+    margin: 5px;
+    width: 50px;
+    height: 35px;
+    border: 1px solid #ddd !important;
+}

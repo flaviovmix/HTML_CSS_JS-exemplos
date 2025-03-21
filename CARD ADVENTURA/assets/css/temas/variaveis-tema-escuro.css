@@ -1,0 +1,32 @@
+:root {
+  --font-principal: Raleway,Arial,Helvetica,sans-serif;
+  --font-secundaria: Raleway,Arial,Helvetica,sans-serif;
+
+  --cor-body-background: #222;
+
+  --cor-fundo-barra-menu: #333;
+  
+  --font-barra-menu: Raleway,Arial,Helvetica,sans-serif;
+  --cor-bordas: #444;
+  --cor-sombras: #c5c5c5;
+
+  --cor-background-botao-menu: #222;
+  --cor-texto-botao-menu: #e5e5e5;
+  --cor-texto-botao-menu-hover: #222;
+  --cor-background-botao-menu-hover: #fff;
+
+  --cor-background-link-menu-hover: #555;
+  --cor-texto-link-menu: #eee;
+  --cor-texto-link-menu-hover: #bbb;
+  --cor-icones-lixeira_editar-info-personagem: rgba(205, 205, 205, 0.926);
+  --cor-sombra-icones-lixeira_editar-info-personagem: rgba(0, 0, 0, 0.2);
+  --cor-fundo-area-links: #3e3e3e;
+  --cor-links-area-links: #b9b9b9;
+
+  --cor-cor-h2-info-personagem: #dfdfdf;
+  --cor-cor-h3-info-personagem: #dfdfdf;
+
+  --cor-background-info-personagem: rgba(39, 39, 39, 0.7);
+
+  --cor-dados-tabela-info-personagem: #dfdfdf;
+}

@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+.container-xl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 95%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.card {
+  position: relative; 
+  border-radius: 5px;
+  width: 300px;
+  aspect-ratio: 3 / 5;
+  transition: transform .85s ease;
+  border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.card .area-img-info .info-personagem .bandeira {
+  position: absolute;
+  top: 85px;   
+  left: 2px; 
+  width: 55px;
+  z-index: 7;
+}
+
+.area-img-info .info-personagem h2 {
+  padding: 0;
+  margin: 0;
+  color: var(--cor-cor-h2-info-personagem);
+  font-size: .9rem;
+  text-align: right;
+  font-family: var(--font-principal);
+}
+
+.area-img-info .info-personagem p {
+  font-family: var(--font-principal);
+  text-align: right;
+  font-size: 1.2rem;
+  padding: 5px 0;
+  margin: 5px 0;
+  font-weight: 600;
+  border-top: 1px solid white;
+  color: orangered;
+}
+
+.info-personagem .botao-jogar {
+  background: #777;
+  padding: 10px 70px;
+  margin-top: 10px;
+  border-radius: 15px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+  font-family: var(--font-principal);
+  text-decoration: none;
+}
+
+.area-img-info .info-personagem h3 {
+  font-family: var(--font-principal);
+  margin: 10px;
+  font-size: 30px;
+}
