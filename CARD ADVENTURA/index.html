@@ -108,10 +108,14 @@
     <div id="estilo-card">
       <div class="container-xl">
 
+        <script>
+        for (let i = 1; i <= 7; i++) {
+          document.write(`
+
         <div class="card">
           <div class="area-img-info">
 
-            <img class="img-principal img-principal-ativa" src="./assets/pixel_ai/1.1.png"
+            <img class="img-principal img-principal-ativa" src="./assets/pixel_ai/${i}.png"
               alt="imagem da personagem 1" />
 
             <div class="info-personagem">
@@ -140,7 +144,7 @@
               </div>
               <img class="bandeira ativo" src="./assets/pixel_ai/Brasil.png" />
               <div class="img-nome-personagem">
-                <img class="imagem-circular ativo" src="./assets/pixel_ai/r-1.png" alt="">
+                <img class="imagem-circular ativo" src="./assets/pixel_ai/r-${i}.png" alt="">
                 <div>
                   <h2 class="ativo">Nome Completo</h2>
                   <p class="ativo">Nascionalidade</p>
@@ -213,8 +217,9 @@
             </div>
           </div>
         </div>
-
-
+            `);
+          }
+</script>
       </div>
     </div>
 
