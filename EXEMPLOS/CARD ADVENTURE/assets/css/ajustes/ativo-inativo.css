@@ -1,0 +1,46 @@
+.ativo {
+    filter: grayscale(0%);
+}
+
+.inativo {
+    /*filter: blur(2px) grayscale(100%);*/
+    filter: blur(5px) grayscale(100%);
+}
+
+.emoje-inativo {
+  filter: blur(2px) grayscale(100%);
+}
+
+.emoje-para-card-ativo, .bolinha-para-card-ativo {
+  filter: blur(0px) grayscale(100%);
+}
+
+
+.bolinhas-inativas {
+  filter: blur(4px) grayscale(100%);
+}
+
+.area-img-info .img-principal-inativa {
+  /*filter: blur(4px) grayscale(100%);*/
+  filter: blur(2px) grayscale(100%);
+  transition: transform .85s ease, filter .85s ease, opacity .85s ease; 
+}
+
+.area-img-info:hover .img-principal-inativa,
+.area-img-info .info-personagem:hover ~ .img-principal-inativa {
+  transform: scale(1.2);
+  transform: scale(1.2) translateY(20px) rotateZ(-10deg);
+  filter: blur(7px) grayscale(100%); 
+}
+
+.area-img-info .img-principal-ativa {
+  filter: blur(0px) grayscale(0%);
+  transition: transform .85s ease, filter .85s ease, opacity .85s ease; 
+}
+
+.area-img-info:hover .img-principal-ativa,
+.area-img-info .info-personagem:hover ~ .img-principal-inativa {
+  transform: scale(1.2);
+  transform: scale(1.2) translateY(20px) rotateZ(-10deg);
+  filter: blur(7px) grayscale(0%); 
+}

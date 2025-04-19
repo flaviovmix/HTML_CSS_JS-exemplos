@@ -1,0 +1,39 @@
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  list-style: none;
+}
+
+.paginacao li {
+  margin: 0 5px;
+}
+
+.paginacao a {
+  display: block;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: white;
+  transition: background-color 0.2s;
+}
+
+.paginacao a:hover {
+  background-color: #e9ecef;
+}
+
+.paginacao .ativo a {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.paginacao .desabilitado a {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}

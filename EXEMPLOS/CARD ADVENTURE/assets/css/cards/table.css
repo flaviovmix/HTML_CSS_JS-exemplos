@@ -1,0 +1,69 @@
+.info-personagem table {
+  width: 90%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-secundaria);
+  font-size: .8rem;
+  margin-top: -20px;
+  border: 1px solid rgb(137, 137, 137);
+  border-radius: 10px;
+  background-color: rgba(72, 72, 72, 0.1);
+  z-index: -1;
+}
+
+.info-personagem table strong {
+  font-weight: 600;
+}
+
+.info-personagem table td, th {
+  border-top: 1px solid #ffffff63;
+}
+
+.info-personagem table tr {
+  border: 1px solid #ffffff63;
+  border-left: none;
+  border-right: none;
+  color: var(--cor-dados-tabela-info-personagem);
+}
+
+.info-personagem table tr:first-child {
+  border-top: none;
+}
+
+.info-personagem table table tr:last-child {
+  border-bottom: none;
+}
+
+.info-personagem table td {
+  width: 50%;
+  padding: 7px 7px;
+}
+
+.info-personagem table td:first-child {
+  text-align: right;  /* Alinha a coluna esquerda à direita */
+  font-weight: bold;
+}
+
+.info-personagem table td:last-child {
+  text-align: left;  /* Alinha a coluna direita à esquerda */
+}
+
+.info-personagem table .obs {
+  text-align: center;
+  font-weight: 500;
+  width: 300px;
+}
+
+.tabela-personagem table {
+  width: 100%;
+  width: 80%;
+  margin: auto;
+  font-family: var(--font-secundaria);
+}
+
+.oculto {
+  display: none;
+}
+.ativo {
+  display: block;
+}

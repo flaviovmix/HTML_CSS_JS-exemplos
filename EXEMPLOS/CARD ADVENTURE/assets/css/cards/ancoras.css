@@ -1,0 +1,39 @@
+.area-links a {
+  font-size: 1.4rem;
+}
+
+.area-links {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: 10%;
+}
+
+.area-estrelas {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  gap: 10px;
+  margin: auto;
+}
+
+.area-estrelas a img {
+    width: 30px;
+}
+
+.preto-branco {
+  filter: grayscale(100%);
+}
+
+
+.editar-excluir-dentro-info {
+  display: flex;
+  gap: 25px;  
+}
+
+.info-personagem .editar-excluir-dentro-info a {
+  display: inline-block;
+  border-radius: 10%;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+}

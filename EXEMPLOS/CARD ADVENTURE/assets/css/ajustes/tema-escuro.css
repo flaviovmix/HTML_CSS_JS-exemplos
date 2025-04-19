@@ -1,0 +1,64 @@
+body {
+  background-color: #181818;
+}
+
+.area-links a {
+  color: rgb(143, 143, 143);
+}
+
+.area-links {
+  background-color: #343434;
+}
+
+.fa-pen, .fa-trash {
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+.info-personagem .editar-excluir-dentro-info a {
+  color: #dadada;
+  border: 1px solid #ffffff63;
+  box-shadow: 1px 1px 2px #606060;
+}
+
+.card {
+  box-shadow: 0px 0px 2px #3b3b3b;
+  border: 3px solid rgb(73, 73, 73);
+}
+
+.info-personagem {
+  background: rgba(16, 16, 16, 0.7);
+  color: rgb(190, 190, 190);
+}
+
+.area-img-info .info-personagem h2 {
+  color: rgb(224, 224, 224);
+}
+
+.area-img-info .info-personagem h3 {
+  color: rgb(224, 224, 224);
+}
+
+
+
+.menu-principal ul {
+  background: #222;
+}
+
+
+.menu-principal ul li a {
+  color: #d1d1d1;
+}
+
+.menu-principal ul li a:hover {
+  color: #cecece;
+  background-color: rgb(46, 46, 46);
+}
+
+#btnTema {
+  background-color: #454545;
+  color: #cecece;
+}
+
+#btnTema:hover {
+  background-color: rgb(41, 41, 41);
+}

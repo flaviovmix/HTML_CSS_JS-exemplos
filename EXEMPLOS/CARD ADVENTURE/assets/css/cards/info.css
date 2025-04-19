@@ -1,0 +1,120 @@
+.area-img-info {
+  padding: 2px;
+  position: relative;
+  overflow: hidden;
+  height: 90%;
+}
+
+.info-personagem {
+  position: absolute;
+  top: 0px;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: right .5s ease;
+  z-index: 2;
+
+  background: var(--cor-background-info-personagem);
+}
+
+.info-personagem .ecolha-thumb {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+    margin-bottom: -30px;
+    padding-right: 10px;
+    gap: 5px;
+}
+
+.info-personagem .ecolha-thumb img {
+    width: 25px;
+}
+
+.area-img-info:hover .info-personagem {
+  right: 0;
+}
+
+.card .area-img-info .info-personagem {
+  position: absolute;
+  z-index: 3;
+}
+
+.area-links a {
+  color: var(--cor-links-area-links);
+}
+
+.area-links {
+  background-color: var(--cor-fundo-area-links);
+}
+
+.fa-pen, .fa-trash {
+  color: #071d41cc;
+  filter: drop-shadow(1px 1px 1px var(--cor-sombra-icones-lixeira_editar-info-personagem));
+}
+
+.area-img-info .img-principal {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  opacity: 100%;
+}
+
+.img-nome-personagem {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  /* margin-top: -50px; */
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+
+.imagem-circular {
+  top: 0px;
+  left: 5px;
+  width: 120px;
+  height: 120px;
+  margin-top: -20px;
+  margin-left: -15px;
+  border: 3px solid #e5e5e5;
+  box-shadow: 2px 2px 2px #777;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.imagem-circular img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.info-personagem .editar-excluir-dentro-info a {
+  color: var(--cor-icones-lixeira_editar-info-personagem);
+  border: 1px solid var(--cor-bordas);
+  box-shadow: 1px 1px 2px var(--cor-sombras);
+}
+
+.area-img-info .info-personagem p span {
+  color: black;
+  font-size: 12px;
+}
+
+.area-img-info .info-personagem h3 {
+  color: var(--cor-cor-h3-info-personagem);
+  margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.card table tr .obs {
+    text-align: center;
+    padding: 15px;
+}
