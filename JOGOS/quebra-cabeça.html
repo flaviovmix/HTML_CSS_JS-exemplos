@@ -32,20 +32,27 @@
 
 <body>
     <div id="game-container">
-        <canvas id="puzzleCanvas" width="1920" height="1080"></canvas>
+        <canvas id="puzzleCanvas" width="1700" height="940"></canvas>
     </div>
 
     <script>
         const canvas = document.getElementById("puzzleCanvas");
         const ctx = canvas.getContext("2d");
 
-        const rows = 3; // Número de linhas
-        const cols = 3; // Número de colunas
-        const pieceWidth = 1280 / cols;
-        const pieceHeight = 720 / rows;
+        const rows = 1;
+        const cols = 1;
+
+        const imageWidth = 700;
+        const imageHeight = 900;
+
+        const pieceWidth = imageWidth / cols;
+        const pieceHeight = imageHeight / rows;
+
+        const offsetXTarget = (canvas.width - imageWidth) / 2;
+        const offsetYTarget = (canvas.height - imageHeight) / 2;
 
         const image = new Image();
-        image.src = "img.png"; // Use uma imagem qualquer
+        image.src = "img.png"; // imagem de 700x900
 
         let pieces = [];
         let draggingPiece = null;
@@ -53,13 +60,13 @@
 
         class Piece {
             constructor(imgX, imgY, canvasX, canvasY) {
-                this.imgX = imgX; // Posição da peça na imagem
+                this.imgX = imgX;
                 this.imgY = imgY;
-                this.canvasX = canvasX; // Posição da peça no canvas
+                this.canvasX = canvasX;
                 this.canvasY = canvasY;
                 this.width = pieceWidth;
                 this.height = pieceHeight;
-                this.locked = false; // Indica se a peça está no lugar certo
+                this.locked = false;
             }
 
             draw() {
@@ -87,16 +94,17 @@
             }
 
             isInCorrectPosition() {
-                // Verifica se a peça está dentro de uma área de 50px da posição correta
+                const expectedX = this.imgX + offsetXTarget;
+                const expectedY = this.imgY + offsetYTarget;
                 return (
-                    Math.abs(this.canvasX - (this.imgX + 300)) < 50 &&
-                    Math.abs(this.canvasY - (this.imgY + 150)) < 50
+                    Math.abs(this.canvasX - expectedX) < 30 &&
+                    Math.abs(this.canvasY - expectedY) < 30
                 );
             }
 
             lockPosition() {
-                this.canvasX = this.imgX + 300;
-                this.canvasY = this.imgY + 150;
+                this.canvasX = this.imgX + offsetXTarget;
+                this.canvasY = this.imgY + offsetYTarget;
                 this.locked = true;
             }
         }
@@ -109,34 +117,30 @@
         }
 
         image.onload = function () {
-            // Criar peças
             for (let row = 0; row < rows; row++) {
                 for (let col = 0; col < cols; col++) {
                     pieces.push(
                         new Piece(
                             col * pieceWidth,
                             row * pieceHeight,
-                            Math.random() * (canvas.width - pieceWidth), // Aleatoriamente dentro da tela
-                            Math.random() * (canvas.height - pieceHeight) // Aleatoriamente dentro da tela
+                            Math.random() * (canvas.width - pieceWidth),
+                            Math.random() * (canvas.height - pieceHeight)
                         )
                     );
                 }
             }
 
-            // Embaralhar peças
             shuffle(pieces);
-
             drawAll();
         };
 
         function drawAll() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Área de montagem (1280x720)
+            // Área de montagem exata (700x900)
             ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(300, 150, 1280, 720); // Área onde as peças devem ser encaixadas
+            ctx.fillRect(offsetXTarget, offsetYTarget, imageWidth, imageHeight);
 
-            // Desenha todas as peças
             pieces.forEach(piece => piece.draw());
         }
 
@@ -151,10 +155,8 @@
                     offsetX = mouseX - draggingPiece.canvasX;
                     offsetY = mouseY - draggingPiece.canvasY;
 
-                    // Mover a peça para frente (última no array)
                     pieces.splice(i, 1);
                     pieces.push(draggingPiece);
-
                     drawAll();
                     break;
                 }
@@ -176,9 +178,8 @@
 
         canvas.addEventListener("mouseup", () => {
             if (draggingPiece) {
-                // Verifica se a peça foi colocada no lugar certo
                 if (draggingPiece.isInCorrectPosition()) {
-                    draggingPiece.lockPosition(); // Fixar a peça no lugar
+                    draggingPiece.lockPosition();
                 }
                 draggingPiece = null;
                 drawAll();
