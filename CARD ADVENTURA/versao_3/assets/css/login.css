@@ -151,7 +151,7 @@ body.ativa {
 
 .formBx .form {
     position: absolute;
-    left 0;
+    left: 0;
     width: 100%;
     padding: 50px;
     transition: 1.2s;

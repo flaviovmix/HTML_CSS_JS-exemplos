@@ -15,7 +15,7 @@
 .card {
   position: relative; 
   border-radius: 5px;
-  width: 300px;
+  width: 380px;
   aspect-ratio: 3 / 5;
   transition: transform .85s ease;
   border: 1px solid rgba(0, 0, 0, .125);
@@ -23,7 +23,7 @@
 
 .card .area-img-info .info-personagem .bandeira {
   position: absolute;
-  top: 85px;   
+  top: 145px;   
   left: 2px; 
   width: 55px;
   z-index: 7;

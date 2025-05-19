@@ -1,0 +1,9 @@
+footer {
+    background: var(--cor-fundo-barra-menu);
+    margin-top: 50px;
+    color: white;
+    padding: 100px;
+    text-align: center;
+    font-weight: 600;
+    font-family: var(--font-barra-menu);
+}
