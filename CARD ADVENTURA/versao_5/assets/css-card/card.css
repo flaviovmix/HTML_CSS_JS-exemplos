@@ -192,6 +192,45 @@
     z-index: 3;
 }
 
+.area-link-fases .selecao-da-fase .fase img{
+  position: absolute;
+  right: 10px;
+  bottom: 95px;
+  height: 80px;
+  opacity: 90%;
+}
+
+.area-link-fases .selecao-da-fase .roupa img{
+  position: absolute;
+  right: 8px;
+  bottom: 85px;
+  height: 30px;
+  opacity: 90%;
+  z-index: 15;
+}
+
+.area-link-fases .selecao-da-fase .jogar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 35px;
+  right: 8px;
+  bottom: 70px;
+  background-color: rgba(53, 53, 53, 0.719);
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  border: 1px solid #656565;
+}
+
+.area-link-fases .selecao-da-fase .jogar a {
+  color: #FFF;
+  width: 100%;
+}
+
 .container-xl .card .area-link-fases a {
     /*flex: 1;  cada <a> ocupa o mesmo espaço */
     display: flex;
