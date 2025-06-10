@@ -1,0 +1,24 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.parallax {
+    /* altura da imagem de fundo */
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Conteúdo entre as imagens */
+.content {
+    height: 200px;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 50px;
+    font-size: 24px;
+}
