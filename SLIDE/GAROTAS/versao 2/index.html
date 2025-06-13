@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parallax Simples</title>
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .parallax {
+            /* altura da imagem de fundo */
+            height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Conteúdo entre as imagens */
+        .content {
+            height: 200px;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 50px;
+            font-size: 24px;
+        }
+    </style>
 </head>
+
 <body>
 
-    <div class="slider">
-    <div class="parallax" style="background-image: url('img1.png');"></div>
-    <div class="content">Conteúdo entre imagens</div>
 
-    <div class="parallax" style="background-image: url('img2.png');"></div>
-    <div class="content">Mais conteúdo</div>
+        <div class="parallax" style="background-image: url('img1.png');"></div>
+        <div class="content">Conteúdo entre imagens</div>
 
-    <div class="parallax" style="background-image: url('img3.png');"></div>
-    <div class="content">Outro conteúdo</div>
-    </div>
+        <div class="parallax" style="background-image: url('img2.png');"></div>
+        <div class="content">Mais conteúdo</div>
+
+        <div class="parallax" style="background-image: url('img3.png');"></div>
+        <div class="content">Outro conteúdo</div>
+
 </body>
+
 </html>

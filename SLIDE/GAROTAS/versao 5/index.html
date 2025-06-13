@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Imagem grande controlada</title>
+
+<style>
+     body {
+     margin: 0;
+     padding: 0;
+     /* background-color: blue; */
+ }
+
+ .slide {
+     width: 110%;
+     margin-left: -40px;
+     background-color: #0078D7;
+     display: flex;
+ }
+
+ .wrapper {
+     width: 100%;
+     height: 65vh;
+     transform: skew(-5deg);
+     border-left: 7px solid #ffffff;
+     box-shadow: -5px 0 7px rgba(0, 0, 0, 0.3);
+     overflow: hidden;
+     margin-left: -4px;
+ }
+
+ .parallax {
+    width: 150%;
+     margin-left: 0px;
+     height: 150%;
+     margin-top: 200px;
+     transform: skew(5deg);
+     background-attachment: fixed;
+     background-position: top;
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ /* Conteúdo entre as imagens */
+ .content {
+     height: 200px;
+     background-color: #f2f2f2;
+     text-align: center;
+     padding: 50px;
+     font-size: 24px;
+ }
+
+
+ /* CARROSSEL */
+ .carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  display: flex;
+  width: max-content;
+  animation: scroll 10s linear infinite;
+}
+
+.wrapper {
+  flex: 0 0 auto;
+  width: 300px;
+  /* height: 100%; */
+  background-color: lightblue;
+  margin-right: -1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 10px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.carousel-container:hover .slide {
+  animation-play-state: paused;
+}
+
+</style>
+
+<body>
+
+<div class="carousel-container">
+  <div class="slide" id="carousel">
+
+        <div class="wrapper">
+            <div class="parallax" style="background-image: url('img1.png');"></div>
+        </div>
+
+        <div class="wrapper">
+            <div class="parallax" style="background-image: url('img2.png');"></div>
+        </div>
+
+        <div class="wrapper">
+           <div class="parallax" style="background-image: url('img3.png');"></div>
+        </div>
+
+        <div class="wrapper">
+           <div class="parallax" style="background-image: url('img4.png');"></div>
+        </div>
+
+
+        <div class="wrapper">
+           <div class="parallax" style="background-image: url('img5.png');"></div>
+        </div>
+
+
+        <div class="wrapper">
+            <div class="parallax" style="background-image: url('img6.png');"></div>
+        </div>
+
+        <div class="wrapper">
+            <div class="parallax" style="background-image: url('img7.png');"></div>
+        </div>
+  </div>
+</div>
+
+
+    <div style="height: 1500px;"></div>
+
+
+    <script>
+
+        let valorParallax = -0.43;
+        function atualizarValorParallax() {
+            const largura = window.innerWidth;
+
+            if (largura <= 480) {
+                valorParallax = -0.03;
+                console.log('até 480');
+            } else if (largura >= 481 && largura <= 768) {
+                valorParallax = -0.04;
+                console.log('até 768');
+            } else if (largura >= 769 && largura <= 1366) {
+                valorParallax = -0.05;
+                console.log('até 1366');
+            } else if (largura >= 1367 && largura <= 1920) {
+                valorParallax = -0.25;
+                console.log('até 1920');
+            } else if (largura >= 1921 && largura <= 2300) {
+                valorParallax = -0.03;
+                console.log('até 2300');                
+            } else if (largura >= 2301 && largura <= 2560) {
+                valorParallax = -0.2;
+                console.log('até 2560');
+            } else if (largura >= 2561) {
+                valorParallax = -0.2;
+                console.log('até 2561');
+            } else {
+                valorParallax = -0.43;
+                console.log('padrao');
+            }
+            
+        }
+
+function aplicarParallax() {
+    const scrollY = window.scrollY;
+    const parallaxDivs = document.querySelectorAll('.parallax');
+    
+    parallaxDivs.forEach(div => {
+        div.style.backgroundPositionY = `${scrollY * valorParallax}px`;
+    });
+}
+
+        // Inicializa valores
+        atualizarValorParallax();
+        aplicarParallax(); // Aplica mesmo sem rolar
+
+        // Aplica ao rolar
+        window.addEventListener('scroll', aplicarParallax);
+
+        // Recalcula valor e aplica imediatamente ao redimensionar
+        window.addEventListener('resize', () => {
+            atualizarValorParallax(); // Chama a função que já tem o console.log
+            aplicarParallax(); // Aplica na hora com o novo valor
+        });
+
+    </script>
+<script>
+    const slide = document.getElementById('carousel');
+    const wrappers = slide.innerHTML;
+    slide.innerHTML += wrappers; // Duplicar os itens
+</script>
+
+</body>
+
+</html>
