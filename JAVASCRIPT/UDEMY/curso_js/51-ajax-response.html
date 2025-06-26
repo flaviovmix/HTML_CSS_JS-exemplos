@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="ajax-response";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>AJAX - Response</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>AJAX - Response</h3>
+
+                <p>
+                    Na última aula aprendemos como enviar uma requisição http usando AJAX. Vamos agora reunir todos aqueles comandos
+                    dentro de uma função e vamos trabalhar com a resposta:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    function tempo_londres() {
+        var xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+                        
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                
+            } 
+        };
+        xhttp.open("GET", "https://openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22");
+        xhttp.send();
+    }
+
+    tempo_londres();
+
+                    </code>
+                </pre>
+                
+                <p>
+                    O console mostrará um JSON, ou seja, um objeto Javascript no formato string, com as seguintes informações:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    {
+        "coord":{"lon":-0.13,"lat":51.51},
+        "weather":[ {"id":501,"main":"Rain","description":"moderate rain","icon":"10d"},
+                    {"id":701,"main":"Mist","description":"mist","icon":"50d"}
+        ],
+        "base":"stations",
+        "main":{"temp":9.4,"pressure":1016,"humidity":100,"temp_min":9,"temp_max":10},
+        "visibility":8000,
+        "wind":{"speed":3.6,"deg":330},
+        "clouds":{"all":92},
+        "dt":1537694400,
+        "sys":{"type":1,"id":5091,
+        "message":0.0038,
+        "country":"GB",
+        "sunrise":1537681718,
+        "sunset":1537725356},
+        "id":2643743,
+        "name":"London",
+        "cod":200
+    }
+
+                    </code>
+                </pre>
+
+                <p>
+                    Vamos agora criar uma função para converter o JSON em um objeto Javascript para podermos trabalhar 
+                    com estes dados em nossa página. 
+                </p>
+
+                <p>
+                    Como a requisição leva alguns instantes para retornar, precisamos usar uma função callback, para garantir que não vamos 
+                    tentar usar os dados antes de eles chegarem.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    function mostrar_temperatura(dados) {
+        var dados_obj = JSON.parse(dados);
+        console.log('A temperatura em Londres neste momento é de ' + dados_obj.main.temp + " graus Celsius.")
+    }
+
+    function tempo_londres(callback) {
+        var xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+                        
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                callback(this.responseText);
+                
+            } 
+        };
+
+        xhttp.open("GET", "https://openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22");
+        xhttp.send();
+    }
+
+    tempo_londres(mostrar_temperatura);
+
+                    </code>
+                </pre>
+
+                <p>
+                    No nosso projeto 3 aprenderemos mais sobre o API Open Weather Map e usaremos ele para criar um app de previsão do tempo em Javascript.
+                </p>
+
+                
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

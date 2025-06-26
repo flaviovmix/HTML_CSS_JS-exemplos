@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="ajax-jquery";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>AJAX - jQuery</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>AJAX - jQuery</h3>
+
+                <p>
+                    A biblioteca JQuery possui um método para fazer pedidos ajax de forma mais simples. Basta chamar o método e 
+                    passar um objeto com algumas informações sobre o pedido. 
+                </p>
+
+                <p>
+                    Vamos repetir a requisição da última aula, mas desta vez usando jQuery.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $.ajax({
+        url : "https://openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22",
+        type: "GET",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+        },
+        error: function(){
+            console.log("Erro na requisição");
+        }  
+    });
+
+                    </code>
+                </pre>
+
+
+            <p>
+                Note que, ao passar o dataType como JSON, a resposta já vem como um objeto, não sendo necessário fazer o parse. 
+            </p>
+
+            <p>
+                Além disso, não é necessário testar o status da mensagem, pois o método ajax possui as propriedades success e error, que 
+                servem para passar funções para o caso de sucesso ou erro na requisição.
+            </p>
+
+            <p>
+                Esta propriedades são funções callback, que são executadas depois que a resposta é recebida.
+            </p>
+
+            <p>
+                Pode-se também definir as funções para success e error com métodos em cadeia .done e .fail.
+            </p>
+
+            <pre>
+                <code class="javascript">
+
+    $.ajax({
+        url : "https://openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22",
+        type: "GET",
+        dataType: "json"
+    }).done(function(data){
+        console.log(data);
+    }).fail(function(){
+        console.log("Erro na requisição");
+    });
+
+                </code>
+            </pre>
+
+            <h5>Desafio: Faça o pedido ajax ao open weather map e solte abaixo a temperatura atual, a máxima e a mínima de Londres:</h5>
+            <p>Temperatura atual: <span id="temp_atual"></span></p>
+            <p>Temperatura máxima: <span id="temp_max"></span></p>
+            <p>Temperatura mínima: <span id="temp_min"></span></p>
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

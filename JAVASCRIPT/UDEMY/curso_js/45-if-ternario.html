@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="if-ternario";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Operador If Ternário</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Operador If Ternário</h3>
+
+                <p>
+                    O if ternário foi introduzido na linguagem Javascript na atualização ES6 (também chamada de ES2015). É uma forma mais 
+                    curta de usar a estrutura condicional. A sintaxe é:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    condição ? "valor se for verdadeiro" : "valor se for falso";
+
+    // Exemplo com if normal:
+    var nome = "";
+    if (nome) {
+        var mensagem = "Olá " + nome;
+    } else {
+        var mensagem = "Nome não informado";
+    }
+
+    // Exemplo com if ternário:
+
+    nome ? mensagem = "Olá " + nome : mensagem = "Nome não informado";
+
+    // Ou ainda mais simples:
+
+    mensagem = nome ? "Olá " + nome : "Nome não informado";
+
+                    </code>
+                </pre>
+
+                <p>
+                    É possível reproduzir o else if com o operador ternário, mas recomenda-se cuidado pois o código pode ser um 
+                    pouco mais difícil de compreender.
+                </p>
+
+                
+                <pre>
+                    <code class="javascript">
+                                            
+    nome = "";
+    idade = 32;
+    
+    mensagem = (nome && idade) ? "Olá " + nome + ", você tem 32 anos." 
+        : (!nome && !idade) ? "Nome e idade não informados"
+        : (!idade) ? "Idade não informada"
+        : "Nome não informado";
+    
+    console.log(mensagem);
+
+
+                    </code>
+                </pre>
+
+
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

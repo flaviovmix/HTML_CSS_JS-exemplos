@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="tipos_arrays";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tipos de Dados - Arrays</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Tipos de dados - Arrays</h3>
+
+                <p>
+                    Arrays são sequências ordenadas de valores. Estes valores podem ser de qualquer tipo de dados e devem estar separados por vírgula.
+                    O símbolo que identifica os arrays são os colchetes [ ].
+                </p>
+                    
+                
+                <pre>
+                    <code class="javascipt">
+    var alunos = [ "João" , "Maria", "José" ];
+    var num_primos = [ 2, 3, 5, 7, 11, 13 ];
+                    </code>
+                </pre>
+
+                <p>
+                    Lembre-se que quando falamos sobre strings, falamos sobre eles serem uma sequência de caracteres, que tem um tamanho e onde cada caractere 
+                    pode ser acessado por meio de um índice. Os arrays tem essas mesmas características.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var alunos = [ "João" , "Maria", "José" ];
+    console.log(alunos.length); // o console mostrará 3
+    console.log(alunos[0]);  // o console mostrará "João"
+
+                    </code>
+                </pre>
+
+                <p>
+                    Os elementos de um array podem ser de qualquer tipo de dados, inclusive arrays e objetos. Neste caso, este são chamados de 
+                    arrays multidimensionais e são os que provocam confusão na cabeça de muitos iniciantes em Javascript. Porém, 
+                    com um pouco de atenção, é muito fácil interpretar um array multidimensional. Vamos ver um exemplo bem simples:
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+
+    var grupos = [ 
+        [ "João" , "Maria" ],
+        [ "Pedro" , "Joana", "André", "Júlio" ],
+        [ "Carolina" , "Helena", "Marcelo" ]
+    ];
+
+                    </code>
+                </pre>
+
+
+                <p>
+                    A variável grupos é um array usado para guardar grupos de alunos. Agora responda, quantos elementos tem o array grupos? 
+                </p>
+
+                <p>
+                    O array grupos possui 3 elementos e cada um destes elementos é um array.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    console.log(grupos.length); // o console mostrará 3
+    console.log(grupos[1]);  // o console mostrará [ "Pedro" , "Joana", "André", "Júlio" ]
+
+    /* podemos acessar também os elementos internos de cada grupo, basta usar a notação do índice duas vezes */
+
+    console.log(grupos[1][2]);  // o console mostrará "André"
+
+                    </code>
+                </pre>
+
+                <h4>Operações com arrays</h4>
+                
+                
+                <li>Push - Adiciona elementos ao final de um array</li>
+                <li>Pop - Remove o último elemento de um array</li>
+                <li>Shift - Remove o primeiro elemento de um array</li>
+                <li>Unshift - Adiciona elementos ao início de um array</li>
+
+                <pre>
+                    <code class="javascript">
+
+    var cursos = [ "HTML", "Python", "PHP" ];
+
+    cursos.push("Javascript");
+
+    console.log(cursos);  // O console mostrará [ "HTML", "Python", "PHP", "Javascript" ]
+
+    cursos.unshift("Bootstrap");
+
+    console.log(cursos);  // O console mostrará [ "Bootstrap", "HTML", "Python", "PHP", "Javascript" ]
+
+    cursos.pop();
+
+    console.log(cursos);  // O console mostrará [ "Bootstrap", "HTML", "Python", "PHP" ]
+
+    cursos.shift();
+
+    console.log(cursos);  // O console mostrará [ "HTML", "Python", "PHP" ]
+
+                    </code>
+                </pre>
+
+                <p>É possível também definir elementos em lugares específicos usando a notação do índice</p>
+
+                <pre>
+                    <code class="javascript">
+
+    var ingredientes = [ "pão branco", "queijo", "presunto" ];
+
+    ingredientes[0] = "pão integral";
+
+    console.log(ingredientes);  // O console mostrará [ "pão integral", "queijo", "presunto" ]
+
+                    </code>
+                </pre>
+
+                <li>Slice - extrai parte de um array</li>
+
+                <p>
+                    O método slice serve para extrair parte de um array. Fazemos isso informando o índice de início e fim que queremos 
+                    selecionar.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var alunos = [ "João" , "Maria", "José", "Fernanda", "Pedro", "Elisa" ];
+    console.log( alunos.slice(0,3) );
+
+    // O console mostrará [ "João" , "Maria", "José" ]
+
+                    </code>
+                </pre>
+
+                <p>
+                    É possível também usar número negativos para contar desde o final do array (o último elemento de um array é o -1).
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var alunos = [ "João" , "Maria", "José", "Fernanda", "Pedro", "Elisa" ];
+    
+    console.log( alunos.slice(,-2) );
+    // O console mostrará [ "João" , "Maria", "José", "Fernanda" ]
+    /* O slice começa no primeiro elemento, e vai até o penúltimo elemento, neste caso o índice 4, 
+    com este elemento excluído. */
+
+    console.log( alunos.slice(-3,) );
+    // O console mostrará [ "Fernanda", "Pedro", "Elisa" ]
+    // O slice inclui os três últimos elementos.
+
+                    </code>
+                </pre>
+
+               
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="exercicio3";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Folha de Exercícios 3</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Folha de Exercícios n<sup>o</sup> 3</h3>
+               <br>
+               
+               <p>1) Use a função para converter de Celsius para Fahrenheit feita no exercício 2. Só que desta vez, 
+                    a temperatura em Celsius deve ser digitada pelo usuário no campo apropriado e o cálculo deve ser feito quando o 
+                    botão "Calcular" for pressionado.
+                </p>
+
+                <p>
+                    * Para pegar o valor do input de temperatura use .value em vez de .innerHTML
+                </p>
+
+                <input id="temp_celsius" type="number" placeholder="Temperatura...">
+
+                <sup>o</sup>C
+                
+                &nbsp;&nbsp;
+
+                <button id="converter">Calcular</button>
+                <br>
+
+                <div style="border-width: 1px" class="caixa_outer inline">
+                    <div id="temp_fahr">
+                        &nbsp;
+                    </div>
+                </div>
+                <sup>o</sup>F
+
+                <br><br>
+
+                <p>
+                    2) Solte dentro do elemento abaixo uma lista de todos os anos em que houve a Copa do Mundo de Futebol, desde 
+                    1930 até 2018. Lembre-se que a copa do mundo ocorre de 4 em 4 anos.
+                </p>
+
+                <div class="dark_box">
+                    <div class="dark_box_title">Anos de copa do mundo de 1930 a 2018:</div>
+                    <div class="dark_box_content">
+                        <ul id="anos_copa">
+                            <li>Coloque aqui os anos em lista</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <p>
+                    3) Informe nos campos abaixo duas notas e o total de faltas do aluno e depois solte o resultado no local apropriado.
+                    Sendo que:
+                </p>
+
+                <li>O aluno para ser aprovado precisa ter, no mínimo 70% de presença (o total de aulas é 20)</li>
+                <li>O aluno para ser aprovado precisa ter média maior ou igual a 6.5</li>
+                <li>Caso o aluno não seja aprovado, o programa precisa dizer se foi por motivo de média insuficiente, por faltas ou pelos dois motivos.</li>
+
+                <br> 
+
+                <input id="nota1" type="number" placeholder="Informe a nota 1..."> &nbsp;&nbsp; Nota 1 <br>
+
+                <input id="nota2" type="number" placeholder="Informe a nota 2..."> &nbsp;&nbsp; Nota 2 <br>
+
+                <input id="n_faltas" type="number" placeholder="Num. de faltas...">  &nbsp;&nbsp; Faltas <br>
+
+                <br>
+
+                <button id="calcular">Calcular</button>
+                <br><br><br>
+
+                
+                <div id="result">
+                    solte aqui o resultado do aluno
+                </div>
+
+
+                <br><br>
+
+                <p>
+                    4) Temos abaixo uma lista de vendas de um curso. Cada venda é um objeto cujas propriedades guardam informações 
+                    sobre a venda, como o nome do aluno que comprou, a data, o preço e se houve pedido de reembolso.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var vendas_cursos = [
+
+        {
+            'aluno': 'Emmanuel Gomes',
+            'data': '10/06/2018',
+            'valor': 34.99,
+            'reembolso': null
+            
+        },
+
+        {
+            'aluno': 'Carla Dias',
+            'data': '10/06/2018',
+            'valor': 29.99,
+            'reembolso': null
+            
+        },
+
+        {
+            'aluno': 'Rafael Marques',
+            'data': '11/06/2018',
+            'valor': 39.99,
+            'reembolso': '13/06/2018'
+            
+        },
+
+        {
+            'aluno': 'Maria Isabel Pereira',
+            'data': '11/06/2018',
+            'valor': 29.99,
+            'reembolso': null
+            
+        },
+
+        {
+            'aluno': 'Andre Luis Silva',
+            'data': '12/06/2018',
+            'valor': 34.99,
+            'reembolso': null
+            
+        }
+    
+    ];
+
+                    </code>
+                </pre>
+
+                <p>
+                    Solte as vendas na tabela abaixo, mas não inclua as vendas 
+                    que tiveram reembolso pedido. Calcule também o total de vendas e solte na última linha da tabela.
+                </p>
+    
+
+                <div class="tableBox">
+                    <table>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Data</th>
+                            <th>Valor</th>
+
+                        </tr>
+
+                        <tbody id="vendas_cursos">
+                            <tr>
+                                <td>Solte o nome do aluno</td>
+                                <td>Solte a data</td>
+                                <td>Solte o valor</td>
+                            </tr>
+                        </tbody>
+                        
+                        <tr style="font-weight: bold">
+                                
+                                <td colspan="2">Total de vendas</td>
+                                <td id="total_vendas">total aqui</td>
+
+                            </tr>
+                        
+
+                    </table>
+                </div>
+
+
+               
+                <br>
+                <br>
+                    
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+
+        <script src="js/ex3.js"></script>
+
+    </body>
+
+</html>

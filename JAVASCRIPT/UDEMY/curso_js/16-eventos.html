@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="eventos";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Eventos</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Eventos</h3>
+                
+                <p>
+                    Quando falamos de eventos em Javascript, nos referimos a determinados acontecimentos dentro do navegador. Vejamos alguns exemplos 
+                    comuns de eventos em Javascript: 
+                </p>
+
+                <div class="tableBox">
+                        <table>
+                            <tr>
+                                <th>Evento</th>
+                                <th>descrição</th>
+                            </tr>
+                            <tr>
+                                <td>onclick</td>
+                                <td>Quando o usuário clica em algum elemento da página.</td>
+                            </tr>
+                            <tr>
+                                <td>onchange</td>
+                                <td>Quando um elemento HTML muda. É muito comum utilizar esse evento para controlar o preenchimento de campos de um formulário.</td>
+                            </tr>
+                            <tr>
+                                <td>onmouseover</td>
+                                <td>Quando o usuário passa o cursor sobre algum elemento.</td>
+                            </tr>
+                            <tr>
+                                <td>onmouseout</td>
+                                <td>Quando o cursor que estava sobre algum elemento, sai.</td>
+                            </tr>
+                            <tr>
+                                <td>onkeydown</td>
+                                <td>Quando alguma tecla é pressionada.</td>
+                            </tr>
+                            
+    
+                        </table>
+                    </div>
+
+                <p>
+
+                    Nós podemos definir funções para serem invocadas sempre que um desses eventos forem registrados pelo navegador. 
+                    Isso nos leva a uma situação muito interessante, pois a partir de agora vamos poder começar a criar páginas interativas, 
+                    que vão responder a ações do usuário. 
+
+                </p>
+
+                <p>
+                    Com esse conhecimento vamos conseguir criar, por exemplo, elementos que iniciam escondidos e aparecem apenas após um clique, 
+                    como são normalmente feitos os menus de navegação em telas de celular. Podemos também criar questionários interativos, jogos 
+                    e aplicações completas que tem o funcionamento baseado em respostas a eventos da página.
+                </p>
+                    
+                <p>
+                    É importante ressaltar que esta maneira de trabalhar com eventos não é exclusiva da linguagem Javascript ou do navegador, 
+                    praticamente qualquer aplicação com interface gráfica é escrita de forma a ficar em estado de espera até que algum evento aconteça.
+                </p>
+
+                <h5>
+                    onclick, onmouseover e onmouseout
+                </h5>
+                <p>
+                    Vejamos abaixo um exemplo simples:
+                </p>
+                <br>
+
+                <button onclick="button_clicked()" id="click-me">Clique Aqui</button>
+                <button id="hover-me">Passe o cursor aqui</button>
+                <button id="leave-me">Passe o cursor e depois saia</button>
+
+
+                <pre>
+                    <code class="html">
+
+    <u>HTML:</u>
+    
+    &lt;button id="click-me"&gt;Clique aqui&lt;&#47;button&gt;
+    &lt;button id="hover-me"&gt;Passe o cursor aqui&lt;&#47;button&gt;
+    &lt;button id="leave-me"&gt;Passe o cursor e depois saia&lt;&#47;button&gt;
+
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript">
+
+    <u>Javascript:</u>
+    
+    document.getElementById("click-me").onclick = function() {
+        alert('Você clicou no botão');
+    };
+
+    document.getElementById("hover-me").onmouseover = function() {
+        alert('Você passou o cursor por cima do botão');
+    };
+
+    document.getElementById("leave-me").onmouseout = function() {
+        alert('Você passou o cursor por cima do botão e depois saiu');
+    };
+    
+
+
+                    </code>
+                </pre>
+
+                <p>
+                    Quando carregamos a página, os elementos html viram objetos do DOM. Estes objetos têm propriedades que levam o mesmo nome dos eventos. Estas 
+                    propriedades inicialmente estão vazias (null). Quando definimos uma função para estas propriedades, elas se comportam como métodos deste objeto. 
+                    Neste momento o navegador passa a monitorar o evento e invoca a função quando o evento ocorre.
+                </p>
+
+                
+                <h5>
+                    onkeydown
+                </h5>
+
+                <p>
+                    O evento onkeydown pode ser aplicado a um elemento específico. Faria sentido, por exemplo, aplicá-lo a um campo de formulário,
+                    desta maneira quando o usuário digitasse alguma coisa dentro deste campo, o evento seria registrado. Mas este evento pode ser aplicado 
+                    também ao objeto document (aquele que fica no topo da árvore do DOM). Desta maneira, em qualquer lugar da página que estivermos, o evento 
+                    será monitorado. Escreva o código abaixo, recarregue a página e experimente apertar qualquer tecla.
+                </p>
+
+
+                <pre>
+                    <code class="javascript">
+    
+    document.onkeydown = function() {
+        alert('Você apertou alguma tecla');
+    };
+
+                    </code>
+                </pre>
+
+
+                <p>É possível também monitorar alguma tecla específica. Primeiro temos que saber como o Javascript reconhece que tecla foi 
+                    pressionada. Para isso vamos adicionar uma coisa ao alert:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    document.onkeydown = function() {
+        alert('Você apertou a tecla: ' + event.keyCode);
+    };
+
+                    </code>
+                </pre>
+
+                <p>
+                    Dentro da função que estamos associando a um evento, podemos usar o objeto event, que nos dá informações adicionais sobre o evento em questão. 
+                    Neste caso usamos a propriedade keyCode, que nos retorna o <a target="_blank" href="https://unicode-table.com/en/#latin-1-supplement">código Unicode</a> 
+                    do caractere pressionado no teclado. Usamos então o sinal de '+' para concatenar com a mensagem no alert.
+                </p>
+
+                <p>Desta forma, podemos descobrir por exemplo, que o código da letra 'a' é 65. 
+                    Com esta informação, poderíamos montar uma função que só é invocada se o event.keyCode retornar 65, ou seja, quando a letra 'a' for 
+                pressionada. Mas para fazer isso precisamos ainda aprender sobre condicionais, assunto que vamos ver em breve. </p>
+                
+
+                <h5>Manipulação de evento via atributo html</h5>
+                
+                <p>
+                    Nos exemplos acima, manipulamos eventos usando objetos do DOM e a propriedade getElementById. 
+                    Também é possível fazer isto diretamente via atributos html. Veja, como ficaria o exemplo do onclick.
+                </p>
+
+                <pre>
+                    <code class="html">
+    
+    &lt;button onclick="show_alert()"&gt;Clique Aqui&lt;/button&gt;
+
+                    </code>
+                </pre>
+
+                <p>O funcionamento é parecido. Estamos associando a função show_alert à propriedade onclick do objeto do DOM correspondente a este elemento.
+                    Agora o que falta é criar esta função no código Javascript:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    function show_alert() {
+        alert('Você clicou no botão');
+    }
+                    </code>
+                </pre>
+
+                <p>
+                    As duas maneiras de trabalhar com eventos funcionam e, portanto, esta escolha fica a nosso critério. A crítica feita ao uso via atributo 
+                    html é que isso deixa o código html e javascript misturados, enquanto entende-se ser melhor separá-los.
+                </p>
+
+               
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

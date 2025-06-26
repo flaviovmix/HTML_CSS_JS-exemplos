@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="switch";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Switch</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Switch</h3>
+                
+                <p>
+                    O comando Switch é também uma estrutura condicional. Ele é muito útil para rodar um bloco de código caso encontre um valor específico.
+                    Vamos usar como exemplo uma tabela de valores de pedágio por tipo de veículo.
+                </p>
+                
+
+                <div class="tableBox">
+                    <table>
+
+                        <tr>
+                            <th>Categoria de veículo</th>
+                            <th>Tipo veículo</th>
+                            <th>Número de eixos</th>
+                            <th>Valor</th>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                Automóvel, caminhonete e
+                                furgão
+                            </td>
+                            <td>2</td>
+                            <td>R$ 11,22</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                Caminhão leve, ônibus,
+                                e furgão 
+                            </td>
+                            <td>2</td>
+                            <td>R$ 22,45</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                Automóvel e caminhonete
+                                com semi-reboque 
+                            </td>
+                            <td>3</td>
+                            <td>R$ 16,88</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                Caminhão com semireboque
+                                e ônibus 
+                            </td>
+                            <td>3</td>
+                            <td>R$ 33,65</td>
+                        </tr>
+
+                        
+                        
+
+                    </table>
+                </div>
+
+                <p>
+                    Se quisermos receber a categoria do veículo e informar o preço a pagar, é fácil fazer isso usando a estrutura do comando switch. 
+                    
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    var categoria = '2';
+
+    switch (categoria) {
+
+        case '1':
+            console.log("Valor a pagar: R$ 11,22");
+            break;
+
+        case '2':
+            console.log("Valor a pagar: R$ 22,45");
+            break;
+
+        case '3':
+            console.log("Valor a pagar: R$ 16,88");
+            break;
+
+        case '4':
+            console.log("Valor a pagar: R$ 33,65");
+            break;
+        
+        default: 
+            console.log("Categoria não encontrada");
+
+    }
+
+                    </code>
+                </pre>
+
+                <p>
+                    Dentro dos parênteses do comando switch, passamos um valor ou uma variável. Depois criamos vários 'cases' com valores específicos. 
+                    Se o valor passado for igual ao valor do case, o bloco de código é executado.
+                </p>
+
+                <p>
+                    Caso o valor não corresponda a nenhum dos cases, podemos usar o case default para executar algum código, neste exemplo utilizamos para 
+                    soltar "Categoria não encontrada".
+                </p>
+
+                <p>
+                    o comando <i>break</i> é utilizado para interromper o fluxo do switch, falaremos mais sobre este comando na próxima aula e veremos 
+                    o seu uso também em loops juntamente com o comando <i>continue</i>. Neste exemplo, quando sabemos que ele encontrou o valor, depois de soltar o 
+                    preço a pagar, não há mais necessidade de testar os outros cases, portanto podemos usar o break para 
+                    interromper o fluxo do comando switch, melhorando assim a performance do nosso código. 
+
+                </p>
+
+
+               
+                    
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

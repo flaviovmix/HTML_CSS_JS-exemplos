@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-eventos";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Eventos</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Eventos</h3>
+
+                <p>
+                    Os eventos em JQuery, conforme mostrado na última aula, pouco diferem dos eventos Javascript, tendo apenas pequenas diferenças de nome
+                    e na sintaxe. Vejamos na tabela abaixo alguns exemplos.
+                </p>
+
+                <div class="tableBox">
+                    <table>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Descrição</th>
+                            <th>Evento em Vanilla JS</th>
+                        </tr>
+                        <tr>
+                            <td>click</td>
+                            <td>Clique em um elemento</td>
+                            <td>onclick</td>
+                        </tr>
+                        <tr>
+                            <td>dbclick</td>
+                            <td>Duplo clique em um elemento</td>
+                            <td>ondbclick</td>
+                        </tr>
+                        <tr>
+                            <td>mouseenter</td>
+                            <td>Cursor sobre o elemento</td>
+                            <td>onmouseover</td>
+                        </tr>
+                        <tr>
+                            <td>mouseleave</td>
+                            <td>Cursor deixa de estar sobre um elemento</td>
+                            <td>onmouseout</td>
+                        </tr>
+                        <tr>
+                            <td>keypress e keydown</td>
+                            <td>Alguma tecla é pressionada</td>
+                            <td>onkeypress e onkeydown</td>
+                        </tr>
+                        <tr>
+                            <td>keyup</td>
+                            <td>Alguma tecla é solta</td>
+                            <td>onkeyup</td>
+                        </tr>
+                        <tr>
+                            <td>change</td>
+                            <td>Alguma mudança em um campo de formulário</td>
+                            <td>onchange</td>
+                        </tr>
+                        <tr>
+                            <td>focus</td>
+                            <td>Algum campo de formulário é selecionado</td>
+                            <td>onfocus</td>
+                        </tr>
+                        <tr>
+                            <td>blur</td>
+                            <td>Saída do campo de formulário que estava selecionado</td>
+                            <td>onblur</td>
+                        </tr>
+                        <tr>
+                            <td>load ou ready</td>
+                            <td>A página é carregada</td>
+                            <td>onload</td>
+                        </tr>
+                        <tr>
+                            <td>resize</td>
+                            <td>A janela do browser é redimensionada</td>
+                            <td>onresize</td>
+                        </tr>
+                        <tr>
+                            <td>scroll</td>
+                            <td>A barra de rolagem é acionada (subir e descer a página)</td>
+                            <td>onscroll</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <p>Sintaxe dos eventos jQuery</p>
+                
+                <pre>
+                    <code class="javascript">
+
+    $("elemento").evento(function(){
+
+        // código a ser executado quando ocorrer o evento
+
+    });
+    
+                    </code>
+                </pre>
+
+                <h4>O evento Ready</h4>
+
+                <p>
+                    Um evento muito importante em desenvolvimento web, é o evento ready. Este evento acontece sempre que a página é completamente carregada. 
+                    Se colocarmos todo o nosso código dentro deste evento, evitamos por exemplo realizar uma função em um elemento que ainda não foi carregado,
+                    o que geraria um erro.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $(document).ready(function(){
+
+        // Código JS / jQuery
+        
+    });
+    
+                    </code>
+                </pre>
+
+                <p>
+                    A partir de agora, vamos sempre garantir o carregamento total da página com o evento ready antes de executar nosso código. 
+                    Porém, em jQuery, foi criada uma maneira ainda mais fácil de usar este evento:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $(function(){
+
+        // Código JS / jQuery
+        
+    });
+    
+                    </code>
+                </pre>
+
+                <p>
+                    Esta forma não é muito intuitiva, pois não há o nome do evento, mas é bem conhecida por desenvolvedores e é a 
+                    forma mais amplamente usada em páginas que utilizam jQuery.
+                </p>
+
+                <h4>O método On</h4>
+
+                <p>O método on é uma maneira alternativa de se trabalhar com os eventos.</p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("elemento").on("evento", function(){
+
+        // código a ser executado quando ocorrer o evento
+
+    });
+    
+                    </code>
+                </pre>
+
+                <p>
+                    A princípio parece não fazer muito sentido usar o método on, já que estamos simplesmente adicionando mais código 
+                    para fazer a mesma coisa. Mas a vantagem do método on é que vários eventos podem ser definidos ao mesmo tempo para um 
+                    elemento.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("elemento").on({
+        
+        click: function(){
+            // Código a ser executado no evento click
+        }, 
+
+        mouseenter: function(){
+            // Código a ser executado no evento mouseenter
+        }, 
+
+        mouseleave: function(){
+            // Código a ser executado no evento mouseleave
+        } 
+
+    });
+    
+                    </code>
+                </pre>
+
+                <p>
+                    Note que o que é passado como argumento do método On é um objeto. Este objeto tem os nomes dos eventos nas chaves e as funções nos valores.
+                </p>
+
+                <h5>Desafio</h5>
+
+                <p>
+                    Vamos agora a um pequeno desafio para começarmos a nos familiarizar com a sintaxe do jQuery. Abaixo há um input com o id nome. Ao lado há 
+                    um botão com id confirmar que está escondido (display: none).
+                </p>
+
+                <p>
+                    Quando algo for digitado no campo de nome, mostre o botão confirmar. Atenção pois se o campo estiver vazio, o botão deve ser escondido novamente.
+                </p>
+
+                <input id="nome" type="text" placeholder="Nome...">
+                
+                &nbsp;&nbsp;
+
+                <button style="display:none" id="confirmar">Confirmar</button>
+                <br>
+
+
+
+                
+
+                
+
+                
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+    
+
+</html>
+

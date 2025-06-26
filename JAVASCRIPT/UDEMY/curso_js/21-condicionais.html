@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="condicionais";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Condicionais</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Condicionais</h3>
+                
+                <p>
+                    Condicionais são usados para executar códigos dependendo de condições específicas. A forma de escrevê-los 
+                    é parecida com a dos loops, mas os condicionais não são estruturas de repetição. Os comandos são executados 
+                    apenas uma vez e as possibilidades em termos lógicos são superiores às dos loops, conforme vamos ver.
+                </p>
+
+                <h4>
+                    if / else if / else
+                </h4>
+
+                <p>
+                    Vamos começar com um exemplo bem simples. Vamos analisar a idade de uma pessoa e responder se ela é ou não maior de idade.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    var idade = 17;
+
+    if (idade < 18) {
+
+        console.log('Menor de idade');
+
+    } else {
+
+        console.log('Maior de idade');
+
+    }
+
+    // O console mostrará: 'Menor de idade'
+                    </code>
+                </pre>
+
+               <p>
+                O que foi escrito no código acima foi: SE (if) a idade for menor que 18, solte 'menor de idade', SENÃO (else) solte 'maior de idade'.
+               </p>
+
+               <p>
+                   Neste exemplo temos apenas uma condição e caso ela não seja atendida vamos direto ao else. Mas podemos ter mais de uma condição, neste caso 
+                   usaremos o else if (senão se), que precisará também de uma condição entre parênteses.
+               </p>
+
+               <pre>
+                   <code class="javascript">
+    var idade = 18;
+
+    if (idade < 18) {
+
+        console.log('Menor de 18');
+
+    } else if (idade == 18) {
+
+        console.log('Tem 18 anos');
+
+    } else {
+
+        console.log('Maior de 18');
+
+    }
+
+    // O console mostrará: 'Tem 18 anos'                   
+                   </code>
+               </pre>
+
+                <p>
+                    Não importa quantas condições há, quando alguma é atendida o código é executado e as demais condições nem chegam a ser testadas. 
+                    Se nenhuma for atendida, o código que está no else será executado, caso exista algum else. 
+                </p>
+
+                <h4>
+                    Testando múltiplas condições com <i>and</i> e <i>or</i>
+                </h4>
+
+                <li><strong>&& (And): </strong> quando testamos duas ou mais condições usando <i>&&</i>, todas precisam ser verdadeiras para 
+                que o condicional retorne verdadeiro</li>
+
+                <li><strong>|| (Or): </strong> quando testamos duas ou mais condições usando <i>||</i>, apenas uma precisa ser verdadeira 
+                    para que o condicional retorne verdadeiro</li>
+
+                <p>
+                    Vamos analisar as notas e faltas de um aluno e avaliar se ele foi ou não aprovado. A regra é: para ser aprovado só pode ter 
+                    no máximo 5 faltas e a nota precisa ser maior ou igual a 7.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    nota = 7;
+    faltas = 3;
+
+    // Resolução com and: 
+
+    if (nota >= 7 && faltas <= 4) {
+        console.log( 'O aluno foi aprovado' );
+    } else {
+        console.log( 'O aluno foi reprovado' );
+    }
+
+    // Resolução com or: 
+
+    if (nota < 7 || faltas > 4) {
+        console.log( 'O aluno foi reprovado' );
+    } else {
+        console.log( 'O aluno foi aprovado' );
+    }
+
+    // as duas maneiras de resolver chegam ao mesmo resultado. O console mostrará: "O aluno foi aprovado".
+
+    // mude os valores das variáveis nota e faltas e veja como o teste funciona.
+
+
+                    </code>
+                </pre>
+
+
+                <h4>
+                    Avaliando valores como condições
+                </h4>
+
+                <p>A linguagem Javascript e outras como Python, PHP etc., avaliam valores mesmo quando não há operadores de comparação. Em 
+                    Javascript são considerados falsos:
+                </p>
+
+                <li>undefined</li>
+                <li>null</li>
+                <li>0</li>
+                <li>NaN</li>
+                <li>"" (string vazio)</li>
+
+                <p>Todos os outros valores, números, strings, objetos e arrays são considerados verdadeiros.</p>
+
+                <p>Portanto, são bastante comuns estruturas condicionais da seguinte maneira:</p>
+
+                <pre>
+                    <code class="javascript">
+    
+    var nome = "";
+
+    if (nome) {
+        
+        console.log(nome);
+    
+    } else {
+
+        console.log("Nome não informado");
+
+    }
+
+    // O string vazio é avaliado como falso, por isso o código dentro do else é executado.
+    // O console mostrará "Nome não informado"
+    // Este método poderia ser usado para testar se um campo de formulário está vazio, por exemplo.
+
+                    </code>
+                </pre>              
+
+                
+                
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

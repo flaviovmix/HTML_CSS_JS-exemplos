@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="primeiros_passos";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Primeiros Passos</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Onde rodar o código Javascript?</h3>
+               
+               <p>
+                    O código Javascript deve ser escrito dentro de script tags, que podem
+                    ser colocadas tanto no head quanto no body do documento html. É mais 
+                    recomendável, porém, colocá-las ao final do body, pois 
+                    isso melhora o desempenho da página.
+                </p>
+
+               
+               
+                <pre>
+                   <code class="javascipt">
+    &lt;body&gt;
+
+
+        &lt;!-- conteúdo da página  --&gt;
+
+
+        &lt;script&gt;
+
+            // código javascript
+
+        &lt;/script&gt;
+
+    &lt;/body&gt;
+                    </code>
+                </pre>
+
+                <p>
+                    Outra maneira, que na verdade é a mais usada, é deixar o código 
+                    Javascript em arquivos externos (a extensão dos arquivos Javascript é '.js'). Desta forma
+                    organizamos melhor o código, separando o que é html e o que é
+                    Javascript. Neste caso, a script tag funcionará como um link por 
+                    meio da propriedade 'src'. 
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    &lt;body&gt;
+
+
+        &lt;!-- html da página  --&gt;
+
+
+        &lt;script src='js/scripts.js'&gt;&lt;/script&gt;
+        
+
+    &lt;/body&gt;
+                    </code>
+                </pre>
+
+                <h4>Os primeiros comandos Javascript</h4>
+                <p>
+                    Vamos então começar a escrever Javascript aqui nesta página? Abra este arquivo (01-primeiros-passos.html) no editor de texto. Ponha uma script tag com um 
+                    link para o arquivo js/scripts.js no final do elemento body, exatamente como no exemplo acima. Agora crie o arquivo scripts.js na pasta js 
+                    e dentro dele vamos escrever os nossos primeiros comandos Javascript, o alert e o console.log. Quando terminar não esqueça de salvar os arquivos no editor de texto
+                    (Ctrl + S).
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    alert('Mensagem enviada pelo comando alert');
+
+    console.log('Mensagem enviada pelo console');
+                    </code>
+                </pre>
+
+                <p>
+                    Agora recarregue esta página e veja o que acontece. A mensagem enviada pelo comando alert aparece
+                    em uma caixa de diálogo que abre automaticamente ao carregar a página. Para ver a mensagem enviada pelo console.log, clique com o botão direito aqui na página,
+                    e vá em "inspecionar" ou "inspect", isso fará abrir as ferramentas do desenvolvedor. Entre as opções nas abas superiores, procure o Console. Nesta área estará
+                    a mensagem que enviamos. O console é uma excelente ferramenta de teste e identificação de erros no nosso código, vamos usá-lo em quase todas as aulas daqui
+                    para frente. 
+                </p>
+
+                <p>
+                    Agora que sabemos que tudo está funcionando e conseguimos rodar nossos primeiros comandos, podemos seguir
+                    para a próxima aula.
+                </p>
+
+                
+                
+                
+                
+               
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                    
+                </div>
+
+           </main>
+
+           
+           
+
+       </div>
+        
+        
+    </body>
+
+</html>

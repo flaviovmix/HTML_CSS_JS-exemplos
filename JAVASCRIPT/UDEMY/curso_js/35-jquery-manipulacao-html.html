@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-manip-html";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Manipulação do conteúdo HTML</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Manipulação do conteúdo HTML</h3>
+
+                <p>
+                    Vamos agora nos aprofundar um pouco mais nos métodos jQuery para manipular o conteúdo HTML.
+                </p>
+
+                <h4>.html()</h4>
+
+                <p>O método html é equivalente à propriedade innerHTML que usamos nas seções anteriores do curso. Ele serve tanto para 
+                    pegar o conteúdo html de um elemento, quanto para defini-lo.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var conteudo_html = $("#paragrafo-html").html();
+    console.log(conteudo_html);
+    
+    $("#paragrafo-html").html("Mudar conteúdo do parágrafo");
+    conteudo_html = $("#paragrafo-html").html();
+    console.log(conteudo_html);
+
+                        
+                    </code>
+                </pre>
+
+                <p id="paragrafo-html" style="font-size: 20px; color: green">
+                    Use este <i><b>parágrafo</b></i> para testar o método html.
+                </p>
+
+                <h4>.text()</h4>
+
+                <p>
+                    O método text é semelhante ao método html, mas ele pega apenas o conteúdo em texto do elemento, ignorando as tags html.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var conteudo_texto = $("#paragrafo-text").text();
+    console.log(conteudo_texto);
+                        
+                    </code>
+                </pre>
+
+                <p id="paragrafo-text" style="font-size: 20px; color: blue">
+                    Use este <i><b>parágrafo</b></i> para testar o método text.
+                </p>
+
+                <h4>.attr()</h4>
+
+                <p>
+                    O método attr é usado para manipular os atributos html, como "src", "href", "target", etc.
+                </p>
+
+                <p>
+                    Trabalhe com a url <a id="paragrafo-link" href="http://www.google.com">deste link</a>. 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    // Pegar o valor atual do href:
+
+    var url_link = $("#paragrafo-link").attr("href");
+    console.log(url_link);
+
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript">
+    
+    // Trocar o valor do href:
+
+    $("#paragrafo-link").attr("href", "http://www.udemy.com");
+    url_link = $("#paragrafo-link").attr("href");
+    console.log(url_link);
+
+                    </code>
+                </pre>
+
+                <p>
+                    Vamos agora trocar o src de uma imagem ao clicar em um botão:
+                </p>
+
+                <img style="width: 180px; height: auto;" src="https://static.memrise.com/img/400sqf/from/uploads/course_photos/3146044000171223183557.png" alt="js" id="imagem_js">
+
+                <button id="mudar_imagem" style="display: block; margin-top: 12px;">Mudar imagem</button>
+
+                <pre>
+                    <code class="javascript">
+
+    $("#mudar_imagem").click(function(){
+        $("#imagem_js").attr("src", "https://cdn.tutsplus.com/net/uploads/2013/12/managing-async-nodejs-retina-preview.png");
+        $("#mudar_imagem").hide();
+    });
+
+                    </code>
+                </pre>
+
+                <h4>.empty() e .remove()</h4>
+
+                <p>
+                    Para apagar todo o conteúdo de um elemento, poderíamos definir um string vazio com o método html:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("#paragrafo-empty").html("");
+
+                    </code>
+                </pre>
+
+                <p id="paragrafo-empty" style="background-color: black; width: 100%; height: 30px; line-height: 30px; font-size: 20px; color: yellow">
+                    Use este <i><b>parágrafo</b></i> para testar os métodos empty e remove.
+                </p>
+
+                <p>
+                    Porém, existem outras maneiras de fazer, com os métodos empty e remove. O primeiro apaga apenas o conteúdo do elemento enquanto 
+                    o segundo remove o elemento. 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    // Remover o conteúdo, mantendo o elemento:
+    $("#paragrafo-empty").empty();
+
+    // Remover o elemento:
+    $("#paragrafo-empty").remove();
+
+                    </code>
+                    </pre>
+
+
+
+
+
+                
+
+
+
+
+
+
+
+                
+
+                
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

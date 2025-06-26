@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="namespaces";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Namespaces</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Namespaces</h3>
+
+                <p>
+                    Na última aula falamos sobre o escopo de variáveis e vimos que as variáveis criadas no escopo global, podem ser acessadas 
+                    de qualquer lugar do código, até mesmo dentro de funções e estruturas de bloco. 
+                </p>
+
+                <p>
+                    À medida em que a nossa aplicação web cresce e fica mais complexa, principalmente quando se usa bibliotecas externas, 
+                    torna-se mais provável que em algum momento haja duas variáveis com o mesmo nome, 
+                    o que pode causar muitos problemas.
+                </p>
+
+                <p>
+                    Para resolver isto, usamos namespaces para separar partes do código e assim simular o escopo local oara as variáveis. 
+                    A linguagem Javascript, na verdade não possui a funcionalidade de Namespaces, como outras linguagens de programação, 
+                    mas temos algumas maneiras de simular esse comportamento e chegar ao mesmo resultado. A mais comum delas é através de 
+                    objetos.
+                </p>
+
+                <h4>Namespace com objetos</h4>
+
+                <pre>
+                    <code class="javascript">
+
+    var meuWebApp = {};
+    
+    meuWebApp.nome = "Felipe";
+    
+    meuWebApp.ver_nome = function() {
+        console.log(this.nome);
+    };
+
+    meuWebApp.ver_nome(); // O console mostrará 'Felipe'
+    // Podemos usar a keyword <i>this</i> para referenciar o objeto que guarda nossas variáveis e funções.
+
+
+                    </code>
+                </pre>
+
+                <p>
+                    Note que ao invés de criarmos uma função chamada ver_nome e uma variável chamada nome no escopo global, 
+                    nós as criamos como propriedades do objeto meuWebApp. Isto significa que se houver variáveis ou funções com 
+                    estes nomes em outras partes do código, não haverá conflito.
+                </p>
+
+                <p>
+                    Poderíamos também ter criado a variável e a função no momento da criação do objeto.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var meuWebApp = {
+
+        nome: "Felipe",
+
+        ver_nome: function() {
+            console.log(this.nome)
+        }
+
+    };
+
+    meuWebApp.ver_nome();
+
+
+                    </code>
+                </pre>
+
+                <h4>Namespace com funções</h4>
+
+                <p>
+                    Outra maneira de simular um namespace em Javascript é com o uso de funções:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var meuWebApp = (function() {
+
+        var nome= "Felipe";
+        
+        return {
+            ver_nome: function() {
+                return nome;    
+            },
+            mudar_nome(novo_nome) {
+                nome = novo_nome;
+            },
+            apagar_nome: function() {
+                nome = null;
+            }
+        };  
+    })();   
+
+    console.log( meuWebApp.ver_nome() );
+    console.log( meuWebApp.mudar_nome('Marcos') );
+    console.log( meuWebApp.apagar_nome() );
+
+                    </code>
+                </pre>
+
+              
+
+                <p>
+                    Esta técnica utiliza <a target="_blank" href="https://toddmotto.com/mastering-the-module-pattern/">module pattern</a>. Neste tipo de estrutura,
+                    passamos um objeto pelo comando return, e podemos escolher propriedades específicas deste objeto ao invocar a função principal.
+                </p>
+
+                <p>
+                    Uma das vantagens de se utilizar esta técnica é que mantemos as variáveis diretamente inacessíveis. Neste exemplo 
+                    não é possível apagar ou mudar o nome a não ser por meio dos nossos próprios métodos, mudar_nome e apagar_nome, o que dá mais 
+                    segurança ao código.
+
+                </p>
+                
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

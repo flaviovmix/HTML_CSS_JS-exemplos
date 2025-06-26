@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="break-continue";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Break e Continue</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Break e Continue</h3>
+                
+                <p>
+                    Os comandos break e continue agem sobre a execução de um bloco de código e são usados principalmente com loops.
+                </p>
+
+                <h4>Break</h4>
+
+                <p>
+                    O comando break interrompe a execução de um loop ou do comando switch.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    var x = 0;
+    
+    while (x < 10) {
+        console.log(x);
+        x++;
+
+        if (x == 5) {
+            break;
+        }
+
+    }
+
+                    </code>
+                </pre>
+
+                <p>
+                    Neste exemplo, conseguimos interromper o loop antes de atingir a condição (x < 10). Este exemplo pode parece sem aplicação 
+                    prática, mas há casos em pode ser bastante útil interomper a execução de um loop.
+                </p>
+
+                <h4>Continue</h4>
+
+                <p>
+                    O comando continue serve para pular a execução do loop. Quando o loop encontra o comando continue, o restante do código 
+                    não é executado nesta passagem, mas o loop continua rodando.
+                </p>
+
+                <p>
+                    Vamos criar um loop que soltará no console apenas os números ímpares até 20. Para isto vamos conhecer o operador de módulo (%). 
+                </p>
+
+                <p>
+                    Este operador retorna 
+                    o resto de uma divisão. Por exemplo, se fizermos 6 % 4, temos 2 como resultado, pois é o resto desta divisão.
+                </p>
+
+                <p>
+                    Com este operador podemos descobrir se um número é par ou ímpar, pois a divisão de qualquer número par por dois, retornará o resto 0, 
+                    enquanto um número ímpar retornará 1. Portanto:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var num = 0;
+
+    while (num < 20) {
+        num++;
+        if (num % 2 == 0) {
+            continue;
+        }
+        console.log(num);
+    }
+    
+
+                    </code>
+                </pre>
+
+                
+                    
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

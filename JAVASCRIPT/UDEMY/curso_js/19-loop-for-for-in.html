@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="loop-for";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Loops For e For/In</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Loops For e For/In</h3>
+                
+                <p>
+                    Loops são estruturas de repetição de comandos. Se quisermos, por exemplo, repetir o mesmo comando cinco vezes, não precisamos escrevê-lo as cinco vezes,
+                    podemos escrevê-lo apenas uma vez dentro de um loop.
+                </p>
+
+                <p>
+                    Podemos usar também os loops para percorrer todos os elementos de arrays e objetos e realizar 
+                    comandos sobre cada um deles. Estes comandos só precisarão ser escritos uma vez, não importa o tamanho do array ou do 
+                    objeto. Isto nos abrirá incríveis possibilidades, conforme vamos ver logo mais. 
+                </p>
+
+                <h4>Loop For</h4>
+
+                <pre>
+                    <code class="javascript">
+    for (var a = 0; a < 5 ; a++) {
+        console.log(a);
+    }  // assim como as funções, não é preciso ponto e vírgula ao final dos loops
+
+    /* O console mostrará:
+
+    0
+    1
+    2
+    3
+    4
+
+    */
+                    </code>
+                </pre>
+
+                <p>
+                    Note que ao iniciar o loop for usamos três comandos dentro dos parênteses, separados por ponto e vírgula. Entre as chaves { } 
+                    escrevemos os comandos que queremos repetir, assim como fazemos com as funções. 
+                </p>
+
+                <p>
+                    Sobre os comandos que estão entre 
+                    parênteses na estrutura do loop for:
+                </p>
+
+                <ul>
+               
+                    <li>
+                        <strong>var a = 0</strong>: O primeiro comando passado no loop for é executado uma vez antes de começar o loop. Neste caso criamos 
+                        uma variável com valor zero.
+                    </li>
+                    <br>
+                    <li>
+                        <strong>a < 5</strong>: O segundo comando é uma condição que precisa ser atendida para que o loop continue sendo executado. Lembra-se da aula em 
+                        que falamos de booleanos? No início deste loop, a variável <i>a</i> vale zero, portanto o teste a < 5 retorna true, então os comandos do loop 
+                        são executados. Depois que os comandos forem executados, o loop será avaliado outra vez e assim repetidamente. Quando este teste retornar false, o loop é interrompido.
+                    </li>
+                    <br>
+                    <li>
+                        <strong>a++</strong>: O terceiro comando é executado sempre ao final de cada passagem no loop, por isso utilizamos ele para incrementar a variável <i>a</i>.
+                    </li>
+
+                </ul>
+
+                <h5>Usando o loop for para percorrer elementos de um array</h5>
+                
+                <p>Para percorrer arrays usando o loop for, usaremos a propriedade <i>length</i> do array para controlar quando deve acabar o loop.</p>
+
+                <pre>
+                    <code class="javascript">
+    var alunos = ['Pedro', 'Maria', 'José', 'João', 'Carlos'];
+
+    for (var a = 0; a < alunos.length ; a++) {
+        console.log(alunos[a]);
+    }
+
+    /* O console mostrará:
+
+    Pedro
+    Maria
+    José
+    João
+    Carlos
+
+    */
+                    </code>
+                </pre>
+
+
+               
+
+                <h4>Loop For/In</h4>
+
+                <p>O loop for/in serve para facilmente percorrermos elementos de um objeto, já que este tipo de dados não possui índices e 
+                    portanto não pode ser percorrido com um loop for como os arrays.
+                </p>
+
+                <p>
+                    O funcionamento dele é bem simples. Consideremos um objeto de alunos, cujas chaves são as matrículas e os valores são os nomes dos alunos.
+                </p>
+
+                <p>
+                    Para iniciar o loop for/in criamos uma variável chamada <i>matr</i>. O loop então vai percorrer todos os elementos do objeto e a cada passagem 
+                    a variável <i>matr</i> vai ser igual a chave do elemento. Sendo assim, temos acesso tanto à matrícula por meio desta variável quanto ao nome do aluno, 
+                    usando a notação alunos[matr].
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    var carro = {
+        'Ano': 2018,
+        'Modelo': 'Fox',
+        'Cilindradas': '1.8',
+        'Combustível': 'Gasolina'
+
+    }
+
+    for (var prop in carro) {
+        console.log( prop + ': ' + carro[prop] );
+    }
+
+    /* O console mostrará:
+
+    Ano: 2018
+    Modelo: Fox
+    Cilindradas: 1.8
+    Combustível: Gasolina
+
+    */
+                    </code>
+                </pre>
+
+
+
+               <br>
+
+               
+                <h4>
+                    Loops e os métodos getElementBy...
+                </h4>
+
+                <p>
+                    Vamos ver agora um exemplo de como poderíamos usar um loop para alterar o css de todos os elementos abaixo
+                    que tem a classe "exemplo":
+                </p>
+
+                <pre>
+                    <code class="html">
+
+    &lt;div class="exemplo"&gt;Elemento 1&lt;/div&gt;
+    &lt;div class="exemplo"&gt;Elemento 2&lt;/div&gt;
+    &lt;div class="exemplo"&gt;Elemento 3&lt;/div&gt;
+
+                    </code>
+                </pre>
+
+                <div class="exemplo">Elemento 1</div>
+                <div class="exemplo">Elemento 2</div>
+                <div class="exemplo">Elemento 3</div>
+
+                <pre>
+                    <code class="javascript">
+                        
+    var elementos = document.getElementsByClassName("exemplo");   
+
+    for (var a = 0; a < elementos.length ; a++) {
+        exs[a].style.color = "orange";
+        exs[a].style['font-weight'] = "bold";
+    }
+                    </code>
+                </pre>
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="exercicio4";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Folha de Exercícios 4</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+        <style>
+        
+            #envios {
+                margin-bottom: 25px;
+            }
+
+            #confirmar_pedido {
+              margin-bottom: 25px;
+              display: block;
+            } 
+
+            #cronometro {
+                font-size: 24px;
+                font-weight: bold;
+                color: white;
+                background-color: black;
+                border-radius: 4px;
+                padding: 20px;
+                display: inline-block;
+                width: 180px;
+                max-width: 100%;
+                
+            }
+        
+        </style>
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Folha de Exercícios N. 4</h3>
+
+                <p>
+                    1) O select box abaixo inicia na primeira opção (Selecione o estado). Crie uma funcionalidade para que, quando o usuário escolher uma 
+                    opção, esta fique guardada em local storage e quando a página for carregada da próxima vez, já inicie com a opção selecionada.
+                </p>
+
+                <select id="estados">
+                    <option selected value="Selecione">Selecione o Estado (UF)</option>
+                    <option value="Acre">Acre</option>
+                    <option value="Alagoas">Alagoas</option>
+                    <option value="Amapa">Amapá</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Bahia">Bahia</option>
+                    <option value="Ceara">Ceará</option>
+                    <option value="Distrito_Federal">Distrito Federal</option>
+                    <option value="Espirito_Santo">Espírito Santo</option>
+                    <option value="Goias">Goiás</option>
+                    <option value="Maranhao">Maranhão</option>
+                    <option value="Mato_Grosso">Mato Grosso</option>
+                    <option value="Mato_Grosso_do_Sul">Mato Grosso do Sul</option>
+                    <option value="Minas_Gerais">Minas Gerais</option>
+                    <option value="Para">Pará</option>
+                    <option value="Paraiba">Paraíba</option>
+                    <option value="Parana">Paraná</option>
+                    <option value="Pernambuco">Pernambuco</option>
+                    <option value="Piaui">Piauí</option>
+                    <option value="Rio_de_Janeiro">Rio de Janeiro</option>
+                    <option value="Rio_Grande_do_Sul">Rio Grande do Sul</option>
+                    <option value="Rio_Grande_do_Norte">Rio Grande do Norte</option>
+                    <option value="Rondonia">Rondônia</option>
+                    <option value="Roraima">Roraima</option>
+                    <option value="Santa_Catarina">Santa Catarina</option>
+                    <option value="São_Paulo">São Paulo</option>
+                    <option value="Sergipe">Sergipe</option>
+                    <option value="Tocantins">Tocantins</option>
+                </select>
+
+                <br><br>
+
+                <p>
+                    2) Sabendo que um pedido feito hoje em um site de e-commerce leva 12 dias para ser entregue com envio express e 18 dias 
+                    com envio normal, preencha as informações abaixo com as datas no formato DIA-MÊS-ANO após a confirmação do pedido.
+                </p>
+
+                <select id="envios">
+                    <option selected value="escolha">Selecione o tipo de envio</option>
+                    <option value="normal">Envio Normal (18 dias)</option>
+                    <option value="express">Envio Express (12 dias)</option>
+                </select>
+
+                <button id="confirmar_pedido">Confirmar</button>
+
+                <div style="background-color: #F0F0F0; padding: 12px">
+                    <p>Data do pedido: <b id="data_pedido"></b></p>
+                    <p>Data prevista de entrega: <b id="data_entrega"></b></p>
+                </div>
+
+                <br><br>
+
+                <p>
+                    3) Faça funcionar o crônometro abaixo. O formato está em horas, minutos, segundos e milisegundos.
+                </p>
+
+                <div id="cronometro">00:00:00 000</div>
+                <br><br>
+                <button id="comecar_parar">Começar</button>
+                <button id="zerar">Zerar</button>
+
+                <br><br>
+
+                <p>
+                4) Considere a seguinte tabela de preços de pedágio.
+                </p>
+
+                <div class="tableBox">
+                    <table>
+
+                        <tr>
+                            <th>Categoria de veículo</th>
+                            <th>Tipo veículo</th>
+                            <th>Número de eixos</th>
+                            <th>Valor</th>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                Automóvel, caminhonete e
+                                furgão
+                            </td>
+                            <td>2</td>
+                            <td>R$ 11,22</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                Caminhão leve, ônibus,
+                                e furgão 
+                            </td>
+                            <td>2</td>
+                            <td>R$ 22,45</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                Automóvel e caminhonete
+                                com semi-reboque 
+                            </td>
+                            <td>3</td>
+                            <td>R$ 16,88</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                Caminhão com semireboque
+                                e ônibus 
+                            </td>
+                            <td>3</td>
+                            <td>R$ 33,65</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+               <p>
+                    Abaixo há uma lista de carros que passaram pelo pedagio. 
+               </p>
+
+                <pre>
+                    <code class="javascript">
+    var carros = [
+
+        {
+            'placa': 'AAA-0198',
+            'caregoria': '1',
+        },
+
+        {
+            'placa': 'HBP-2837',
+            'categoria': '2',
+        },
+
+        {
+            'placa': 'PLQ-0928',
+            'categoria': '4',
+        },
+
+        {
+            'placa': 'KQE-2093',
+            'categoria': '5',
+        },
+
+        {
+            'placa': 'AMR-9087',
+            'categoria': '5',
+        },
+
+        {
+            'placa': 'BQE-8111',
+            'categoria': '3',
+        },
+
+        {
+            'placa': 'GXL-9001',
+            'categoria': '2',
+        },
+
+        {
+            'placa': 'KPM-7740',
+            'categoria': '1',
+        }
+
+    ];
+
+                    </code>
+                </pre>
+
+                <p>
+                    Cria uma função para calcular o total arrecadado usando o comando switch e solte o resultado abaixo.
+                </p>
+                
+                <strong>Total arrecadado: R$ <span id="faturamento_total"></span> </strong>
+
+
+                    
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/ex4.js"></script>
+
+    </body>
+
+</html>
+

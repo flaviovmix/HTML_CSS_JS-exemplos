@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="tipos_objetos";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tipos de Dados - Objetos</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Tipos de dados - Objetos</h3>
+               
+                <p>
+                    Objetos, assim como arrays, também são listas de elementos. A diferença é que os objetos são compostos por 
+                    pares de chaves (keys) e valores (values). Utilizamos os dois pontos (:) para separar a chave do seu valor associado. 
+                    
+                </p>
+
+                <p>   
+                    O símbolo que identifica os objetos são as chaves { }. 
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var funcionario = {
+        'nome': 'Pedro Souza Gomes',
+        'ano_nasc': 1972,
+        'cpf': '111.111.111.11',
+        'cargo': 'Analista de Sistemas'
+    };
+                    </code>
+                </pre>
+
+                <p>
+                    As chaves do objeto são também chamadas de propriedades do objeto.
+                </p>
+
+                <p>Os elementos do objeto não são ordenados por índice e só podem ser acessados por meio da chave:</p>
+
+                <pre>
+                    <code class="javascript">
+    console.log( funcionario['cpf'] ); //  O console mostrará '111.111.111.11'
+
+    console.log( funcionario.cpf ); // Podemos usar a notação com ponto (dot notation)
+                    </code>
+                </pre>
+
+                <p>A notação com pontos só funciona com chaves que sigam as regras dos identificadores:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    var teste = {
+        'chave1': 'Algum valor',
+        '2a': 'Algum valor 2',
+        09335: 'Algum valor 3'
+        'ola-mundo': 'Algum valor 4'
+    }; 
+
+    // a 'chave1' pode ser acessada usando a notação com ponto.
+
+    console.log( teste.chave1 );  // O console mostrará 'Algum valor'
+
+    // a outras chaves não podem usar esta notação porque não respeitam as regras dos identificadores.
+
+                    </code>
+                </pre>
+
+                <p>
+                    Podemos também alterar valores das propriedades e adicionar novas propriedades para os objetos.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    var funcionario = {
+        'nome': 'Pedro Souza Gomes',
+        'ano_nasc': 1972,
+        'cpf': '111.111.111.11',
+        'cargo': 'Analista de Sistemas'
+    };
+
+    funcionario.cargo = 'Gerente de T.I.';  // alterar um valor associado a uma chave existente
+    funcionario.cnh = '1982736654';  // adicionar uma nova dupla de chave e valor
+
+    console.log(funcionario); 
+
+    /* O console mostrará:
+    
+    {
+        'nome': 'Pedro Souza Gomes',
+        'ano_nasc': 1972,
+        'cpf': '111.111.111.11',
+        'cargo': 'Analista de Sistemas',
+        'cnh': '1982736654'
+    }; */
+
+                    </code>
+                </pre>
+
+                <p>A partir de agora vamos começar a ver arrays e objetos multidimensionais misturados, portanto é preciso 
+                    ter cuidado com a indentação para que a visualização seja fácil.
+                </p>
+
+            <pre>
+                <code class="javascipt">
+    var cursos = [
+        {
+            'titulo': 'Aprenda programação em Python 3 com facilidade do zero',
+            'avaliacoes': 680,
+            'alunos': 2300,
+            'categorias': ['programacao', 'tecnologia']
+        },
+
+        {
+            'titulo': 'Aprenda PHP e faça sites dinâmicos',
+            'avaliacoes': 180,
+            'alunos': 350,
+            'categorias': ['desenvolvimento web', 'programacao']
+        },
+
+        {
+            'titulo': 'Excel do Zero ao Avançado',
+            'avaliacoes': 420,
+            'alunos': 1800,
+            'categorias': ['produtividade', 'gestão']
+        }
+        
+    ];
+                </code>
+            </pre>
+
+            <p>
+                Para rapidamente mapearmos arrays e objetos multidimensionais, além da correta indentação, temos que lembrar das regras principais: 
+                <ul>
+                    <li>Arrays são identificados por colchetes [ ] </li>
+                    <li>Arrays são listas de valores separados por vírgula</li>
+                    <li>Objetos são identificados por chaves { }</li>
+                    <li>Cada elemento do objeto é uma dupla de chave (key) : valor (value). A chave também é chamada de propriedade.</li>
+                    <li>As duplas do objeto são separadas por vírgula</li>
+                </ul>
+            </p>
+
+            <p>
+                Sabendo destas regras, podemos concluir algumas coisas sobre a variável cursos:
+
+                <ul>
+                    <li>A variável cursos é um array que possui 3 elementos (atenção, pois objetos não tem a propriedade <i>length</i>)</li>
+                    <li>Os elementos deste array são objetos</li>
+                    <li>Cada um destes objetos é composto por 4 elementos</li>
+                    <li>Em cada objeto, temos diferentes tipos de dados associados a cada chave. Neste exemplo temos strings ('titulo'), números  
+                        ('avaliacoes' e 'alunos') e arrays ('categorias')</li>
+                </ul>
+
+            </p>
+
+            
+
+            <p>
+                Como é que nós podemos acessar então, a categoria 'desenvolvimento web' do curso de PHP, por exemplo?
+            </p>
+
+            <pre>
+                <code class="javascript">
+
+    console.log( cursos[1]['categorias'][0] );
+
+                </code>
+            </pre>
+
+            <p>
+                Podemos desta mesma maneira alterar os elementos.
+            </p>
+
+            <pre>
+                <code class="javascript">
+
+    cursos[2]['categorias'][1] = 'Administração de empresas';
+    console.log( cursos[2]['categorias'] );  // O console mostrará ['produtividade', 'Administração de empresas']
+
+
+    // Podemos usar também a notação com ponto: 
+
+    cursos[2].categorias[1] = 'Administração de empresas';
+    console.log( cursos[2].categorias);  
+
+
+                </code>
+            </pre>
+            
+            
+            
+            <div id="bottom-area">
+                <div class="prev-next-link">
+                    <div class="link-aula" id="prev_class">
+                        
+                    </div>
+                    <div class="link-aula" id="next_class">
+                        
+                    </div>
+                </div>
+                
+                <div class="classes">
+                    <h3>
+                        Índice de Aulas
+                    </h3>
+                    <ul id="class_index">
+                    </ul>
+                </div>
+            </div>
+
+           </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

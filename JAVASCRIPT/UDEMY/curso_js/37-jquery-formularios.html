@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-formularios";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Formulários</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Formulários</h3>
+
+                <p>
+                    Na seção anterior tivemos uma aula sobre formulário em que vimos diferentes tipos de campos e como manipular seus valores 
+                    usando javascript. Vamos agora ver como fazer isto usando jQuery.
+                </p>
+
+                <h4>.val()</h4>
+
+                <p>O método val é utilizado para pegar os definir valores de campos de formulário.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var conteudo_input = $("#campo_nome").val();
+    console.log(conteudo_input);
+                        
+                    </code>
+                </pre>
+
+                <p style="margin-bottom: 5px">Nome:</p>
+                <input id="campo_nome" type="text" value="Ivan Gomes" style="margin: 0">
+                <br><br>
+
+                <pre>
+                    <code class="javascript">
+
+    $("#campo_nome").val("José Dias");
+    conteudo_input = $("#campo_nome").val();
+    console.log(conteudo_input);
+                        
+                    </code>
+                </pre>
+
+                <h4>Trabalhando com outros tipos de campos de formulário</h4>
+
+                <h5>Select Box</h5>
+
+                <form>
+                    <select id="options">
+                        <option value="opt1">Praia</option>
+                        <option value="opt2">Montanha</option>
+                        <option value="opt3">Cidade</option>
+                    </select>
+                </form>
+
+                <p>
+                    Para pegar o valor da opção selecionada em select box, podemos usar o método val(), que retorna o valor do atributo value da opção selecionada.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var valor_selecionado = $('#options').val();
+    console.log(valor_selecionado);
+
+                    </code>
+                </pre>
+
+                <p>
+                    Para conseguir pegar o texto dentro da opção, não podemos usar o método text() ou html() pois isto retorna todas as opções que estão no select, 
+                    e não apenas a opção selecionada. Mas isto pode ser resolvido com o método find(), que serve para procurar algo dentro de algum elemento.
+                </p>
+
+                <p>
+                    Neste caso, vamos procurar dentro da select box pelo elemento que esteja com o atributo <i>selected</i>, e então vamos usar o método text() para 
+                    pegar o texto desta opção.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var texto_selecionado = $('#options').find(":selected").text();
+    console.log(texto_selecionado);
+
+                    </code>
+                </pre>
+
+                <p>
+                    Agora podemos atualizar o valor selecionado sempre que a opção for alterada usando o método change.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("#options").change(function(){
+        var novo_selecionado = $('#options').find(":selected").text();
+        console.log(novo_selecionado);
+    });
+
+                    </code>
+                </pre>
+
+                <h5>Radio Buttons</h5>
+
+                <form>
+
+                    <span><input type="radio" name="genero" value="M" checked> Masculino</span><br>
+                    <span><input type="radio" name="genero" value="F"> Feminino</span><br>
+                    <span><input type="radio" name="genero" value="NONE"> Prefiro não dizer</span>
+                    
+                </form>
+
+                <p>
+                    A forma de pegar o valor do radio button selecionado é parecida com a do select box. A diferença é que neste caso, as opções 
+                    que fazem parte deste conjunto de radio buttons tem o atributo name="genero", portanto buscamos o elemento desta maneira para 
+                    pegar o value da opção selecionada:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var valor_radio_selecionado = $("input[name='genero']:checked").val();
+    console.log(valor_radio_selecionado);
+   
+                    </code>
+                </pre>
+
+                <p>
+                    Para pegar o texto da opção selecionada é um pouco mais complicado, porque o campo do tipo rádio não tem conteúdo. Mas podemos 
+                    resolver isso com um elemento por fora da opção, neste caso um &lt;span&gt;.
+                </p>
+
+                <pre>
+                    <code class="html">
+
+    &lt;span&gt;&lt;input type="radio" name="genero" value="M" checked&gt; Masculino&lt;/span&gt;&lt;br&gt;
+    &lt;span&gt;&lt;input type="radio" name="genero" value="F"&gt; Feminino&lt;/span&gt;&lt;br&gt;
+    &lt;span&gt;&lt;input type="radio" name="genero" value="NONE"&gt; Prefiro não dizer&lt;/span&gt;
+
+
+                    </code>
+                </pre>
+                
+                <p>
+                    Com isso, basta procurar o elemento selecionado e depois selecionar o elemento pai com o método parent() e pegar o seu texto.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var texto_radio_selecionado = $("input[name='genero']:checked").parent('span').text();;
+    console.log(texto_radio_selecionado);
+    
+                    </code>
+                </pre>
+
+                <p>
+                    Agora podemos atualizar sempre que a opção for alterada:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("input[name='genero']").change(function() {
+
+        var novo_radio_selecionado = $("input[name='genero']:checked").parent('span').text();;
+        console.log(novo_radio_selecionado);
+
+    });
+
+                    </code>
+                </pre>
+
+                <h5>CheckBoxes</h5>
+
+                <form>
+
+                    <span><input type="checkbox" name="interesse" value="DFE"> Desenvolvimento Front-End</span><br>
+                    <span><input type="checkbox" name="interesse" value="DBE"> Desenvolvimento Back-End</span><br>
+                    <span><input type="checkbox" name="interesse" value="Design"> Design</span>
+                    
+                </form>
+
+                <p>
+                    A forma de pegar os valor selecionados de checkboxes é parecida com a dos radio buttons. Mas vamos lembrar que no caso dos checkboxes, 
+                    várias opções podem ser selecionadas ao mesmo tempo, portando temos que trabalhar com um array. 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("input[name='interesse']").change(function() {
+
+        var checkboxes_selecionados = $("input[name='interesse']:checked");
+        var textos = [];
+        
+        $.each(checkboxes_selecionados, function( index, value ) {
+            
+            textos.push($(value).parent("span").text());
+        
+        });
+        
+        console.log(textos);
+        
+    });
+
+                    </code>
+                </pre>
+
+                
+
+
+
+
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

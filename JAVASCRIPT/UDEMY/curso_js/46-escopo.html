@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="escopo";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Escopo</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Escopo</h3>
+
+                <p>
+                    O escopo é o que define a acessibilidade a uma variável. Existem dois tipos de escopo em Javascript: Global e Local.
+                </p>
+
+                <h4>Escopo Local</h4>
+
+                <p>As funções em Javascript têm o seu próprio escopo. As variáveis criadas dentro de uma função são de escopo 
+                    local e só podem ser acessadas dentro daquela função.</p>
+
+                <pre>
+                    <code class="javascript">
+                        
+    function criar_nome() {
+        var nome = 'Maria';
+        console.log(nome); // O console mostrará 'Maria'
+    }
+
+    criar_nome();
+
+    console.log(nome); // Este comando gerará um erro, 
+    // pois aqui não temos acesso às variáveis de escopo local da função criar_nome.
+
+                    </code>
+                </pre>
+                
+                
+
+                <h4>Escopo Global</h4>
+
+                <p>
+                    Varáveis criadas fora de funções são do escopo global e são acessíveis em qualquer lugar do código, até mesmo dentro de funções.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    var nome = 'Helena';
+                        
+    function mostrar_nome() {
+        console.log(nome); 
+    }
+
+    mostrar_nome(); // O console mostrará 'Helena'
+
+                    </code>
+                </pre>
+
+                <p>
+                    Variáveis criadas sem a keyword "var" também são do escopo global, mesmo quando criadas dentro de uma função. 
+                    Isto é algo que deve ser evitado, apenas crie variáveis globais dentro de uma função quando isto for necessário e 
+                    proposital.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+                        
+    function criar_nome() {
+        nome = 'Maria';
+        console.log(nome); 
+    }
+    criar_nome(); // O console mostrará 'Maria'
+    console.log(nome); // O console mostrará 'Maria'
+
+                    </code>
+                </pre>
+
+                <p>
+                    Variáveis criadas no escopo global podem também ser acessadas pelo objeto window:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+                        
+    var nome = "Pedro";
+
+    console.log(window.nome); // O console mostrará 'Pedro'
+    // Também pode ser usada a notação de colchetes: window['nome']
+
+                    </code>
+                </pre>
+
+
+                <h4>Escopo Local em blocos</h4>
+
+                <p>
+                    Até antes do lançamento da versão ES6 (ECMAScript 2015), apenas funções tinham escopo local. Outras estruturas que ficam 
+                    em blocos (entre chaves), como loops e condicionais, não tinham escopo, portanto qualquer variável criada 
+                    neste tipo de estrutura era global.
+                </p>
+
+                <p>
+                    Na versão ES6 foi introduzida a keyword <i>let</i>, que gera uma variável local dentro de qualquer estrutura de bloco. 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var x = 0;
+
+    if (x == 0) {
+        let nome = "Mariana";
+    }
+
+    console.log(nome); // Este comando gerará um erro,
+    // pois a variável nome foi criada no escopo local do bloco.
+
+                    </code>
+                </pre>
+
+                <p>
+                    As variáveis devem ser sempre de escopo local, a não ser que se pretenda, propositalmente, 
+                    usá-las no escopo global. Isto evita conflitos de nomes de variáveis, o que pode gerar muitas vezes 
+                    erros difíceis de serem detectados. Portanto, é recomendável o uso da keyword let dentro das estruturas de bloco.
+                </p>
+
+                <p>
+                    A partir de agora, sempre crie loops for com a keyword let.
+                </p>
+
+                <pre>
+                        <code class="javascript">
+        var a = "teste";
+        
+        for (let a = 0; a < 5 ; a++) {
+            console.log(a);
+        }
+        
+        console.log(a); // O console mostrará "teste"
+    
+                        </code>
+                    </pre>
+
+                <p>Neste caso, a variável <i>a</i> só é visível dentro deste loop, e caso seja criada outra variável de mesmo nome, 
+                    não haverá conflito. No exemplo acima, a passagem no loop não alterou a variável global <i>a</i>. </p>
+                
+
+                <h5>A keyword const</h5>
+
+                <p>
+                    A versão ES6 também introduziu a keyword const, que serve para criar constantes. Elas funcionam como let, 
+                    com uma diferença, as constantes não podem ter seu valor alterado:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    const PI = 3.14159;
+    PI = 0; // Este comando gerará um erro, pois não se pode alterar o valor de uma constante
+
+                    </code>
+                </pre>
+
+                <p>
+                    No exemplo acima, apesar de não haver problema em usar uma variável normal para guardar o valor de PI (&pi;), 
+                    por uma questão de organização e clareza do código, é recomendável usar constantes quando se cria uma variável 
+                    que supostamente não deve ter seu valor alterado, como é o caso.
+                </p>
+
+                  
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

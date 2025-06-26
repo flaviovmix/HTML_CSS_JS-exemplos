@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="tipos_dados_strings";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tipos de Dados - strings</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Tipos de dados - Strings</h3>
+               
+                <p>
+                    Aprendemos na última aula que podemos usar as variáveis para armazenar valores, que podem ser de diferentes tipos. Os tipos mais conhecidos são textos, 
+                    como o nome "João" e os números.
+                </p>
+                    
+                <p>
+                    Estes dois tipos, juntamente com os booleanos (verdadeiro ou falso) e tipos null e undefined, são conhecidos 
+                    como tipos primitivos em Javascript e são os primeiros que vamos explorar. Há outros tipos bastante importantes que 
+                    serão ensinados mais adiante no curso. 
+                </p>
+
+                <h4>Strings</h4>
+
+                <p>
+                    Os textos, referidos no último parágrafo, são chamados de strings. Na verdade a definição de 'texto' não é exatamente a correta. Podemos pensar
+                    em strings como sequências de caracteres. Strings sempre devem ser identificados pela presença de aspas.
+                </p>
+
+                <p>
+                    Vamos criar algumas variáveis como exemplo:
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var nome = "João";  // podem ser usadas aspas duplas
+    var sobrenome = 'Gomes';  // ou aspas simples
+    var cpf = '111.111.111-11';  
+    var telefone = "998887655";
+    var ddd = '21';
+    var email = 'joao@gmail.com';
+    var biografia = "João começou a sua carreira como desenvolvedor web em 2010 e já participou de importantes projetos, como...";
+                    </code>
+                </pre>
+
+                <p>
+                    Note que no exemplo acima temos as variáveis telefone e ddd, que possuem apenas números. Por que então elas são do tipo string?
+                </p>
+
+                <p>
+                    Apesar de possuir apenas números, estas variáveis não serão usadas para nenhum cálculo. Não faz sentido fazer operações de soma,
+                    subtração, divisão etc, com um telefone, não é? Portanto ela é do tipo string, ainda que seja composta apenas por caracteres numéricos. O mesmo 
+                    acontece com um número de documento, matrícula, ID de usuário, números de notas fiscais, etc. Essa regra vale para quase todas as linguagens 
+                    de programação.
+                </p>
+
+                <p>Isso não significa que não possamos fazer operações com strings. Este tipo de dados suporta algumas operações, conforme abaixo.</p>
+
+                <ul>
+                    <li><h5>Concatenação</h5></li>
+                </ul>
+
+                <pre>
+                    <code class="javascipt">
+    var nome = "João"; 
+    var sobrenome = 'Gomes';
+    var nome_completo = nome + ' ' + sobrenome;
+    console.log(nome_completo); // O resultado passado no console será "João Gomes", pois juntamos o nome, um espaço vazio e o sobrenome.
+
+    // portanto o sinal de '+' faz a concatenação em strings.
+                    </code>
+                </pre>
+                
+                <ul>
+                    <li><h5>Tamanho e índice</h5></li>
+                </ul>
+
+                <p>Conforme falamos, strings são considerados sequências de caracteres. Estas sequências tem um tamanho (número de caracteres) e cada caractere ocupa
+                    uma posição específica na sequência.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var nome = "João"; 
+
+    console.log(nome.length); // O resultado passado no console será 4
+
+    /* A propriedade .length usada com um string retorna o seu tamanho, que neste caso são 4 caracteres. 
+    Atenção: Espaços em branco também são contados e possuem suas posições. */
+
+    console.log(nome[0]); // O resultado passado no console será 'J'
+
+    /* Com os colchetes, podemos acessar caracteres específicos de um string.
+    Atenção: a contagem começa em zero, portanto o primeiro caractere tem o índice [0].
+    O último caractere neste caso, tem então o índice [3] */
+
+                    </code>
+                </pre>
+
+                <p>
+                    Mais adiante no curso vamos conhecer mais operações que podemos fazer com strings.
+                </p>
+
+
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+        <script src="js/scripts.js"></script> 
+    </body>
+
+</html>

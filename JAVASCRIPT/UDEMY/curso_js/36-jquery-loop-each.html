@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-loop-each";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Loop Each</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Loop Each</h3>
+
+                <p>
+                    O loop each da biblioteca jQuery pode ser usado tanto em arrays quando em objetos, ou seja, pode substituir tanto o loop for quanto 
+                    o loop for/in. 
+                </p>
+
+                <p>
+                    A sintaxe deste loop é bem simples, conforme podemos ver a seguir:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $.each(array ou objeto, função(a,b) {
+        // código a ser repetido
+    });
+
+                    </code>
+                </pre>
+
+                <p>
+                    Na função passada no loop each, temos dois argumentos, representados acima pelas variáveis a e b, que representam o índice/chave e o valor 
+                    de cada elemento.
+                </p>
+
+                <p>
+                    Vejamos dois exemplos, com um array e com um objeto:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    // Aplicação do loop each em um array:
+
+    var lista = ["HTML","CSS","Javascript", "jQuery", "PHP"];
+
+    $.each(lista, function( indice, valor ) {
+        console.log('O elemento de índice [' + indice + '] tem o valor de ' + valor);
+    });
+  
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript">
+
+    // Aplicação do loop each em um objeto:
+
+    var pessoa = {
+        'nome': 'João Pedro',
+        'DN': '20/01/1990',
+        'CPF': '111.111.111-11'
+    };
+
+    $.each(pessoa, function( chave, valor ) {
+        console.log('O elemento de chave [' + chave + '] tem o valor de ' + valor);
+    });
+    
+                    </code>
+                </pre>
+
+
+                <h4>
+                    Percorrendo um array de elementos HTML
+                </h4>
+
+                <p>
+                    Vamos lembrar que podemos selecionar vários elementos HTML ao mesmo tempo, obtendo de volta um array. Vamos percorerer os 
+                    elementos da &lt;ul&gt; abaixo que tem o id="interesses" e soltá-los no console com o loop each:
+                </p>
+
+                <ul id="interesses">
+                    <li>Desenvolvimento Front End</li>
+                    <li>Desenvolvimento Back End</li>
+                    <li>UX Design</li>
+                    <li>Design Gráfico</li>
+                </ul>
+
+                <pre>
+                    <code class="javascript">
+
+    var interesses = $("#interesses li");
+
+    $.each(interesses, function( indice, valor ) {
+        console.log(valor);
+    });
+
+                    </code>
+                </pre>
+
+                <p>
+                    E se quiséssemos aplicar o método text() ou qualquer outro em cada um destes elementos? É possível fazer isto dentro do loop each,
+                    só precisamos ter atenção pois não podemos aplicar o método diretamente sobre o elemento na passagem do loop, apenas após usá-lo dentro
+                    do seletor jQuery:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var interesses = $("#interesses li");
+
+    $.each(interesses, function( indice, valor ) {
+        console.log($(valor).text());
+    });
+
+    // Se fizéssemos console.log(valor.text()); teríamos um erro na execução do código
+
+                    </code>
+                </pre>
+
+                
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

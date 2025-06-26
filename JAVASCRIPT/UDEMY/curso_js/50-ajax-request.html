@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="ajax-request";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>AJAX - Request</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>AJAX - Request</h3>
+
+                <p>
+                    Para iniciar uma requisição HTTP, primeiro devemos criar um novo objeto XMLHttpRequest.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var xhttp = new XMLHttpRequest();
+
+                    </code>
+                </pre>
+
+                <p>
+                    Versões do Internet Explorer anteriores à 6 não utilizam objeto XMLHttpRequest, Portanto para garantir a compatibilidade com estas 
+                    versões, podemos testar se o objeto existe usando um if ternário:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    var xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    
+                    </code>
+                </pre>
+
+                <p>
+                    Caso exista o objeto XMLHttpRequest, podemos utilizá-lo, caso contrário, utilizamos o ActiveXObject.
+                </p>
+
+
+                <p>
+                    Este objeto será usado para fazer a requisição HTTP. Antes vamos definir o que acontecerá quando recebermos a resposta. 
+                    Para fazer isto, é preciso conhecer os estados de uma requisição, conforme mostra a tabela abaixo:
+                </p>
+
+                <div class="tableBox">
+                    <table>
+                        <tr>
+                            <th>Estado</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>Requisição não inicializada</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Conexão com o servidor estabelecida</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Requisição recebida</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Processando requisição</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Requisição finalizada e resposta recebida</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>
+                    O estado que vai nos interessar é o 4, quando recebermos a resposta da requisição. Além disso, precisamos ter certeza de que a 
+                    resposta não é um erro, para isso vamos consultar também o status da resposta.
+                    A tabela abaixo mostra os status mais comuns:
+                </p>
+
+                <div class="tableBox">
+                    <table>
+                        <tr>
+                            <th>Status</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td>200</td>
+                            <td>OK - Resposta recebida sem problemas</td>
+                        </tr>
+                        <tr>
+                            <td>403</td>
+                            <td>Requisição não autorizada</td>
+                        </tr>
+                        <tr>
+                            <td>404</td>
+                            <td>Não encontrado</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>
+                    Agora basta criar a função, que usará 4 propriedades importantes do objeto XMLHttpRequest:
+                </p>
+
+                <li><b>onreadystatechange:</b> monitora a mudança de estado da requisição.</li>
+                <li><b>readyState:</b> número do estado atual da requisição</li>
+                <li><b>status:</b> código do status da requisição</li>
+                <li><b>respose text:</b> o texto da resposta da requisição</li>
+
+                <p>
+                    Para criar uma função que soltará no console a resposta, fazemos:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+
+                    </code>
+                </pre>
+
+                <p>
+                    Agora o próximo passo é enviar a requisição. Vamos usar como exemplo o API Open Weather Map, que vamos utilizar para o 
+                    nosso Projeto 3 do curso. Saiba mais sobre este serviço <a target="_blank" href="https://openweathermap.org/current">aqui</a>.
+                </p>
+
+                <p>
+                    O método open será usado para abrir a requisição. Neste método precisamos passar dois argumentos:
+
+                    <li>O método de envio, usaremos basicamente "GET" ou "POST".</li>
+                    <li>A URL Para onde enviaremos a requisição</li>
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    xhttp.open("GET", "https://openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22");
+    xhttp.send();
+
+                    </code>
+                </pre>
+
+                <p>
+                    Feito isso, teremos a resposta da requisição no console. Na próxima aula vamos aprender como trabalhar com esta resposta.
+                </p>
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

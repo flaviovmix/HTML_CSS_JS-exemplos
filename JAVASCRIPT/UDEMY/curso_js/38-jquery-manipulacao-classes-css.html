@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-manip-classes-css";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Manipulação de classes CSS</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+        <style>
+        
+            .normal {
+                padding: 20px;
+                font-size: 18px;
+                background-color: yellow;
+            }
+
+            .styling {
+                padding: 60px;
+                font-size: 22px;
+                font-weight: bold;
+                color: white;
+                background-color: black;
+                width: 200px;
+                border-radius: 60px;
+
+
+            }
+        
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Manipulação de classes CSS</h3>
+
+                <p>
+                    No início desta seção, vimos como podemos manipular as propriedades CSS usando o método css:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $(".exemplo").css("display", "none");
+
+                    </code>
+                </pre>
+
+                <p>
+                    Vimos também que a ação de esconder um elemento pode ainda ser simplificada, usando o método hide. Vamos falar mais 
+                    sobre este método na aula sobre efeitos jQuery.
+                </p>
+
+                <p>
+                    Vamos conhecer agora outros métodos muito úteis para trabalharmos com o CSS dos elementos por meio das classes.
+                </p>
+
+                <h4>
+                    addClass(), removeClass(), toggleClass()
+                </h4>
+
+                <p>
+                    O método css funciona bem quando são poucas as propriedades que queremos alterar, porém quando a complexidade dos estilos 
+                    aumenta, é melhor trabalhar diretamente com classes, especialmente porque desta maneira conseguimos alternar os estilos. 
+                    Vamos mudar completamente a apresentação do parágrafo abaixo usando uma classe.
+                </p>
+
+                <p class="normal" id="paragrafo-classes">
+                    Este parágrafo tem a classe "normal". Vamos adicionar a ele a classe "styling" e ver o que acontece.
+                </p>
+
+                <button id="adicionar_classe">Adicionar Classe</button>
+                <button id="remover_classe">Remover Classe</button>
+                <button id="alternar_classe">Alternar Classe</button>
+
+                <pre>
+                    <code class="javascript">
+
+    // Adicionar classe:
+    $("#adicionar_classe").click(function(){
+        $("#paragrafo-classes").addClass("styling");
+    });
+
+    // Remover classe:
+    $("#remover_classe").click(function(){
+        $("#paragrafo-classes").removeClass("styling");
+    });
+
+    // Alternar classe:
+    $("#alternar_classe").click(function(){
+        $("#paragrafo-classes").toggleClass("styling");
+    });
+
+                    </code>
+                </pre>
+
+
+
+
+                
+
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+   
+
+</html>
+

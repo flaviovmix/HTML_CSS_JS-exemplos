@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="local-storage";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Local Storage</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+        <style>
+
+
+            
+
+            #not-me {
+                text-decoration: underline;
+                cursor: pointer;
+                color: blue;
+                font-size: 12px;
+                font-weight: 300;
+            }
+
+
+
+        </style>
+        
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>LocalStorage</h3>
+                
+
+                <p>
+                    Local Storage é uma propriedade do objeto window que pode armazenar dados no computador do usuário e servem para 
+                    lembrar suas informações, sempre que ele visitar o site. Podemos guardar o seu nome, e-mail, suas preferências, 
+                    histórico de utilização do site ou qualquer outra informação. (Passwords e informações sensíveis nunca devem ser guardados 
+                    em local storage).
+    
+                </p>
+
+                <p>
+                    Informações devem ser armazenadas em local storage como duplas de chave e valor.
+                </p>
+
+                <h5>Armazenar dados</h5>
+
+                <p>  
+                    Usamos o método setItem para apagar uma informação armazenada em local storage.          
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    window.localStorage.setItem("nome", "ivan");
+    // o objeto window pode ser omitido quando trabalhamos com o local storage
+    
+    // A consulta aos dados armazenados em local storage é semelhante à consulta de valores em um objeto.
+    // Podemos usar a notação com ponto ou com colchetes
+    console.log(localStorage['nome']);
+                    </code>
+                </pre>
+
+
+                    Esta informação fica guardada até que seja apagada via código ou quando o usuário limpa o cache do navegador. Podemos 
+                    encontrar todas as informações guardadas em local storage de um site pelo console, na aba Application, na seção Storage > Local Storage.
+                </p>
+
+                <h5>Remover dados</h5>
+
+                <p>
+                    Usamos o método removeItem para apagar uma informação armazenada em local storage.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    localStorage.removeItem("nome");
+                    </code>
+                </pre>
+
+                <h5>Um exemplo prático</h5>
+
+                <div id="name-field">
+
+                    <input id="nome-usuario" type="text" placeholder="Digite seu nome...">
+            
+                    &nbsp;&nbsp;
+    
+                    <button id="enviar-nome">Enviar</button>
+                    <br>
+
+                </div>
+
+
+                <p id="welcome-area" style="font-weight: bold; font-size: 18px; color: #27ae61; display: none;">
+                    <span id="welcome-text">Olá Ivan, tudo bem?</span>
+                    <br>
+                    <span id="not-me">Não é Ivan?</span>
+                </p>
+
+
+                
+
+               
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

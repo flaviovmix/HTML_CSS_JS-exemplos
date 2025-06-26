@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="sintaxe";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Sintaxe</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>A sintaxe do Javascript</h3>
+
+               <h4>Comandos</h4>
+               
+               <p>
+                    Comandos (ou Statements) Javascript são instruções que serão executadas pelo navegador quando a página for carregada. Devemos indicar 
+                    o final de um comando com ponto e vírgula ( ; ). O código Javascript pode ser composto por múltiplos comandos, 
+                    que serão executados de forma sequencial. Nos comandos abaixo, a existência de ponto e parênteses ficará
+                    clara quando falarmos sobre objetos e métodos. As aspas serão explicadas quando falarmos sobre tipos de dados,
+                    não se preocupe com isso agora.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    console.log('comando 1');
+    console.log('comando 2');
+                    </code>
+                </pre>
+
+                <p>
+                    Os nossos arquivos Javascript serão compostos por dezenas, centenas ou até milhares de comandos, que juntos formarão toda
+                    a lógica de funcionamento da nossa página.
+                </p>
+
+                <p>
+                    Cada navegador possui o seu próprio interpretador de Javascript, que tratará de executar os comandos que escrevermos. Os interpretadores são 
+                    também chamados de Javascript Engines. Abaixo estão os interpretadores dos navegadores mais populares:
+                </p>
+
+                <div class="tableBox">
+                    <table>
+                        <tr>
+                            <th>Navegador</th>
+                            <th>Interpretador</th>
+                        </tr>
+                        <tr>
+                            <td>Google Chrome</td>
+                            <td><a target="_blank" href="https://developers.google.com/v8/?hl=pt">V8</a> </td>
+                        </tr>
+                        <tr>
+                            <td>Mozilla Firefox</td>
+                            <td>
+                                <a target="_blank" href="https://developer.mozilla.org/pt-PT/docs/Gecko">Gecko</a>, 
+                                <a target="_blank" href="https://developer.mozilla.org/pt-PT/docs/Mozilla/Projects/SpiderMonkey">SpiderMonkey</a> e 
+                                <a target="_blank" href="https://developer.mozilla.org/pt-PT/docs/Mozilla/Projects/Rhino">Rhino</a>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Safari</td>
+                            <td>Nitro</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft Edge</td>
+                            <td>Chakra</td>
+                        </tr>
+                        <tr>
+                            <td>Opera</td>
+                            <td><a target="_blank" href="https://dev.opera.com/blog/carakan/">Carakan</a> </td>
+                            
+                        </tr>
+
+                    </table>
+                </div>
+
+                <h4>Comentários</h4>
+               
+                <p>
+                    Comentários são linhas de código que não são executadas pelo navegador. Eles servem para explicar o funcionamento do código,
+                    ou simplesmente para desativar temporariamente parte do código. A dupla barra ( // ) comenta uma linha de código. Para comentar
+                    várias linhas ao mesmo tempo comece com ( /* ) e termine com ( */ ).
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    // Sou um comentário e não serei executado pelo browser
+
+    console.log('Eu serei executado');
+
+    // console.log('Não serei executado pois fui desativado');
+
+    /* 
+        Nenhuma destas linhas
+        será executada
+        pelo browser
+        console.log('Não serei executado');
+    */
+                    </code>
+                </pre>
+
+                <p>
+                    Os editores de texto mais populares possuem opções para comentar linhas ou blocos de código que estejam selecionados. No seu editor de texto, 
+                    procure no menu "edit" pelas opções "toggle line comment" e "toggle block comment". Normalmente ao lado do nome das opções estará indicado o atalho do teclado
+                    correspondente.
+                </p>
+
+                
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                    
+                </div>
+
+           </main>
+
+        </div>
+        
+        <script src="js/scripts.js"></script> 
+
+    </body>
+
+</html>

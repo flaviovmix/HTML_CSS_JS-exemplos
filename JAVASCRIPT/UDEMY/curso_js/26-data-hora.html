@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="data-hora";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Data e Hora</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+
+
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Data e Hora</h3>
+                
+                <p>
+                    A linguagem Javascript nos permite trabalhar com data e hora com facilidade através da classe Date. Para criar um 
+                    objeto deste tipo, usamos a keyword <i>new</i>, que será explicada com mais detalhes mais adiante, quando falarmos sobre classes.
+                </p>
+                
+
+                <pre>
+                    <code class="javascript">
+
+    // Criação de um objeto do tipo Date
+    var data = new Date();
+
+    console.log(data);
+
+                    </code>
+                </pre>
+
+
+                <p>
+                    Ao fazermos isto, criamos um objeto com a data e hora atuais, expressas no formato completo, com dia da semana, mês, 
+                    dia, ano, hora, minutos, segundos e fuso horário: Ex. Sun Jul 22 2018 11:19:34 GMT-0300 (Hora oficial do Brasil).
+                </p>
+
+                    <h5>Métodos do objeto date</h5>
+
+                    <p>
+                        Podemos usar diversos métodos para ter a data em outros formatos ou para extrair apenas parte dela (mês, dia, etc.), conforme a 
+                        tabela abaixo.
+                    </p>
+
+
+                    <div class="tableBox">
+                        <table>
+                            <tr>
+                                <th>Método</th>
+                                <th>Descrição</th>
+                            </tr>
+                            <tr>
+                                <td>getDate()</td>
+                                <td>Retorna o dia do mês (de 1 a 31)</td>
+                            </tr>
+                            <tr>
+                                <td>getDay()</td>
+                                <td>Retorna o dia da semana (de 0 - Domingo a 6 - Sábado)</td>
+                            </tr>
+
+                            <tr>
+                                <td>getFullYear()</td>
+                                <td>Retorna o ano</td>
+                            </tr>
+
+                            <tr>
+                                <td>getHours()</td>
+                                <td>Retorna a hora</td>
+                            </tr>
+
+                            <tr>
+                                <td>getMilliseconds()</td>
+                                <td>Retorna o número de milisegundos (de 0 a 999)</td>
+                            </tr>
+
+                            <tr>
+                                <td>getMinutes()</td>
+                                <td>Retorna os minutos (de 0 a 59)</td>
+                            </tr>
+
+                            <tr>
+                                <td>getMonth()</td>
+                                <td>Retorna o mês (de 0 a 11)</td>
+                            </tr>
+
+                            <tr>
+                                <td>getSeconds()</td>
+                                <td>Retorna os segundos (de 0 a 59)</td>
+                            </tr>
+
+                            <tr>
+                                <td>getTime()</td>
+                                <td>Retorna o número de milisegundos desde o Epoch (01 Janeiro de 1970, 00:00:00)</td>
+                            </tr>
+
+                            <tr>
+                                <td>setTime()</td>
+                                <td>Cria uma data espeficifaca através de milisegundos desde o Epoch</td>
+                            </tr>
+
+                            <tr>
+                                <td>toLocaleString()</td>
+                                <td>Cria uma data em formato string, usando as configurações locais</td>
+                            </tr>
+
+                            
+    
+                        </table>
+                    </div>
+
+
+                <h5>Unix Epoch</h5>
+
+                <p>
+                    Epoch é um conceito presente em quase todas as linguagens de programação. Podemos considerar o Epoch como o ponto de partida 
+                    da contagem de tempo, que servirá para efeito de cálculos com data e hora.
+                </p>
+
+                <p>
+                    A linguagem Javascript utiliza o Unix Epoch, que é:  01 de Janeiro de 1970, 00:00:00 do fuso horário UTC.
+                </p>
+
+                <pre>
+                        <code class="javascript">
+                    
+    var data = new Date();
+
+    console.log(data.getTime());
+
+                        </code>
+                    </pre>
+
+                    <p>
+                        O método getTime() retorna um número que significa a hora atual no formato milisegundos desde o Epoch, lembrando que um segundo 
+                        possui mil milisegundos. A tabela abaixo mostra algumas conversões que são úteis para fazer cálculos com milisegundos:
+                    </p>
+
+                    <div class="tableBox">
+                            <table>
+                                <tr>
+                                    <th>Tempo</th>
+                                    <th>Milisegundos (ms)</th>
+                                </tr>
+                                <tr>
+                                    <td>1 segundo</td>
+                                    <td>1.000</td>
+                                </tr>
+                                <tr>
+                                    <td>1 minuto</td>
+                                    <td>60.000</td>
+                                </tr>
+                                <tr>
+                                    <td>1 hora</td>
+                                    <td>3.600.000</td>
+                                </tr>
+                                <tr>
+                                    <td>1 dia</td>
+                                    <td>86.400.000</td>
+                                </tr>
+                                <tr>
+                                    <td>1 ano (365 dias)</td>
+                                    <td>31.536.000.000</td>
+                                </tr>
+        
+                            </table>
+                        </div>
+
+                        <p>
+                            Como calcular então quantos anos se passaram desde o Epoch?
+                        </p>
+
+                        <pre>
+                            <code class="javascript">
+
+    var data = new Date();
+
+    data = data.getTime();
+
+    var anos = data / 31536000000;
+
+    console.log(Math.floor(anos));
+
+                            </code>
+                        </pre>
+
+                        <h5>Criando datas específicas</h5>
+
+                        <p>
+                            Nos exemplos acima, no momento da criação do objeto de data não passamos nenhum argumento, portanto todas 
+                            as datas representam a data atual. Porém, podemos passar argumento para definir datas específicas.
+                        </p>
+
+                        <li>Um argumento numérico: segundos desde o Epoch</li>
+                        <li>Dois argumentos numéricos: Ano e mês (<strong>** Não se esqueça que os meses vão de 0 a 11 **</strong>)</li>
+                        <li>Três argumentos numéricos: Ano, mês e dia</li>
+                        <li>Quatro argumentos numéricos: Ano, mês, dia e horas</li>
+                        <li>Cinco argumentos numéricos: Ano, mês, dia, horas e minutos</li>
+                        <li>Seis argumentos numéricos: Ano, mês, dia, horas, minutos e segundos</li>
+
+                        <pre>
+                            <code class="javascript">
+
+    var data = new Date(2020,2,18);
+    console.log(data);                              
+
+                            </code>
+                        </pre>
+
+                        <p>Podemos também passar um string como argumento, que aceita três tipos de datas:</p>
+
+                        <li>ISO date: "2020-03-18" (ano-mês-dia)</li>
+                        <li>Short Date: "03/18/2020" (mês/dia/ano)</li>
+                        <li>Long Date: "Mar 18 2020" ou "18 Mar 2020"</li>
+
+                        <pre>
+                            <code class="javascript">
+
+    var data = new Date("2020-03-18");
+    console.log(data); 
+                                
+                            </code>
+                        </pre>
+
+                        <h5>Desafio: Cálculo de intervalo de datas</h5>
+
+                        <p>
+                            Se um produto foi enviado no dia 20 Março de 2018 e entregue no dia 06 de Abril de 2018, quantos dias 
+                            o produto levou para ser entregue?
+                        </p>
+
+                        <p>Tempo de entrega: <strong id="dias_entrega">solte aqui (id="dias_entrega")</strong></p> 
+
+
+
+                
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

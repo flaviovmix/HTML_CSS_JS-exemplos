@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="exercicio2";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Folha de Exercícios 2</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+              
+            <h3>Folha de Exercícios n<sup>o</sup> 2</h3>
+            <br>
+
+
+            <p>
+                1) Resolva o cálculo abaixo e mostre o resultado na caixa reservada para isto. Os ids das caixas são "num_1", "num_2" 
+                e "resultado". Para que o resultado saia em negrito, coloque-o dentro da tag &lt;strong&gt;.
+            </p>
+
+            <div class="caixa_outer inline">
+
+                <div id="num_1">
+                        5
+                </div>
+            </div>
+
+            +
+
+            <div class="caixa_outer inline">
+
+                <div id="num_2">
+                        20
+                </div>
+            </div>
+            
+            =
+
+            <div class="caixa_outer inline">
+
+                <div id="resultado">
+                        mostre aqui o resultado
+                </div>
+            </div>
+            
+
+            <br>
+            <p>2) Crie uma função para converter graus Celsius para Fahrenheit, depois invoque a 
+                função usando o valor que está na caixa azul e solte o resultado na caixa amarela. Os ids são "caixa_azul" e "caixa_amarela".
+            </p>
+
+            <p>A formula de conversão é: F = (9 * C / 5) + 32 </p>
+
+            <div class="caixa_outer blueborder inline">
+                <div id="caixa_azul">
+                    38
+                </div>
+            </div>
+            <sup>o</sup>C = 
+            <div class="caixa_outer yellowborder inline">
+                <div id="caixa_amarela">
+                    resultado
+                </div>
+            </div>
+            <sup>o</sup>F
+
+
+            <br>
+
+
+            <p>
+                3) Forme um novo array composto pelos 2 últimos elementos do array abaixo. Em seguida adicione ao final do novo array 
+                mais um grupo composto pelos alunos "Mariana", "Felipe" e "Carla".
+            </p>
+
+            <pre>
+                <code class="javascript">
+    var grupos = [ 
+        [ "João" , "Maria" ],
+        [ "Pedro" , "Joana", "André", "Júlio" ],
+        [ "Carolina" , "Helena", "Marcelo" ]
+    ]; 
+                </code>
+            </pre>
+
+            <br>
+
+            <p>
+                4) Considere o objeto abaixo:
+            </p>
+
+            <pre>
+                <code class="javascript">
+    var curso = {
+        'titulo': "Aprenda programação em Python",
+        'categoria': ['programação', 'tecnologia', 'python'],
+        'n_aval_5_estrelas': 420,
+        'n_aval_4_estrelas': 80,
+        'n_aval_3_estrelas': 33,
+        'n_aval_2_estrelas': 20,
+        'n_aval_1_estrela': 4
+    }
+                </code>
+            </pre>
+
+            <p>
+                a) A categoria principal do curso é o primeiro elemento da lista associada à chave 'categoria'. Solte esta categoria abaixo, no 
+                span que tem id "categoria_principal"
+            </p>
+
+            <p>Categoria principal do curso: <strong><span id="categoria_principal">solte a categoria aqui</span></strong></p>
+
+            <p>
+            b) As propriedades n_aval... representam a quantidade de avaliações do curso, de 1 até 5 estrelas. Crie dois métodos: um para retornar o total de 
+            avaliações do curso e um para retornar a média de estrelas que tem o curso (exemplo: 4.5). Depois utilize-os para soltar estas informações 
+            nas caixas abaixo, que tem os ids "total_aval" e "media_aval".
+            </p>                    
+
+            Total de avaliações: 
+            <br>
+            <div class="caixa_outer inline">
+                <div id="total_aval">
+                    
+                </div>
+            </div>
+            <br>
+            Média de avaliações: 
+            <br>
+            <div class="caixa_outer inline">
+                <div id="media_aval">
+                    
+                </div>
+            </div>
+
+            <p>
+                Dica: Para conseguir a média de avaliações, utilize a média ponderada, onde as estrelas serão os valores e a quantidade de avaliações serão os pesos. A fórmula 
+                da média ponderada é: ( (valor1 * peso 1) + ( valor 2 * peso 2) +  ... ) / ( somatório dos pesos )   - Ex. ( ( 5 * 420 ) + ( 4 * 80 ) + ... ) / ( 420 + 80 + ... )
+            </p>
+               
+            <br>
+            
+            <p>
+                5) Crie um objeto para guardar nome, sobrenome e e-mail de uma pessoa. Em seguida, 
+                crie uma função que receba o objeto como argumento e retorne um string com o html de uma tabela conforme 
+                o modelo abaixo. Em seguida Solte o html da tabela dentro elemento que tem id="tabela".
+            </p>
+
+            <pre>
+                <code class="javascript">
+
+    &lt;div class="tableBox"&gt;
+
+        &lt;table&gt;
+
+            &lt;tr&gt;
+                &lt;th&gt;Nome Completo&lt;/th&gt;
+                &lt;th&gt;Email&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Pedro Gomes&lt;/td&gt;
+                &lt;td&gt;pedrogomes@gmail.com&lt;/td&gt;
+            &lt;/tr&gt;
+            
+        &lt;/table&gt;
+        
+    &lt;/div&gt;
+
+                </code>
+            </pre>
+
+            <div id="tabela"><strong>** solte o html da tabela aqui (id="tabela") **</strong></div>
+    
+                <br>
+                    
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+        <script src="js/ex2.js"></script>
+    </body>
+
+</html>

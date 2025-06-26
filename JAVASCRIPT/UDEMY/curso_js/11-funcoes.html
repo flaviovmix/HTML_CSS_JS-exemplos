@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="funcoes";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Funções</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Funções</h3>
+               
+                <p>
+                    As funções servem basicamente para guardar um bloco de código, que é uma sequência de comandos que poderá ser executada múltiplas vezes. Guardar essa
+                    sequência de comandos em uma função significa que, além de organizar o código, vamos evitar ter que escrever os mesmos comandos repetidas vezes.
+                </p>
+
+                <p>Vamos começar com um exemplo o mais simples possível.</p>
+
+
+                <pre>
+                    <code class="javascript">
+    
+    // Criação da função
+
+    function soma_numeros() {
+        var x = 5;
+        var y = 2;
+        var soma  = x + y;
+        console.log(soma);   
+    }
+
+    // Ao criar a função, nada acontece ainda. Precisamos invocá-la para executar os comandos:
+    
+    soma_numeros(); // O console mostrará 7
+
+                    </code>
+                </pre>
+
+                <p>
+                    Vejamos alguns pontos importantes sobre o exemplo acima:
+                </p>
+
+                <ul>
+                    <li>Usamos a keyword function para criar uma nova função.</li>
+                    <li>Em seguida, damos-lhe um nome, seguindo as mesmas regras dos identificadores das variáveis.</li>
+                    <li>Entre os parênteses vão entrar os argumentos da função, algo que vamos ver logo em seguida. Mesmo que a função não tenha 
+                        argumentos, como é o caso, é preciso abrir e fechar os parênteses assim mesmo.
+                    </li>
+                    <li>Entre as chaves '{ }' escreveremos todos os comandos que deverão ser executados quando invocarmos a função.</li>
+                    <li>A criação de uma função não exige o uso de ponto e vírgula ao final, apenas nos comandos internos.</li>
+                    <li>Depois de criada a função ela pode ser invocada a qualquer momento, e todo o bloco de código será executado.</li>
+                    <li>Na hora de invocar a função também devemos usar os parênteses, tendo a função argumentos ou não.</li>
+                </ul>
+
+                <h4>Argumentos da função</h4>
+
+                <p>Os argumentos da função são como se fossem variáveis, que podemos usar dentro da função. No exemplo acima a função é estática, ela sempre vai somar 
+                    5 + 2. Seria mais interessante que ela pudesse somar números diferentes, algo que podemos fazer facilmente com argumentos.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    /* Criaremos dois argumentos na hora de criar a função, que funcionarão como variáveis dentro da função. 
+    Podemos criar quantos argumentos quisermos, basta separá-los por vírgula. */
+
+    function soma_args(num1,num2) {
+        var soma  = num1 + num2;
+        console.log(soma); 
+    }
+
+    /* Agora ao invocar a função, temos necessariamente que atribuir valores para todos os argumentos, 
+    na mesma ordem em que eles foram criados: */
+
+    soma_args(10,25); // O console mostrará 35
+
+    soma_args(1000,375); // O console mostrará 1375
+
+    soma_args(-2,47); // O console mostrará 45
+
+
+
+                    </code>
+                </pre>
+
+                <p>
+                    Os argumentos da função não precisam ser valores brutos, eles podem ser variáveis já criadas anteriormente. Vejamos no exemplo abaixo
+                    uma função que calcula o IMC (índice de massa corporal) de uma pessoa, com valores guardados em variáveis.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    // a fórmula do IMC é: peso em kg / (altura em metros x altura em metros)
+
+    function calc_imc(peso,altura) {
+        var imc = peso / (altura * altura);
+        console.log(imc);
+    }
+
+    // agora podemos rodar a função com os valores que quisermos e assim clacular o IMC:
+
+    var meu_peso = 72;
+    var minha_altura = 1.70;
+
+    calc_imc(meu_peso,minha_altura);  // O console mostrará 24.913494809688583
+
+                    </code>
+                </pre>
+
+                <p>
+                    Tome bastante cuidado para não confundir os argumentos da função com variáveis. Os argumentos da função só funcionam dentro da função e 
+                    eles não tem nenhum valor na hora da criação, apenas quando a função é invocada. Inclusive é uma boa prática evitar usar nomes iguais. No exemplo acima 
+                    poderíamos ter usado os nomes peso e altura para as variáveis, não haveria nenhum problema, mas é preferível não fazer isso, para evitar qualquer confusão 
+                    entre argumentos e variáveis.
+                </p>
+
+                <p>A função também poderia se chamar imc, que é o mesmo nome de uma variável usada dentro dela, mas é preferível não fazer isso.</p>
+                
+                <h4>O comando return</h4>
+
+                <p>
+                    No exemplo do IMC acima, a própria função calcula o IMC e solta-o no console. Se nós quisermos soltar o IMC dentro de algum
+                    elemento HTML teremos que alterar a função. Por isso é interessante que, ao invés de realizar algum comando dentro da função, que a função apenas 
+                    retorne um resultado, com o qual poderemos trabalhar fora da função conforme a situação exigir.
+                </p>
+
+
+                <pre>
+                    <code class="javascript">
+
+    function valor_imc(peso,altura) {
+        var imc = peso / (altura * altura);
+        return imc;
+    }
+
+    // agora podemos guardar o valor retornado pela função numa variável e usá-la como quisermos.
+
+    var meu_peso = 72;
+    var minha_altura = 1.70;
+
+    var meu_imc = valor_imc(meu_peso,minha_altura);
+
+    console.log(meu_imc);
+
+    /* Agora esta variável meu_imc poderia também ser colocada num elemento HTML ou ser usada em outros cálculos, 
+    como por exemplo numa função que dirá se o IMC calculado está dentro ou fora dos valores normais.
+
+                    </code>
+                </pre>
+
+                <p>
+                    Vamos agora usar as informações que estão nas caixas "peso" e "altura", passá-las como 
+                    argumento da função, e soltar o IMC na caixa "imc".
+                </p>
+               
+                <div class="caixa_outer inline">
+
+                    <div id="peso">
+                            80
+                    </div>
+                </div>
+                
+                Peso 
+
+                
+
+                <div class="caixa_outer inline">
+
+                    <div id="altura">
+                            1.77
+                    </div>
+                </div>
+                
+                Altura
+
+                <br>
+
+                <div class="caixa_outer inline">
+
+                    <div id="imc">
+                            resultado
+                    </div>
+                </div>
+                
+                IMC
+
+                
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+           </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

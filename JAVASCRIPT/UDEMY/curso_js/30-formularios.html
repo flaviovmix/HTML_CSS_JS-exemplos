@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="formularios";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Formulários</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Formulários</h3>
+                
+                <p>
+                    Ter habilidades para manipular formulários e seus campos com Javascript é fundamental no desenvolvimento web, por isso esta aula será 
+                    dedicada a explorar um pouco mais este assunto.
+                </p>
+
+                <h4>Guardar o valor de um campo</h4>
+
+                <p>
+                    Até agora fizemos algumas tarefas em que pegamos os valores digitados em campos de texto ou número usando a propriedade <i>value</i>. 
+                    Vamos ver a seguir como pegamos valores de campos de outros tipos.
+                </p>
+
+                <h5>Select Box</h5>
+
+                <form>
+                    <select id="options">
+                        <option value="opt1">Praia</option>
+                        <option value="opt2">Montanha</option>
+                        <option value="opt3">Cidade</option>
+                    </select>
+                </form>
+
+                <br>
+
+                <button id="mostrar_opcao">Mostrar</button>
+
+                <p>Solte aqui a opção selecionada: <strong id="opcao_selecionada"></strong></p>
+
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("mostrar_opcao").onclick = function () {
+
+        var campo_select = document.getElementById("options");
+        var indice_selecionado = campo_select.options.selectedIndex;
+        var valor_selecionado = campo_select.options[indice_selecionado].innerHTML;
+        document.getElementById("opcao_selecionada").innerHTML = valor_selecionado;
+
+    };
+
+                    </code>
+                </pre>
+
+                <p>
+                    Há outra maneira mais simples de obter a opção selecionada, já que ela fica guardada na propriedade value do select box. Porém,
+                    desta maneira pegamos o valor do atributo value do elemento selecionado, e não o seu texto:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+        var indice_selecionado = document.getElementById("options").value;
+        console.log(indice_selecionado);
+
+                    </code>
+                </pre>
+
+
+                <p>
+                    Podemos também selecionar uma opção via Javascript, o que pode ser útil quando a seleção de um campo interfere na opção selecionada 
+                    em outro campo, ou quando guardamos em local storage uma opção selecionada anteriormente, para que o usuário não precise selecionar novamente.
+                </p>
+
+                <p>
+                    Fazemos isto, definindo o atributo value do select box:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById('options').value = "opt3";
+
+                    </code>
+                </pre>
+
+
+                
+                <br>
+
+                <h5>Radio Buttons</h5>
+
+                <form>
+
+                    <input type="radio" name="genero" value="Masculino" checked> Masculino<br>
+                    <input type="radio" name="genero" value="Feminino"> Feminino<br>
+                    <input type="radio" name="genero" value="Prefiro não dizer"> Prefiro não dizer
+                    
+                </form>
+
+                <br>
+
+                <button id="mostrar_radio">Mostrar</button>
+
+                <p>Solte aqui a opção selecionada: <strong id="radio_selecionado"></strong></p>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("mostrar_radio").onclick = function () {
+
+        var radio = document.getElementsByName("genero");
+        
+        var radio_selected;
+        
+        for (var a = 0;  a < radio.length; a++) {
+            if (radio[a].checked) {
+                radio_selected = radio[a].value;
+            }
+        }
+        
+        document.getElementById("radio_selecionado").innerHTML = radio_selected;
+
+    };
+
+                    </code>
+                </pre>
+
+
+                <h5>CheckBoxes</h5>
+
+                <form>
+
+                    <input type="checkbox" name="interesse" value="Desenvolvimento Front-End"> Desenvolvimento Front-End<br>
+                    <input type="checkbox" name="interesse" value="Desenvolvimento Back-End"> Desenvolvimento Back-End<br>
+                    <input type="checkbox" name="interesse" value="Design"> Design
+                    
+                </form>
+
+                <br>
+
+                <button id="mostrar_check">Mostrar</button>
+
+                <p>
+                    Solte aqui as opção selecionadas em lista: <br>
+                    <strong id="check_selecionado"></strong>
+                </p>
+
+                <br>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("mostrar_check").onclick = function () {
+
+
+        var check = document.getElementsByName("interesse");
+
+        document.getElementById("check_selecionado").innerHTML = "";
+
+        for (var b = 0;  b < check.length; b++) {
+            if (check[b].checked) {
+                document.getElementById("check_selecionado").innerHTML += '&lt;li&gt;' + check[b].value + '&lt;/li&gt;';
+            }
+        }
+    
+
+    };
+
+                    </code>
+                </pre>
+
+                
+                <h5>Date</h5>
+
+                Selecione a data: <br>
+                <input type="date" id="data_evento">
+
+                <br>
+
+                <button id="mostrar_data">Mostrar</button>
+
+                <p>
+                    Solte aqui a data selecionada: <strong id="data_selecionada"></strong>
+                </p>
+
+                <br>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("mostrar_data").onclick = function () {
+
+        var data_select = document.getElementById("data_evento").value;
+        var data_completa = new Date(data_select);
+        document.getElementById("data_selecionada").innerHTML = data_completa;
+
+    };
+
+                    </code>
+                </pre>
+
+
+                    
+                <br>
+                <p>O input do tipo date está entre os campos introduzidos pelo HTML5. Veja abaixo a lista completa destes novos campos: </p>
+
+                <li>color</li>
+                <li>date</li>
+                <li>datetime-local</li>
+                <li>email</li>
+                <li>month</li>
+                <li>number</li>
+                <li>range</li>
+                <li>search</li>
+                <li>tel</li>
+                <li>time</li>
+                <li>url</li>
+                <li>week</li>
+
+                <br>
+
+
+
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

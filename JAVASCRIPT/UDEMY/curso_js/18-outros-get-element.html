@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="outros_get_element";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Outros métodos getElement</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Outros métodos getElement</h3>
+                
+                <p>
+                    Até este momento utilizamos apenas o método getElementById para selecionar elementos html da página. Vamos agora conhecer 
+                    outros métodos comuns.
+                </p>
+
+                <h4>getElementsByClassName</h4>
+
+                <p>
+                    Pelo nome deste método é fácil supor o que ele faz, seleciona elementos que tenham uma classe específica. Diferentemente dos ids, que só podem 
+                    pertencer a um elemento na página, uma classe pode ser compartilhada por vários elementos, por isso este método retornará um array composto 
+                    por vários objetos, também chamados de nós (nodes). Cada objeto é um elemento html que possui a classe selecionada.
+                </p>
+
+                <pre>
+                    <code class="html">
+
+    &lt;div class="exemplo"&gt;Elemento 1&lt;/div&gt;
+    &lt;div class="exemplo"&gt;Elemento 2&lt;/div&gt;
+    &lt;div class="exemplo"&gt;Elemento 3&lt;/div&gt;
+
+                    </code>
+                </pre>
+
+                <div class="exemplo">Elemento 1</div>
+                <div class="exemplo">Elemento 2</div>
+                <div class="exemplo">Elemento 3</div>
+
+                <pre>
+                    <code class="javascript">
+    var elementos = document.getElementsByClassName("exemplo");
+    console.log(elementos);
+
+    // O console retornará um array: [ {...}, {...}, {...} ]
+    // Cada um destes objetos é um dos elementos que possuem a classe "exemplo".
+
+                    </code>
+                </pre>
+
+                <p>
+                    Os objetos deste array podem ser acessados por meio do índice, neste caso [0], [1] e [2]. Para alterar as suas propriedades, como a innerHTML, 
+                    ou as propriedades css, é preciso definir o índice:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    elementos[0].innerHTML = "Texto do elemento 1";
+
+                    </code>
+                </pre>
+
+
+                <h4>getElementsByTagName</h4>
+
+                <p>O funcionamento deste método é muito parecido com o anterior, mas em vez de selecionar classes, este seleciona elementos com uma tag específica
+                    (como div, h1, p, img, etc).
+                </p>
+
+                <pre>
+                    <code class="html">
+
+    &lt;p&gt;Parágrafo 1&lt;/p&gt;
+    &lt;p&gt;Parágrafo 2&lt;/p&gt;
+    &lt;p&gt;Parágrafo 3&lt;/p&gt;
+
+                    </code>
+                </pre>
+
+                <p>Parágrafo 1</p>
+                <p>Parágrafo 2</p>
+                <p>Parágrafo 3</p>
+
+                <pre>
+                    <code class="javascript">
+    var paragrafos = document.getElementsByTagName("p");
+    console.log(paragrafos);
+
+    // O console retornará um array: [ {...}, {...}, {...} ]
+    // Cada um destes objetos é um dos elementos do tipo &lt;p&gt;.
+
+                    </code>
+                </pre>
+                
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="aninhamento";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Aninhamento de loops e condicionais</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Aninhamento de loops e condicionais</h3>
+                
+                <p>
+                    Quando usamos loops dentro de loops e condicionais dentro de condicionais, isto é chamado de aninhamento (nesting). Vamos ver 
+                    abaixo dois exemplos.
+                </p>
+
+                <h5>Aninhamento de Condicionais</h5>
+
+                <p>
+                    Digamos que um formulário receba duas informações sobre uma pessoa: a idade e se ela é ou não sócia de um clube. Baseado nestas informações, temos que 
+                    apresentar o preço de um evento para este perfil. Temos 4 faixas de preço: 
+
+                    <li>Sócios: Grátis</li>
+                    <li>Não sócios menores de 18 anos: R$ 6,00</li>
+                    <li>Não sócios maiores de 18 maiores de 18 anos: R$ 12,00</li>
+                    <li>Maiores de 65 anos: Grátis</li>
+
+                </p>
+
+                <p>Vamos primeiro abrir um condicional para testar se é sócio ou a idade é superior a 65 anos, se o teste retornar positivo, o ingresso é grátis. 
+                    Senão, chegamos à situação de não sócios menores de 65 anos. Mas dentro desta condição ainda temos preços diferentes para maiores e 
+                    menores de 18 anos, portanto teremos que aninhar um condicional. 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    var socio = false;
+    var idade = 25;
+    
+    if (socio == true || idade >= 65) {
+        console.log('O ingresso é grátis');
+    } else {
+
+        if (idade < 18) {
+            console.log('O ingresso custa: R$ 6,00');
+        } else {
+            console.log('O ingresso custa: R$ 12,00');
+        }
+    }
+
+    // O console mostrará 'O ingresso custa: R$ 12,00'
+
+                    </code>
+                </pre>      
+                
+                <h5>Aninhamento de Loops</h5>
+
+                <p>
+                    Muitas vezes é comum ter que usar loops aninhados. Quando queremos percorrer os elementos de um array ou de um objeto, usamos um loop. 
+                    Mas caso algum elemento deste array/objeto seja também um array ou objeto, 
+                    teremos que aninhar outro loop para percorrer seus elementos. 
+                </p>
+
+                <p>
+                        Como exemplo, temos uma lista de funcionários. Cada funcionário é um objeto com algumas 
+                        propriedades. Uma destas propriedades é a lista de filhos. Para criar uma lista de filhos de funcionários, precisamos aninhar dois loops:
+                </p>
+
+                <pre>
+                    <code class="html">
+    &lt;p&gt;
+        Lista de filhos dos funcionários:
+        &lt;ul id="filhos"&gt;
+
+        &lt;/ul&gt;
+    &lt;/p&gt;
+                    </code>
+                </pre>
+
+
+                <pre>
+                    <code class="javascript">
+    var funcionarios = [
+        
+        {
+            'nome': 'Carlos Henrique da Silva',
+            'idade': 45,
+            'filhos': ['Mariana Alves da Silva', 'Fernanda Alves da Silva']
+            
+        },
+
+        {
+            'nome': 'Maria Helena Pereira',
+            'idade': 32,
+            'filhos': ['João Pedro Pereira de Souza']
+            
+        },
+
+        {
+            'nome': 'José Feliciano Maia',
+            'idade': 39,
+            'filhos': ['Felipe Ferreira Maia', 'Fábio Ferreira Maia', 'João Ferreira Maia']
+            
+        }
+    
+    ];
+        
+    var list_element = document.getElementById("filhos");
+
+    for (var a = 0 ; a < funcionarios.length ; a++) {
+        if (funcionarios[a].filhos) {
+            
+            var lista_filhos = funcionarios[a].filhos;
+            
+            for (var b = 0 ; b < lista_filhos.length ; b++) {
+                list_element.innerHTML += '&lt;li&gt;' + lista_filhos[b] + ' - Filho(a) de ' + funcionarios[a].nome + '&lt;/li&gt;';
+
+            }
+        }
+    }
+
+                    </code>
+                </pre>    
+
+                
+
+                <p>Lista de filhos dos funcionários:</p>
+                <ul id="filhos">
+                    <li>Solte os nomes aqui</li>
+                </ul>
+
+                <br>
+
+               
+                
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-animate";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Animate</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Animate</h3>
+
+                <p>
+                    Não última aula falamos sobre alguns métodos jQuery que servem para fazer efeitos e animações. Além deles, temos também a opção 
+                    de usar o método animate. Em relação aos efeitos mostrados na última aula, este método precisa de um pouco mais de código, 
+                    mas oferece mais versatilidade, já que nos possibilita alterar outras propriedades CSS.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("elemento").animate({propriedade: valor}, velocidade, callback);
+
+                    </code>
+                </pre>
+
+                <p>
+                    O primeiro argumento passado neste método é um objeto composto de propriedades CSS e valores, portanto podemos mudar várias propriedades ao 
+                    mesmo tempo. Note também que podemos usar o operador incremental nos valores das propriedades.
+                </p>
+
+                <pre>
+                        <code class="javascript">
+    
+        $("#animar").click(function(){
+            $("#quadrado").animate({
+                width: '+=20px',
+                height: '+=20px'
+            });
+        }); 
+    
+                        </code>
+                    </pre>
+
+               
+
+                <button id="animar">Aumentar quadrado</button>
+
+                <div id="quadrado" style="color:white; font-size: 18px; margin-top: 30px; width: 60px; height: 60px; background-color: black"></div>
+
+                <br>
+
+                <p>
+                    No exemplo dado acima, as duas propriedades (height e width) são alteradas ao mesmo tempo. Para fazer uma de cada vez com velocidades específicas, 
+                    não precisamos necessariamente usar a função callback, isto porque métodos animate usados em sequência, esperam automaticamente o 
+                    anterior terminar para serem executados. Cuidado pois apenas o método animate possui esta funcionalidade de "fila".
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("#animar").click(function(){
+
+        $("#quadrado").animate({
+            width: '+=20px'
+        },500);
+
+        $("#quadrado").animate({
+            height: '+=20px'
+        }),500;
+
+    });
+
+                    </code>
+                </pre>
+
+
+                <h5>Importante:</h5>
+
+                <li>
+                
+                    Quase todas as propriedades CSS podem ser animadas, com exceção das cores. 
+                    
+                </li>
+                
+                <li> 
+                    As propriedades CSS que possuem 
+                    traço no nome devem ser escritas no formato camel case. Por exemplo, padding-left 
+                    deve ser escrita como paddingLeft.
+                </li>
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </body>
+
+    <script src="js/scripts.js"></script>
+
+</html>
+

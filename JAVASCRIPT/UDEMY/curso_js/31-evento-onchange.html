@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="evento-onchange";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>O Evento onchange</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>O evento onchange</h3>
+
+                <p>
+                    Na última aula, todos os exemplos foram feitos com o botão "Mostrar". Porém, podemos soltar aquelas informações em tempo real, 
+                    sem precisar dos botões, usando o evento onchange.
+                </p>
+
+                <form>
+                    <select id="escolaridade">
+                        <option value="opt1">Ensino Fundamental</option>
+                        <option value="opt2">Ensino Médio</option>
+                        <option value="opt3">Diploma Universitário</option>
+                        <option value="opt4">Mestrado</option>
+                    </select>
+                </form>
+
+                <br>
+
+                <p>Solte aqui a opção selecionada: <strong id="escolaridade_selecionada"></strong></p>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("escolaridade").onchange = function () {
+
+        var campo_select = document.getElementById("escolaridade");
+        var indice_selecionado = campo_select.options.selectedIndex;
+        var valor_selecionado = campo_select.options[indice_selecionado].innerHTML;
+        document.getElementById("escolaridade_selecionada").innerHTML = valor_selecionado;
+
+    };
+
+                    </code>
+                </pre>
+
+               <p>
+                   Os outros campos também permitem o uso deste evento, só é preciso tomar cuidado na identificação de que elemento 
+                   sofrerá mudança. No caso do select box, é o elemento &lt;select&gt;, que possui todos os itens, que sofre a mudança. Mas no caso dos 
+                   radio buttons ou checkboxes, cada um dos itens sofrerá mudança, portanto precisamos monitorar o evento em cada um deles
+                   através de um loop:
+               </p>
+
+
+
+               <form>
+                    Selecione os itens do pedido: <br>
+                    <input type="checkbox" name="lanche" value="Hamburguer"> Hamburguer<br>
+                    <input type="checkbox" name="lanche" value="Batata Frita"> Batata Frita<br>
+                    <input type="checkbox" name="lanche" value="Refrigerante"> Refrigerante
+                    
+                </form>
+
+                <br>
+
+                <p>Solte aqui as opções selecionadas: <strong id="check_selecionado"></strong></p>
+
+                <br>
+
+
+                <pre>
+                    <code class="javascript">
+
+    var check = document.getElementsByName("lanche");
+
+    for (var a = 0;  a < check.length; a++) {
+
+        check[a].onchange = function () {
+
+            document.getElementById("check_selecionado").innerHTML = "";
+            
+            for (var b = 0;  b < check.length; b++) {
+                
+                if (check[b].checked) {
+                    document.getElementById("check_selecionado").innerHTML += '&lt;li&gt;' + check[b].value + '&lt;/li&gt;';
+                }
+            }
+        }  
+    }
+
+                    </code>
+                </pre>
+
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

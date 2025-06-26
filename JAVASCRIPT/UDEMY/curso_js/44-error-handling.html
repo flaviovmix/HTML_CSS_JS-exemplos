@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="error-handling";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Error Handling</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Lidando com erros (Erros handling)</h3>
+
+                <p>
+                    Quando estamos desenvolvendo uma aplicação web ou um software, temos que prever o surgimento de erros e lidar com eles
+                    para evitar que o funcionamento do nosso programa seja prejudicado.
+                </p>
+
+                <p>
+                    Vamos voltar ao exemplo da última aula, em que tivemos um erro quando não utlizamos a função callback. Ao final 
+                    vamos incluir também um novo comando.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    function pegar_usuario(){
+
+        window.setTimeout(function(){
+            var u = {
+                'nome': 'João'
+            };
+            return u;
+        }, 1000);
+        
+    }
+            
+    function saudar_usuario(user) {
+        console.log('Olá ' + user.nome + ', como vai?');
+    }
+            
+    var user = pegar_usuario();
+    saudar_usuario(user);
+    
+    console.log('Novo comando para executar ao final');
+
+                    </code>
+                </pre>
+
+                
+                <p>
+                    Note que o erro faz com que
+                    o último comando que escrevemos ao final nem seja executado. Na verdade nenhum código depois do erro é executado, 
+                    o que pode simplesmente quebrar o funcionamento da nossa página.
+                </p>
+
+                <p>
+                    Para resolver isto, vamos lidar com os erros usando os comandos try e catch.
+                </p>
+
+                <h3>Try/Catch</h3>
+
+                <p>
+                    O interpretador de Javascript tentará executar o código que está dentro do try. Caso não consiga, em vez de gerar um erro,
+                    ele executará o código que está dentro do catch.
+                </p>
+
+
+                <pre>
+                    <code class="javascript">
+
+    try {
+        var user = pegar_usuario();
+        saudar_usuario(user);
+    } catch {
+        console.log('Olá, como vai?');
+    }    
+    
+    console.log('Novo comando para executar ao final');
+
+                    </code>
+                </pre>
+
+                <p>
+                    Com o try/catch neste exemplo, além de criarmos uma alternativa para quando as informações do usuário não estejam disponíveis, 
+                    o funcionamento do restante do código não foi afetado.
+                </p>
+
+                <p>
+                    Caso quiséssemos ter a mensagem de erro, poderíamos passar um argumento na execução do catch. Este argumento pode ter 
+                    qualquer nome, mas normalmente os programadores utilizam o nome "err".
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    try {
+        var user = pegar_usuario();
+        saudar_usuario(user);
+    } catch(err) {
+        console.log(err);
+        console.log('Olá, como vai?');
+    }    
+    
+    console.log('Novo comando para executar ao final');
+
+                    </code>
+                </pre>
+                
+                <h3>Finally</h3>
+
+                <p>
+                    Após o try/catch, podemos também um finally, que será executado de qualquer maneira, havendo erro ou não.
+                </p>
+                
+                <pre>
+                    <code class="javascript">
+
+    try {
+        var user = pegar_usuario();
+        saudar_usuario(user);
+    } catch {
+        console.log('Olá, como vai?');
+    } finally {
+        console.log('Este comando será sempre executado');
+    }
+
+
+                    </code>
+                </pre>
+                
+                <h3>Throw</h3>
+
+                <p>
+                    O comando throw serve para gerar nossos próprios erros dentro da estrutura try/catch. Vamos ver um exemplo em que, a nível de 
+                    código Javascript, não há nenhum erro, mas seria interessante criarmos um erro:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var user = {
+        'nome': ""
+    }
+
+    try {
+        saudar_usuario(user);
+    } catch {
+        console.log('Olá, como vai?');
+    }
+
+                    </code>
+                </pre>
+
+                <p>
+                    Neste caso, nós já tínhamos as informações disponíveis, portanto não houve nenhum erro. Mas o nome estava vazio, 
+                    o que gerou uma mensagem sem nome. Aqui é um exemplo onde poderíamos ter criado nosso próprio erro para um nome vazio:
+                </p>
+
+
+                <pre>
+                    <code class="javascript">
+
+    function saudar_usuario(user) {
+        console.log('Olá ' + user.nome + ', como vai?');
+    }
+            
+    var user = {
+        'nome': ""
+    }
+
+    try {
+        
+        if (!user.nome) {
+            throw 'Nome em branco';
+        } 
+        
+        saudar_usuario(user);
+        
+    } catch (err) {
+        console.log(err);
+        console.log('Olá usuário, como vai?');
+    }
+
+                    </code>
+                </pre>
+
+               <p>
+                   Caso um throw seja executado dentro do try, o interpretador vai direto para o 
+                   catch.
+               </p>
+                
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

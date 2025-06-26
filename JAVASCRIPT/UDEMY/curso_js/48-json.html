@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="json";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JSON</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>JSON</h3>
+
+                <p>
+                    JSON é um formato de armazenamento de dados extremamente popular. Praticamente qualquer 
+                    serviço web trabalha com este formato e todas as linguagens de programação mais populares 
+                    possuem a capacidade de importar e exportar dados em JSON.
+                </p>
+
+                <p>
+                    O formato JSON é especialmente fácil de entender para quem programa em javascript, já que ele deriva desta linguagem.
+                    JSON significa "Javascript Object Notation" e como o nome já diz, usa a notação de objeto do Javascript.
+                </p>
+
+                <p>
+                    Vamos imaginar o seguinte objeto:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var funcionario = {
+        'nome': "Fernanda Costa",
+        'd_nascimento': '1988-10-01',
+        'CPF': '111.111.111-11'
+    };
+
+                    </code>
+                </pre>
+
+                <p>
+                    O formato JSON faz a representação de objetos em string. Cada linguagem de programação possui 
+                    suas próprias funções para importar e exportar dados em formato JSON. Em javascript para converter dados em JSON, 
+                    usamos a função JSON.stringify(), e para converter um JSON em objeto javascript, usamos a função JSON.parse().
+
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var funcionario_json = JSON.stringify(funcionario);
+    console.log(funcionario_json);
+
+    // O console mostrará: {"nome":"Fernanda Costa","d_nascimento":"1988-10-01","CPF":"111.111.111-11"}
+    // que é exatamente o nosso objeto em formato string.
+
+                    </code>
+                </pre>
+
+                <p>
+                    Digamos que tivéssemos recebido este JSON de um serviço externo. Podemos convertê-lo em um objeto javascript e usá-lo em 
+                    nosso código:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var funcionario_obj = JSON.parse(funcionario_json);
+    console.log(funcionario_obj);
+    console.log(funcionario_obj.nome);
+
+                    </code>
+                </pre>
+
+                <p>
+                    Tanto objetos quanto arrays podem ser convertidos em JSON:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var grupo_A = ['Real Madrid', 'Porto', 'Liverpool', 'Manchester United'];
+
+    console.log( JSON.stringify(grupo_A) );
+
+    console.log( typeof JSON.stringify(grupo_A) ); // O console mostrará "string"
+
+                    </code>
+                </pre>
+                
+                
+                <p>
+                   Usando a função typeof, vemos que o formato de um JSON é string, o que o deixa muito leve e fácil de trabalhar.
+                </p>
+
+                <p>
+                    Na próxima seção do curso trabalharemos com pedidos AJAX e usaremos muito o formato JSON!
+                </p>
+                
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

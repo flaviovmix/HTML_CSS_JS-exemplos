@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="tipos_dados_booleans";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tipos de Dados - booleans</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Tipos de dados - booleans</h3>
+
+                <p>Booleanos (ou booleans) são os valores verdadeiro (true) e falso (false). Eles são fundamentais e governam
+                    a lógica das estruturas condicionais, assunto importantíssimo que vamos aprender em breve.
+                </p>
+
+                <p>Os booleanos surgem quando usamos operadores de comparação:</p>
+
+                <div class="tableBox">
+                        <table>
+                            <tr>
+                                <th>Operador</th>
+                                <th>Descrição</th>
+                            </tr>
+                            <tr>
+                                <td> &gt; </td>
+                                <td>Maior que</td>
+                            </tr>
+                            <tr>
+                                <td> &gt;= </td>
+                                <td>Maior que ou igual a</td>
+                            </tr>
+                            <tr>
+                                <td> &lt; </td>
+                                <td>Menor que</td>
+                            </tr>
+                            <tr>
+                                <td> &lt;= </td>
+                                <td>Menor que ou igual a</td>
+                            </tr>   
+                            <tr>
+                                <td> == </td>
+                                <td>Igual a</td>
+                            </tr>
+                            <tr>
+                                <td> === </td>
+                                <td>Igual tipo e valor</td>
+                            </tr>
+                            <tr>
+                                <td> != </td>
+                                <td>Não é igual a</td>
+                            </tr>
+                            <tr>
+                                <td> !== </td>
+                                <td>Não é igual o tipo OU não é igual o valor</td>
+                            </tr>
+
+                            
+    
+                        </table>
+                    </div>
+
+                <pre>
+                    <code class="javascipt">
+    var teste1 = 20 > 2; // true
+
+    var teste2 = 2 >= 2; // true
+
+    var teste3 = 5 < 5; // false
+
+    var teste4 = 5 <= 10; // true
+
+    var teste5 = 20 == 20; // true
+
+    var teste6 = 'ivan' == 'joão' // false
+
+    var teste7 = 20 === "20"; // false - valor é igual mas o tipo não. O primeiro é número, o segundo é string.
+
+    var teste8 = 20 != 10; // true
+
+    var teste9 = 10 != 10; // false
+
+    var teste10 = "10" !== 10; // true - o tipo não é igual
+
+    var teste11 = "9" !== 10; // false - o tipo nem o valor são iguais.
+
+
+
+    /* Atenção: tome cuidado com comparações de maior e menor com tipos diferentes, por exemplo, números com strings,
+    pois este tipo de operação gera resultados inesperados.  */
+ 
+                    </code>
+                </pre>
+
+                <h4>Como consultar o tipo de uma variável?</h4>
+
+                <p>
+                    Em javascript, o operador typeof pode ser usado para descobrir qual o tipo de uma variável.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var v_string = "teste";
+    var v_numero = 4.55;
+    var idade = 21;
+    var v_boolean = idade > 18 ;
+
+    console.log(typeof v_string);  // retorna string
+    console.log(typeof v_numero);  // retorna number
+    console.log(typeof v_boolean);  // retorna boolean
+                    </code>
+                </pre>
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+        <script src="js/scripts.js"></script>
+    </body>
+
+</html>

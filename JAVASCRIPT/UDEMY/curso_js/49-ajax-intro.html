@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="ajax-intro";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>AJAX - Introdução</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>AJAX - Introdução</h3>
+
+                <p>
+                    A sigla AJAX significa Asynchronous JavaScript And XML (JavaScript Assíncrono e XML). O funcionamento 
+                    do AJAX gira em torno do objeto XMLHttpRequest, que através de requisições HTTP, envia ou recebe dados 
+                    do servidor ou de serviços externos.
+                </p>
+
+                <p>
+                    E o melhor de tudo, isto acontece no fundo 
+                    sem que o usuário perceba e sem que a página precise ser recarregada.
+                </p>
+
+                <p>
+                    A figura abaixo mostra, de maneira simplificada, como o ajax funciona.
+                </p>
+
+                <img style="width: 100%; max-width: 800px; height: auto; border: 1px solid lightgrey; display: block; margin: 30px 0;" src="img/ajax.png" alt="">
+
+                <p>
+                    Vamos imaginar uma caixa de pesquisa feita em AJAX para exemplificar este funcionamento.
+                </p>
+
+                <ol>
+                    <li>Um evento ocorre no browser (o usuário digita um termo de pesquisa)</li>
+                    <li>O browser envia uma requisição XMLHttp ao servidor com o termo da pesquisa</li>
+                    <li>O servidor recebe o pedido e consulta na base de dados itens que correspondam àquele termo de pesquisa</li>
+                    <li>O servidor envia a resposta (em JSON, por exemplo)</li>
+                    <li>A resposta chega no browser e é processada usando Javascript. O conteúdo da página é alterado para mostrar os resultados da pesquisa</li>
+                   
+                </ol>
+
+                <p>
+                    Agora que já sabemos como o AJAX funciona, estamos prontos para fazer a nossa primeira requisição.
+                </p>
+
+
+
+               
+
+                
+
+                
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

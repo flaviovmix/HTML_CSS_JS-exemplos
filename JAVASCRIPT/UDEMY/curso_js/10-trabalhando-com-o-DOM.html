@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="trab_dom";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Trabalhando com o DOM</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Trabalhando com o DOM</h3>
+               
+                <p>
+                    Para trabalhar com elementos HTML vamos utilizar métodos do objeto document, aquele que vimos no topo do DOM na última aula. Vamos
+                    conhecer alguns métodos comuns do objeto document.
+                </p>
+
+                <h4>getElementById e innerHTML</h4>
+
+                <p>
+                    A primeira coisa que precisamos fazer é encontrar o elemento com o qual queremos trabalhar, que neste exemplo serão as caixa azul e amarela abaixo. Para isso, podemos 
+                    procurá-las pelo atributo id, pelo nome da tag (h1, p, img, div, etc.) ou pelo nome da classe. Vamos começar pelo id pois ainda precisamos aprender algumas coisas 
+                    para usar os outros métodos.
+                </p>
+
+                <div class="caixa_outer blueborder">
+
+                    <div id="caixa_azul">
+                          Esta caixa tem o id="caixa_azul". Consegue copiar este conteúdo e passar para a caixa amarela?
+                    </div>
+                </div>
+
+                <div class="caixa_outer yellowborder">
+
+                    <div id="caixa_amarela">
+                            Esta caixa tem o id="caixa_amarela".
+                    </div>
+                </div>
+                    
+                <p>
+                    Para selecionar o conteúdo da caixa azul vamos usar o método getElementByID e a propriedade innerHTML 
+                    (lembre-se que javascript é uma linguagem "case sensitive", portanto veja bem que letras são maiúsculas nestes comandos). 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    var conteudo_caixa = document.getElementById("caixa_azul").innerHTML;
+
+                    </code>
+                </pre>
+
+                <p>
+                    Agora que já temos o conteúdo guardado na variável conteudo_caixa, podemos usar os mesmos comandos para colocá-lo na caixa amarela.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    document.getElementById("caixa_amarela").innerHTML = conteudo_caixa;
+
+                    </code>
+                </pre>
+
+                <p>
+                    Escreva estes comandos no arquivo .js que temos linkado aqui na página, depois recarregue a página e veja o que acontece.</p>
+                <p>
+                    Se tudo deu certo, agora as duas caixas estão com o mesmo conteúdo. Parece um exemplo bobo, mas esse é o começo de algo muito mais interessante, porque 
+                    agora vamos começar a fazer coisas mais complexas, como pegar o  input do usuário em um campo de formulário, alterar o css de elementos e o que é mais 
+                    legal: realizar essas ações quando um botão for pressionado.
+                </p>
+
+                <p>
+                    Antes de fazer isso, porém, temos ainda que falar dos outros tipos de dados em Javascript e de funções, conceitos que precisamos saber para começar
+                    a fazer coisas um pouco mais complexas.
+                </p>
+
+                <h5>
+                    Escerevendo HTML dentro de outros elementos HTML
+                </h5>
+
+                <p>
+                    Da mesma maneira que podemos mandar valores de variáveis para elementos html, podemos também mandar código html:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("caixa_amarela").innerHTML = "&lt;h1&gt;" + conteudo_caixa + "&lt;/h1&gt;";    
+
+                    </code>
+                </pre>
+
+               
+
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="callback";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Funções Callback</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Funções callback</h3>
+
+                <p>
+                    Funções callback são funções passadas como argumento de outra função. Normalmente elas são executadas
+                    ao final da função principal.                   
+                </p>
+
+                <p>
+                    Este recurso é muito útil em Javascript, que é uma linguagem assíncrona. Isto significa que nesta linguagem,
+                    vários comandos podem ser executados ao mesmo tempo, sem que um precise esperar que o funcionamento do comando
+                    anterior termine. 
+                </p>
+
+                <p>Vejamos o exemplo a seguir:</p>
+
+                <pre>
+                    <code class="javascript">
+
+    function pegar_usuario(){
+        var u = {
+            'nome': 'João'
+        };
+        return u;
+    }
+            
+    function saudar_usuario(user) {
+        console.log('Olá ' + user.nome + ', como vai?');
+    }
+            
+    var user = pegar_usuario();
+    saudar_usuario(user);
+
+                    </code>
+                </pre>
+
+
+
+
+                <p>
+                    Na função pegar_usuario(), consultamos as informações de um usuário. Depois utilizamos esta informação na função saudar_usuario() 
+                    para soltar uma mensagem.
+                </p>
+
+                <p>
+                    Até aí, sem problemas. Mas o que aconteceria se esse usuário fosse consultado em um serviço externo e esta informação 
+                    demorasse um pouco a chegar? Vamos fazer esta simulação usando um setTimeout de 1 segundo:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    function pegar_usuario(){
+        
+        window.setTimeout(function(){
+            var u = {
+                'nome': 'João'
+            };
+            return u;
+        }, 1000);
+        
+    }
+
+                    </code>
+                </pre>
+
+                <p>
+                    Desta vez, vemos um erro no console informando que a propriedade nome não pode ser lida de 
+                    um objeto indefinido. Isto ocorre porque a função saudar_usuário é executada antes que a função 
+                    pegar_usuario termine, portanto as informações do usuário ainda não estão disponíveis.
+                </p>
+
+                <p>
+                    Este tipo de problema acontece frequentemente quando trabalhamos com AJAX, já que as informações solicitadas por 
+                    serviços externos podem demorar alguns instantes para chegar. Neste caso, resolvemos este problema com o uso de 
+                    uma função callback:
+                </p>
+
+                
+                <pre>
+                    <code class="javascript">
+
+    function pegar_usuario(callback){
+
+        window.setTimeout(function(){
+            var u = {
+                'nome': 'João'
+            };
+            callback(u);
+        }, 1000);
+
+    }
+            
+    function saudar_usuario(user) {
+        console.log('Olá ' + user.nome + ', como vai?');
+    }
+            
+    pegar_usuario(saudar_usuario);
+
+                    </code>
+                </pre>
+                
+                <p>
+                    Nós nem precisaríamos ter criado a função saudar_usuario previamente, poderíamos ter feito isso no momento 
+                    de invocar a função pegar_usuario  
+                </p>
+
+
+                <pre>
+                    <code class="javascript">
+
+    pegar_usuario(function (user) {
+        console.log('Olá ' + user.nome + ', como vai?');
+    });
+
+                    </code>
+                </pre>
+
+                <p>Note como boa parte dos comandos jQuery se baseia em funções callback. Um exemplo:</p>
+
+                <pre>
+                    <code class="javascript">
+
+    $( "#esconder" ).click(function() {
+        $(".exemplo").hide();
+    });
+
+                    </code>
+                </pre>
+                
+                <p>
+                    O próprio método setTimeout funciona com uma função callback, que é o primeiro argumento:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    
+    window.setTimeout(function(){},1000);
+
+                    </code>
+                </pre>
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

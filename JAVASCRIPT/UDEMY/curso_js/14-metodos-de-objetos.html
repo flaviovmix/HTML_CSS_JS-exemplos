@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="metodos_objetos";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Métodos de Objetos</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Métodos de Objetos</h3>
+                
+                <p>
+                    Métodos são ações que podem ser aplicadas a um objeto. Para criar métodos, basta associarmos uma função 
+                    a uma propriedade do objeto, que então não será mais uma propriedade e sim um método. 
+                    Dentro desta função podemos usar a keyword <i>this</i> para referenciar o próprio objeto que contém este
+                    método.
+                    
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var aluno = {
+        'nome': 'Maria',
+        'sobrenome': 'Pereira',
+        'nome_completo': function() {
+            var nomeCompleto = this.nome + ' ' + this.sobrenome;
+            return nomeCompleto;
+        }
+    }
+
+    console.log(aluno.nome_completo());
+
+
+                    </code>
+                </pre>
+
+                <p>Algumas observações importantes: 
+                    <ul>
+                        <li>Note que escrevemos a função de maneira diferente, neste caso ela não recebe um nome após a keyword <i>function</i>.
+                            Em vez disso, a função é invocada pelo nome do método, <i>nome_completo</i>.</li>
+                        <li>Para invocar métodos de objetos temos que usar a notação com ponto. não podemos usar, por exemplo, aluno[nome_completo()]</li>
+                    </ul>
+                </p>
+                
+                <h4 id="tudo_obj">
+                    Sabia que quase tudo em Javascript é objeto?
+                </h4>
+
+                <p>
+                    Javascript é uma linguagem orientada a objetos e trata quase tudo como objeto. Objetos, Arrays, Funções e tudo que não faça parte dos tipos 
+                    de dados primitivos, são tratados como objeto. Strings e Números, apesar de serem primitivos, podem ter métodos e outras características de objetos. 
+                    O funcionamento por trás disso tem a ver com classes e protótipos que fazem parte da estrutura da linguagem Javascript. Estes assuntos 
+                    serão abordados em um outro momento, mas é importante ter essa noção agora, para começar a entender por que muitas vezes estávamos usando esta 
+                    notação de ponto seguido de parênteses. Vamos relembrar algumas das vezes em que nós fizemos isso:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    console.log('Hello World'); // log é um método do objeto console 
+
+    Math.round(2.7);  // round é um método do objeto Math
+
+    var num = 3; 
+    var num_string = num.toString(); // toString é um método que pode ser aplicado a qualquer tipo de dados.
+
+    var conteudo_caixa = document.getElementById("caixa_azul").innerHTML;  // getElementById é um método do objeto document.
+    // innerHTML é propriedade do objeto que o método getElementById retorna.
+
+
+    var cursos = [ "HTML", "Python", "PHP" ];
+    cursos.push("Javascript"); // push é um método que pode ser aplicado em arrays.
+
+
+                    </code>
+                </pre>
+
+                <p>
+                    Este assunto de objetos em Javascript é fascinante e teremos tempo para abordá-lo com mais profundidade.
+                </p>
+
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

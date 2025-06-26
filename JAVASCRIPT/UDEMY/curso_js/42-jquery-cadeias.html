@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-cadeias";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Métodos em cadeia</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Métodos em cadeia</h3>
+
+                <p>
+                    Outra grande vantagem obtida com o jQuery é o uso de métodos em cadeia repetindo-se a notação com ponto. Isto faz com que seja 
+                    possível realizar vários métodos no mesmo objeto com apenas um comando.
+                </p>
+
+                <p>
+                    No exemplo da última aula, em que fizemos dois animates em fila, não precisávamos ter selecionado o elemento duas vezes, 
+                    bastava usar os métodos em cadeia. Isto reduz o código e melhora a performance.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    $("#animar").click(function(){
+
+        $("#quadrado").animate({
+            width: '+=20px'
+        },500).animate({
+            height: '+=20px'
+        },500).css('background-color', 'green');
+
+    });
+
+                    </code>
+                </pre>
+
+                <button id="animar">Aumentar quadrado</button>
+
+                <div id="quadrado" style="color:white; font-size: 18px; margin-top: 30px; width: 60px; height: 60px; background-color: black"></div>
+
+               <p>
+                   Note que no exemplo acima, a cor foi alterada sem respeitar a fila, pois como foi dito, apenas o método animate possui esta funcionalidade.
+                   Para alterar a cor após a última animação, podemos fazer isto com um callback no último animate da fila.
+               </p>
+
+               <pre>
+                    <code class="javascript">
+
+    $("#animar").click(function(){
+
+        $("#quadrado").animate({
+            width: '+=20px'
+        },500).animate({
+            height: '+=20px'
+        },500, function() {
+            $("#quadrado").css('background-color', 'green')
+        });
+
+    });
+
+                    </code>
+                </pre>
+
+               <p>
+                   Desta maneira perde-se a vantagem que temos com os métodos em cadeia, mas é um recurso que pode ser usado caso necessário.
+               </p>
+
+               <h5>Melhorando a visualização dos métodos em cadeia</h5>
+
+               <p>
+                   A utilização de muitos métodos em cadeia pode gerar uma certa confusão no código, principalmente com velocidades e funções callback
+                   sendo usadas. Para melhorar a organização e visualização do código, podemos pular linhas entre os métodos e ajustar a indentação
+                   conforme nos seja mais conveniente.
+               </p>
+
+               <pre>
+                    <code class="javascript">
+
+    $("#animar").click(function(){
+
+        $("#quadrado")
+            .animate({width: '+=20px'},500)
+            .animate({height: '+=20px'},500, 
+                function() {
+                    $("#quadrado").css('background-color', 'green')
+                }
+            )
+            .animate({borderRadius: '20px'});
+    });
+
+                    </code>
+                </pre>
+
+                
+
+                
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

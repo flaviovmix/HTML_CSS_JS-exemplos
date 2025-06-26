@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="variaveis";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Variáveis</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Variáveis</h3>
+               
+                <p>
+                    Programas de computador existem basicamente para trabalhar com dados. Um programa recebe inputs de dados, 
+                    processa esses dados e retorna alguma informação. Podemos chamar esses dados e informações de valores.
+                </p>
+
+                <p>
+                    Vamos pensar no exemplo de um serviço web de previsão do tempo. O sistema recebe dados digitados pelo usuário, 
+                    que podem ser latitude, longitude, CEP, endereço, cidade, etc. Então o programa, com esses dados, faz uma consulta em 
+                    uma base de dados meteorológica, e retorna informações: temperatura, clima, umidade, etc.
+                </p>
+
+                <p>
+                    Para conseguirmos trabalhar com esses valores no nosso programa, temos que guardá-los em variáveis. As variáveis precisam 
+                    então ter nomes, para que possamos nos referir a elas depois de criá-las. Estes nomes são os identificadores, e devem seguir 
+                    as regras enumeradas mais abaixo.
+                </p>
+
+                <p>
+                    Para criar uma variável em Javascript, usamos a keyword 'var', seguida pelo identificador, o sinal de igual (=) 
+                    e o valor que queremos atribuir a ela:
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var latitude = 40.87663;
+    var longitude = -8.08373;
+                    </code>
+                </pre>
+
+                <p>
+                    Depois de fazer isso, a qualquer momento podemos utilizar esses valores. Faça um teste, crie as variáveis acima e 
+                    depois e depois faça os comandos:
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    console.log(latitude);
+    console.log(longitude);
+                    </code>
+                </pre>
+
+                <p>
+                    Se tudo deu certo, você deve ter visto os valores de latitude e longitude sendo passados no console. Agora para começar a trabalhar com variáveis 
+                    e pra entender porque desta vez não usamos as aspas no console, precisamos ainda falar sobre um conceito fundamental em qualquer 
+                    linguagem de programação: Tipos de dados, que é o tema da próxima aula.
+                </p>
+
+                <h4>Identificadores</h4>
+               
+                <p>
+                    Identificadores são nomes que usaremos para nomear nossas variáveis e também funções, assunto que vamos aprender nas próximas aulas. Estes nomes 
+                    podem conter: 
+                </p>
+
+                <ul>
+                    <li>Letras</li>
+                    <li>Números</li>
+                    <li>Underscores (_)</li>
+                    <li>Cifrão ($)</li>
+                </ul>
+
+                <p>
+                    Atenção com números, pois eles não são permitidos no primeiro caractere, apenas nos demais.
+                </p> 
+
+                <p>Espaços não podem ser usados nos nomes das variáveis. Veja abaixo alguns exemplos:</p>
+                    
+
+                    <pre>
+                        <code>
+    a             // ok
+    Aluno         // ok
+    $nome         // ok
+    novo_aluno    // ok
+    aluno_2       // ok
+    1_b           // ilegal, pois começa com número 
+    meu-nome      // ilegal, pois contém traço (apenas underscores são permitidos)
+    meu nome      // ilegal, pois contém espaço
+    new           // ilegal, pois 'new' é uma keyword, conforme será explicado logo abaixo.
+                        </code>
+                    </pre>
+
+                    Letras com acentos (á, é, ú etc.) são aceitas pela linguagem, mas o seu uso não é recomendável pois pode gerar problemas relacionados com codificação,
+                    além de tornar a leitura e manutenção do código mais difícil para pessoas que falam línguas que não possuem os mesmos acentos.
+
+                </p>
+
+                <h4>Keywords</h4>
+               
+                <p>
+                    Keywords (ou reserved words) são palavras que a linguagem reserva para funções e comandos internos e que, portanto, não podem ser usadas em identificadores.
+                    Nas próximas aulas vamos falar sobre variáveis e funções e vamos ver que sempre que as criamos temos que atribuir-lhes nomes (identificadores).
+                    Neste caso, não podemos usar um nome que já esteja reservado pela linguagem. Abaixo temos alguns exemplos destas keywords:
+                </p>
+
+                <ul>
+                    <li>function</li>
+                    <li>if</li>
+                    <li>else</li>
+                    <li>var</li>
+                    <li>new</li>
+                    <li>return</li>
+                    <li>break</li>
+                    <li>default</li>
+                    <li>in</li>
+                </ul>
+
+                <a target="_blank" href="https://www.w3schools.com/js/js_reserved.asp">Veja a lista completa de keywords aqui</a>
+                
+                <h4>Case Sensitive</h4>
+               
+                <p>
+                    Javascript é uma linguagem "case sensitive", o que significa que ela é "sensível à caixa" ou, num português mais compreensível, sensível a letras 
+                    maiúsculas e minúsculas. Portanto há de se tomar um certo cuidado ao nomear variáveis e funções. Por exemplo, se criarmos uma variável com o 
+                    nome "matricula" e depois chamarmos esta variável por "MATRICULA", ela não será encontrada e o comando gerará um erro.
+                </p>
+
+                <p>
+                    Isto também significa que apesar de existir uma keyword chamada "function", teoricamente podemos usar os nomes "Function" ou "FUNCTION" para outras coisas.
+                    Eu disse "teoricamente", porque é altamente desaconselhável fazer isso, pois pode gerar confusão. Via de regra, tente evitar qualquer nome parecido com 
+                    as keywords.
+                </p>
+
+                <p>
+                    Quando quisermos procurar partes de textos específicos ou trabalhar com inputs do usuário em Javascript, deveremos ter um cuidado especial com essas questões de 
+                    sensibilidade à caixa. 
+                </p>
+
+                
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                    
+                </div>
+
+           </main>
+
+        </div>
+        
+        <script src="js/scripts.js"></script> 
+    </body>
+
+</html>

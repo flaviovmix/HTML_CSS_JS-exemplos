@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="dom";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>DOM - Document Object Model</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>DOM - Document Object Model</h3>
+               
+                <p>
+                    Até este momento do curso, nós já aprendemos a criar variáveis, atribuir-lhes valores, já falamos sobre alguns dos tipos dos quais podem ser 
+                    estes valores e já fizemos algumas operações com eles. Já estamos avançando, entretanto ainda não fizemos grandes coisas, já que estávamos apenas
+                    soltando os valores das variáveis no console.
+                </p>
+
+                <p>
+                    As coisas vão começar a ficar um pouco mais interessantes agora, pois vamos começar a trabalhar com os elementos html da página. Com isso vamos conseguir
+                    soltar os valores das variáveis dentro da nossa página, vamos poder alterar o css dos elementos e posteriormente monitorar eventos para tornar nossa página interativa. Para isso, precisamos primeiro conhecer o DOM.
+                </p>
+
+                <h4>O que é o DOM?</h4>
+
+                <p>O Document Object Model é um objeto criado pelo browser assim que a página é carregada. Ele guarda toda a estrutura da página. Vamos ver um exemplo simples abaixo:</p>
+                    
+
+                <pre>
+                    <code class="html">
+    
+    &lt;html&gt;
+        
+        &lt;head&gt;
+            &lt;title&gt;Página simples em html&lt;/title&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+            &lt;h1&gt;Heading da página&lt;/h1&gt;
+            &lt;p&gt;Parágrafo da página&lt;/p&gt;
+        &lt;/body&gt;
+
+    &lt;/html&gt;
+
+                    </code>
+                </pre>
+
+                <p>Quando esta página é carregada, o browser monta o DOM, que tem uma estrutura de árvore, como na figura abaixo:</p>
+
+                <figure>
+                    <img src="img/dom.png" alt="Document Object Model">
+                    <figcaption>Imagem: Representação em árvore do documento HTML.</figcaption>
+                </figure>
+                <br>
+               
+                <p>Duas coisas importantes de se notar na figura são que nesta estrutura em árvore, existe uma hierarquia, portanto elementos tem "pai" (parent) e
+                    filhos (child elements). Isto será usado mais tarde, para por exemplo, alterar todos os filhos de algum elemento específico.
+                </p>
+
+                <p>
+                    A segunda coisa, é que o elemento document é o que está acima de todos os outros e é por meio dele que vamos ter acesso a todos os
+                    elementos da nossa página.
+                </p>
+
+                <p>
+                    Em resumo, a partir do DOM, nós poderemos:
+                </p>
+
+                <ul>
+                    <li>Adicionar ou remover elementos HTML</li>
+                    <li>Alterar os elementos HTML da página</li>
+                    <li>Alterar atributos dos elementos HTML (como o 'src' de uma imagem por exemplo)</li>
+                    <li>Alterar o CSS</li>
+                    <li>Reagir a eventos na página (clique, rolagem, input em formulários, passar o cursor sobre elementos, etc)</li>
+
+                </ul>
+
+                <p>
+                    Agora que já sabemos o que é o DOM e o que podemos fazer com ele, na próxima aula vamos começar a usá-lo na prática.
+                </p>
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+
+    </body>
+
+</html>

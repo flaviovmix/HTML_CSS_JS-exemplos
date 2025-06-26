@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="loop-while";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Loops While e Do/While</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Loops while e do/while</h3>
+                
+                <p>
+                    Os loops while e do/while têm o funcionamento parecido com o loop for, mas a forma de escrevê-los é diferente, como vamos ver a seguir.
+                </p>
+
+                <h4>
+                    Loop while
+                </h4>
+
+               <pre>
+                   <code class="javascript">
+    var count = 0;
+
+    while (count < 5) {
+        console.log(count);
+        count++;
+    }
+
+    /* O console mostrará:
+
+    0
+    1
+    2
+    3
+    4
+
+    */
+                   </code>
+               </pre>
+
+               <p>
+                   A lógica é exatamente a mesma usada nos loops for, mas no caso do loop while, apenas a condição a ser atendida
+                   deve ser informada entre parênteses. Devemos iniciar a variável de controle antes de começar o loop, e o operador 
+                   incremental fica junto com os demais comandos a serem executados pelo loop.
+               </p>
+
+               <h4>
+                    Loop do/while
+                </h4>
+
+                <p>
+                    O loop do/while funciona da mesma maneira, a diferença é que a avaliação da condição é feita apenas ao final da primeira passagem. 
+                    Isso significa que os comandos serão executados pelo menos uma vez, mesmo que a condição retorne false.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+        var count = 10;
+    
+        do {
+            console.log(count);
+            count++;
+        } while (count < 5); // O loop do/while precisa de ponto e vírgula depois da condição
+    
+        // O console mostrará: 10
+    
+                    </code>
+                </pre>
+
+                <p>
+                    Note que a condição nunca chegou a ser atendida, mas como a avaliação é feita apenas no final, 
+                    os comandos foram executados na primeira vez. 
+                </p>
+
+               
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

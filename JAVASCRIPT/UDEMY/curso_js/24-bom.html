@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="bom";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>BOM - Browser Object model</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+        
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3 id="titulo-bom">BOM - Browser Object Model</h3>
+                
+                <p>
+                    O Browser Object Model representa a janela do Browser. A partir dele nós conseguimos interagir com certas propriedades do 
+                    browser, como o tamanho da janela, a posição do cursor, a barra de rolagem, etc.
+                </p>
+
+                <p>
+                    Assim como o DOM é acessado por meio do objeto document, o BOM é acessado por meio do objeto window.
+                </p>
+
+
+                <pre>
+                    <code class="javascript">
+    console.log(window.innerWidth);  /* Esta propriedade retorna a largura interna do browser, 
+    sem contar as barras de ferramentas e de rolagem */
+                    </code>
+                </pre>
+
+                <p id="teste">
+                    Como estamos trabalhando com o Javascript client-side onde tudo acontece dentro do browser, pode-se dizer que quase tudo está dentro do 
+                    objeto window, até mesmo o elemento document.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    window.document.getElementById("teste").innerHTML = "podemos alterar desta maneira o inner html do elemento teste";
+                    </code>
+                </pre>
+
+                <p>
+                    Como é de se imaginar, não precisamos sempre mencionar o objeto window, tanto é que usamos 
+                    diretamente o objeto document nas aulas anteriores sem nenhum problema. Até mesmo no primeiro exemplo, 
+                    poderíamos ter feito diretamente:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    console.log(innerWidth);
+                    </code>
+                </pre>
+
+                <p>
+                    Porém, para evitar erros e confusões, é recomendável mencionar o objeto window 
+                    quando não estivermos trabalhando dentro do objeto document. Vamos agora ver alguns exemplos interessantes 
+                    que podemos fazer usando o BOM.
+
+                </p>
+
+                <h4>window.onmousemove</h4>
+
+                <p>
+                    O evento onmousemove representa o movimento do cursor pela página. Podemos utilizá-lo para monitorar a posição 
+                    do cursor em relação às bordas superior e esquerda do browser e mostrar uma mensagem quando o cursor estiver 
+                    em uma determinada posição.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    window.onmousemove = function(e){
+        if (e.pageY < 5) {
+            alert('Não perca os descontos exclusivos na seção de promoções');
+        }
+    };
+
+    /* Vamos lembrar que se passarmos um argumento na função para um evento, 
+    podemos usá-lo dentro da função para obter informações sobre esse evento. 
+    Neste exemplo a propriedade pageY pode nos ser bastante útil */
+                    </code>
+                </pre>
+
+
+               
+                
+
+               
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

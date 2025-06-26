@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="exercicio5";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Folha de Exercícios 5</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>Folha de Exercícios N. 5</h3>
+
+                <p>
+                    1) Popule o select box abaixo com a lista de países do mundo. A tarefa deve ser realizada em duas partes:
+
+                    <li> Uma função para pegar os países via AJAX, do seguinte endereço https://restcountries.eu/rest/v2/all </li>
+                    <li> Uma função para montar os elementos &lt;option&gt; com os nomes dos países, que deve ser chamada como 
+                        callback da função acima.
+                    </li>
+                </p>
+
+                <select id="paises">
+                    <option selected value="Selecione">Selecione o país</option>
+                   
+                </select>
+
+                <br><br>
+
+                <p>
+                    2) Crie uma função para receber o array abaixo como argumento e calcular a média de avaliações dos 
+                    cursos e soltá-las no console. Use Try/Catch/Throw para atender às condições abaixo:
+                    <li>Se um curso não tiver avaliações, deve soltar "Curso não possui nenhuma avaliação".</li>
+                    <li>Se o curso tiver menos de 5 avaliações, deve soltar "Curso não tem avaliações suficientes".</li>
+                    <li>Se o curso tiver 5 ou mais avaliações, soltar a média de avaliações.</li>
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var cursos = [
+        {
+            "titulo": "PHP",
+            "aval": []
+        },
+        {
+            "titulo": "Javascript",
+            "aval": [5,5,4.5,4,5,5,5,4.5]
+        },
+        {
+            "titulo": "Python",
+            "aval": [5,5,4,4,5,3,5,4,4,5]
+        },
+        {
+            "titulo": "Machine Learning",
+            "aval": [5,5,4.5]
+        }
+    ];
+
+                    </code>
+                </pre>
+
+                
+                <p>
+                    3) Passe as variáveis abaixo para um namespace próprio. Dentro deste namespace, crie uma função 
+                    para percorrer o array de acessos e soltar no local abaixo a lista dos acessos no seguinte formato:
+                    "Acesso de Eduardo Jorge, no dia 13/07/18"
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var usuarios = {
+        "33884h": "João Gomes",
+        "43585f": "Maria Luisa",
+        "93661h": "Pedro Henqrique",
+        "23172g": "Paula Carvalho",
+    };
+    
+    var acessos = [
+        {
+            "usuario": "33884h",
+            "data": "10/07/18"
+        },
+        {
+            "usuario": "33884h",
+            "data": "11/07/18"
+        },
+        {
+            "usuario": "3585f",
+            "data": "19/07/18"
+        },
+        {
+            "usuario": "93661h",
+            "data": "24/07/18"
+        },
+        {
+            "usuario": "23172g",
+            "data": "13/08/18"
+        },
+        {
+            "usuario": "93661h",
+            "data": "14/08/18"
+        }
+    ];
+
+                    </code>
+                </pre>
+
+                <div style="background-color: lightgrey; padding: 10px">
+                    <h5 style="margin-top: 0">Acessos</h5>
+                    <ul id="acessos">
+                        <p>Acesso de Eduardo Jorge, no dia 13/07/18</p>
+                    </ul>
+                </div>
+
+
+
+                <br><br>
+
+                
+                4) <b>Desafio final:</b> Trabalhe com o API Open Trivia para gerar uma pergunta sobre filmes.
+                Endereço do API: <a href="https://opentdb.com/api_config.php">https://opentdb.com/api_config.php</a> <br><br>
+
+                Esta pergunta deve ser colocada abaixo, com as opções de resposta em radio buttons. Deve haver também um 
+                botão "Enviar Reposta", que informará ao usuário se a resposta está certa ou errada. O botão só deve aparecer se 
+                alguma resposta estiver marcada.
+
+
+                <br><br>
+
+                
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>
+

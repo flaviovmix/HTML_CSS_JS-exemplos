@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="jquery-intro";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>jQuery - Introdução</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+
+                <h3>jQuery - Introdução</h3>
+
+                <p>
+                    jQuery é uma biblioteca Javascript que simplifica o uso da linguagem, requerendo menos linhas de código para fazer mais. 
+                    Vejamos a diferença, por exemplo, da manipulação do CSS para elementos de uma classe específica:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    <u>Vanilla Javascript*:</u>  
+
+    var elementos = document.getElementsByClassName("exemplo");
+
+    for (var a = 0; a < elementos.length; a++) {
+        
+        elementos[a].style['background-color'] = "black";
+            
+    }
+
+    <small><strong>* Quando usamos o Javascript puro sem nenhuma biblioteca ou framework, como fizemos até agora,
+    usamos o termo Vanilla Javascript.</strong></small>
+
+
+    <u>jQuery:</u>
+    
+    $(".exemplo").css("background-color", "black");
+                        
+    
+                    </code>
+                </pre>
+
+                
+
+                <p>
+                    Com jQuery é possível manipular elementos do DOM e o CSS, monitorar eventos, fazer efeitos e animações além de fazer 
+                    pedidos AJAX, temas que vamos ver mais adiante no curso. 
+                </p>
+
+                <p>
+                    jQuery roda em todos os navegadores e possui plugins para fazer com facilidade diversas funcionalidades, como galerias de fotos, 
+                    grids, sliders, popups, validação de formulários e muito mais.
+                </p>
+
+               <h4>Instalação do jQuery</h4>
+
+               <p>
+                   Para começar a usar o jQuery precisamos fazer o download do arquivo Javascript com todo o código da biblioteca. Para isso, vá até 
+                   <a href="http://jquery.com/download/">http://jquery.com/download/</a> e faça o download da versão comprimida mais recente. Pode ser que ao 
+                   em vez de iniciar o donwload do arquivo, o código abra em formato texto no navegador. Se isso acontecer, pressione CTRL + A para selecionar tudo e 
+                   CTRL + C para copiar. Depois abra um novo arquivo na pasta js, cole o código e salve o arquivo com a extensão '.js', por exemplo 'jquery.js'. 
+               </p>
+
+               <p>
+                   Se você estiver usando a versão comprimida (sem espaços e sem indentação), é uma boa prática incluir '.min' ao nome do arquivo para identificá-lo.
+                   É também interessante identificar a versão do jQuery que estamos utilizando. 
+                   Desta forma o nome do arquivo ficaria "jquery-3.3.1.min.js"
+               </p>
+
+               <p>
+                   Agora é só fazer o link nas páginas onde usaremos jQuery, assim como fazemos com qualquer arquivo Javascript:
+               </p>
+
+               <pre>
+                   <code class="javascript">
+
+    &lt;script src="jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+
+                   </code>
+               </pre>
+
+               <p>
+                   No início do curso, vimos que o local mais apropriado para incluir as tags <i>script</i> é ao final do documento, antes de fechar o 
+                   elemento body. Porém, no caso do jQuery, é mais recomendável incluí-lo dentro da seção <i>head</i> já que algumas funcionalidades da 
+                   página podem depender do jQuery, portanto queremos garantir que ele seja carregado antes de qualquer outro script.
+               </p>
+
+              
+
+               <p>
+                   Agora que já temos o jQuery devidamente instalado, podemos começar a usá-lo. Na próxima aula vamos aprender a sintaxe os comandos básicos desta biblioteca.
+               </p>
+                
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+                
+            </main>
+            
+        </div>
+        
+        <script src="js/scripts.js"></script>
+        
+
+    </body>
+    
+    
+
+</html>
+

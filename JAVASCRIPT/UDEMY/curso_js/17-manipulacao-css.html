@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="manipulacao_css";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Manipulação do CSS</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <header>
+                <div class="logo-area">
+                    <img src="img/logo_js.png" alt="logo javascript">
+                </div>
+                <div class="course-title">
+                    <h1>Aprenda javascript com facilidade do zero</h1>
+                    <h2>Prof. Ivan Lourenço Gomes</h2>
+                </div>
+            </header>
+
+            <main>
+                <h3>Manipulação do CSS</h3>
+                
+                <p>
+                    Podemos manipular o CSS de qualquer elemento da página via javascript. Para fazer isso usamos a propriedade style do objeto em questão.
+                    A propriedade style é um objeto cujas propriedades são as propriedades CSS. Veja o código a seguir:
+                </p>
+
+
+                <pre>
+                    <code class="html">
+    &lt;button id="botao_cor"&gt;Clique para mudar de cor e mover para a direita&lt;/button&gt;
+                    </code>
+                </pre>
+
+                <button id="botao_cor">Clique para mudar de cor e mover para a direita</button>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("botao_cor").onclick = function() {
+        document.getElementById("botao_cor").style['background-color'] = "purple";
+        document.getElementById("botao_cor").style.transform = "translateX(100px)";
+    };
+
+    /* temos que usar a notação com colchetes com o background-color 
+    porque o nome da propriedade contém um traço. Falamos isso na aula sobre objetos. */
+
+
+                    </code>
+                </pre>
+
+                <p>
+                    O código acima pode ser simplificado, pois estamos definindo uma função para o evento onclick do elemento 
+                    "botao_cor". Dentro da função, queremos alterar o CSS dele próprio, portanto podemos usar a keyword 
+                    <i>this</i> para referenciá-lo. 
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    document.getElementById("botao_cor").onclick = function() {
+        this.style['background-color'] = "purple";
+        this.style.transform = "translateX(100px)";
+    };
+    
+
+    // Outra maneira de simplificar usando uma variável:
+
+    var botao = document.getElementById("botao_cor");
+
+    botao.onclick = function() {
+        botao.style['background-color'] = "purple";
+        botao.style.transform = "translateX(100px)";
+    };
+
+
+                    </code>
+                </pre>
+
+
+
+
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="tipos_dados_null";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tipos de Dados - null e undefined</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Tipos de dados - null e undefined</h3>
+               
+                <p>
+                    Nem sempre variáveis possuem valores e os tipos de dados null e undefined indicam justamente 
+                    a ausência de valor de uma variável.
+                </p>
+
+                <h4>
+                    undefined
+                </h4>
+
+                <p>Quando criamos uma variável e não lhe atribuímos valor, ela automaticamente recebe o valor undefined e este 
+                    é também o seu tipo de dados.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var undf;
+    console.log(undf);
+
+                    </code>
+                </pre>
+
+                <p>
+                    Também há outros casos em que podemos encontrar valores undefined. Quando tentamos acessar o índice 
+                    inexistente de um string, a valor retornado é undefined.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var nome = "Pedro";
+    console.log(nome[0]); // O console mostrará "P"
+    console.log(nome[4]); // O console mostrará "o"
+    console.log(nome[10]); // O console mostrará undefined
+
+
+                    </code>
+                </pre>
+
+                <p>
+                    Quando falarmos sobre arrays e objetos vamos ver que:
+
+                    <li>Arrays, assim como strings, tem um tamanho e cada um dos seus elementos pode 
+                        ser acessado por um índice. Quando se tenta acessar um índice que não existe, 
+                        temos o valor undefined retornado.
+                    </li>
+
+                    <li>
+                        Objetos possuem propriedades. Quando tentamos acessar uma propriedade do objeto que não existe 
+                        também temos o valor undefined retornado.
+                    </li>
+                </p>
+
+
+
+                <h4>
+                    null
+                </h4>
+
+                <p>
+                    null na verdade não é um tipo de dados, mas isso é considerado por muitos como uma falha do Javascript. 
+                    Quando temos uma variável com algum valor e queremos "apagar" este valor, podemos atribuir-lhe 
+                    o valor de null.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var temperatura = 35;
+    console.log(temperatura);
+
+    temperatura = null;
+    console.log(temperatura); // O console mostrará null
+    
+                    </code>
+                </pre>
+
+                <p>
+                    No exemplo acima, se tivéssemos uma estrutura condicional, poderíamos testar se há algum valor definido 
+                    para a variável temperatura e escolher entre dois caminhos:
+
+                    <li>Se não houver valor (temperatura == null), solte uma mensagem informando que não 
+                        foi há temperatura a mostrar.
+                    </li>
+                    <li>Se houver valor (temperatura != null), mostre a temperatura.</li>
+                </p>
+
+                <h4>null x undefined</h4>
+                    
+                <p>O exemplo mostrado acima pode também ser feito com undefined. Na verdade a linguagem javascript considera 
+                    os valores null e undefined como iguais. Podemos testar com o código abaixo:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var undf = undefined;
+    var nl = null;
+    console.log(undf == nl);  // O console mostrará true
+
+                    </code>
+                </pre>
+
+                <p>
+                    Estes valor porém não são do mesmo tipo, portanto se fizermos uma comparação de igualdade de valor e tipo (===), 
+                    obteremos um false.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var undf = undefined;
+    var nl = null;
+    console.log(nl === undf);  // O console mostrará false
+
+    console.log(typeof undf);  // O console mostrará undefined
+    console.log(typeof nl);  // O console mostrará object
+
+                    </code>
+                </pre>
+
+                <p>
+                   O valor null portanto é do tipo objeto em javascript, o que muito acreditam ser uma falha, como dito acima. 
+                   Para estas pessoas, null deveria ser um tipo de dados assim como o undefined.
+                </p>
+
+                <p>
+                    Se deveria ser assim ou não, não se pode afirmar. O importante é saber como as coisas funcionam na linguagem 
+                    Javascript para podermos saber trabalhar com ela.
+                </p>
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+
+        <script src="js/scripts.js"></script> 
+
+    </body>
+
+</html>
+

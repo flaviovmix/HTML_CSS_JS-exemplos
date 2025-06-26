@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css">
+        <script src="tools/indice.js"></script>
+        <script>var current_class="tipos_dados_numbers";</script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tipos de Dados - numbers</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+
+       <div class="page-container">
+           <header>
+               <div class="logo-area">
+                   <img src="img/logo_js.png" alt="logo javascript">
+               </div>
+               <div class="course-title">
+                   <h1>Aprenda javascript com facilidade do zero</h1>
+                   <h2>Prof. Ivan Lourenço Gomes</h2>
+               </div>
+           </header>
+
+           <main>
+               <h3>Tipos de dados - numbers</h3>
+               
+              
+
+                <p>
+                    Números (ou numbers) podem ser positivos, negativos, inteiros ou decimais (também chamados de floats).
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var ano_nascimento = 1986;
+    var preco = 16.99;  // floats devem ser usadas com ponto, nunca com vírgula.
+    var temperatura = -5;
+    var numero_grande = 2.2e45; /* números muito grandes podem ser representados em Javascript pela notação exponencial. 
+    Neste exemplo, este número significa 2.2 x 10<sup>45</sup> */
+
+                    </code>
+                </pre>
+
+                <p>
+                    Números são usados para fazer diversos tipos de cálculos. Com eles podemos fazer desde operações aritméticas básicas, comparações e até expressões 
+                    complexas.
+                </p>
+
+                <ul>
+                    <li><h5>Aritmética básica</h5></li>
+                </ul>
+
+                <pre>
+                    <code class="javascipt">
+    var num1 = 20;
+    var num2 = 3;
+
+    var soma = num1 + num2;
+    var subtracao = num1 - num2;
+    var divisao = num1 / num2;
+    var multiplicacao = num1 * num2;
+
+    var media = (num1 + num2) / 2;
+
+    /* Parênteses podem ser usados para montar expressões. Neste caso eles são necessários para calcular a média de dois números, 
+    caso contrário a divisão num2 / 2 seria realizada antes da soma, devido à <a href="https://www.matific.com/bra/pt-br/blog/2016/01/12/6-passos-para-aprender-a-ordem-das-operacoes/" target="_blank">ordem das operações matemáticas</a>.
+    
+
+                    </code>
+                </pre>
+
+                <ul>
+                    <li><h5>O Objeto Math</h5></li>
+                </ul>
+
+                <p>
+                    A linguagem Javascript suporta diversas operações aritméticas mais complexas por meio do objeto Math e seus diversos métodos, como nos exemplos abaixo.
+                    Não se preocupe agora em entender o conceito de objetos e métodos, pois tudo ficará bem claro em breve quando falarmos dos outros tipos de dados além dos primitivos.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var potencia = Math.pow(2,4);  /*  Neste caso usamos o método pow do objeto Math, que faz potenciação.
+    Este método requer duas informações separadas por vírgula entre parênteses: o número base, e a potência.
+    Isso significa que temos 2<sup>4</sup>, que dá 16. */
+
+    var arredonda = Math.round(2.7); // Arredondamento. Resultado: 3
+
+    var arredonda_cima = Math.ceil(4.3) // Arredondamento para cima. Resultado: 5
+    
+    var arredonda_baixo = Math.floor(4.6) // Arredondamento para baixo. Resultado: 4
+
+    var raiz = Math.sqrt(36) // Raiz quadrada. Resultado: 6
+
+                    </code>
+                </pre>
+
+                <ul>
+                    <li><h5>Operadores incrementais</h5></li>
+                </ul>
+
+                <p>
+                    Muitas vezes vamos precisar incrementar variáveis numéricas, principalmente quando começarmos a usar loops. 
+                    Imagine que queiramos somar 5 ao valor de uma variável, temos duas formas de fazer isso:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    var increment = 20;
+    increment = increment + 5; // redefinimos o valor dela, para o valor que ela já possuía, mais 5.
+    console.log(increment); // O console mostrará 25
+
+    // esta estrutura variável = variável + valor, pode ser simplificada com o operador incremental +=
+
+    increment = 1;
+    increment += 5;
+    console.log(increment); // O console mostrará 6
+
+    // podemos também usar *=, /= e -= para multiplicação, divisão e subtração
+
+                    </code>
+                </pre>
+
+                <p>Há ainda outra maneira de incrementar variáveis. Temos operadores incrementais que aumentam (++) ou diminuem (--) o valor de uma 
+                    variável em 1 unidade.
+                </p>
+
+                <pre>
+                    <code class="javascript">
+
+    increment = 10;
+    increment++;
+    console.log(increment); // O console mostrará 11
+
+    increment = 20;
+    increment--;
+    console.log(increment); // O console mostrará 19
+
+                    </code>
+                </pre>
+
+                <p>
+                    O operador incremental += também funciona bem com strings:
+                </p>
+
+                <pre>
+                    <code class="javascript">
+    var nome = "João";
+    nome += " ";
+    nome += "Gomes";
+
+    console.log(nome); // O console mostrará "João Gomes"
+    
+                    </code>
+                </pre>
+                
+
+                <h4>Como converter o tipo de uma variável?</h4>
+
+                <p>
+                    Às vezes, para nos prevenir de erros em nosso código, temos que fazer conversões de tipos de variáveis. Imagine que tivéssemos
+                    aquelas variáveis de ddd e telefone da seguinte maneira:
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+    var ddd = 21;
+    var telefone = 998887655;
+
+    /* Se quisermos montar o telefone completo usando concatenação, podemos ter problemas já que as variáveis são do tipo número. 
+    Neste caso devemos convertê-las antes de montar o telefone. 
+    Para isso, usamos o método toString, que recebe entre parênteses a valor ou variável que queremos converter.*/
+
+    var ddd_string = ddd.toString();
+    var tel_string = telefone.toString();
+
+    var telefone_completo = ddd_string + tel_string;
+
+    console.log(telefone_completo); // retorna '21998887655'
+
+                    </code>
+                </pre>
+
+                <p>
+                        Também poderíamos precisar fazer o contrário. É muito comum receber dados de fontes externas em formato string.
+                        Imagine que recebamos uma idade em string e queiramos testar se ela é maior que 18. Devemos usar os 
+                        métodos parseInt (se quisermos número inteiro) ou parseFloat (se quisermos número com decimais) antes de fazer
+                        o teste.
+                </p>
+
+                <pre>
+                    <code class="javascipt">
+
+    var idade = '17';
+    var idade_num = parseInt(idade);
+    idade_num++;
+
+    console.log(idade_num); // O console mostrará 18
+
+                    </code>
+                </pre>
+
+                <p>
+                    Tenha bastante atenção com as conversões pois nem sempre a falta delas gerará um erro visível, mas pode 
+                    retornar resultados incorretos.
+                </p>
+
+                <div id="bottom-area">
+                    <div class="prev-next-link">
+                        <div class="link-aula" id="prev_class">
+                            
+                        </div>
+                        <div class="link-aula" id="next_class">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="classes">
+                        <h3>
+                            Índice de Aulas
+                        </h3>
+                        <ul id="class_index">
+                        </ul>
+                    </div>
+                </div>
+
+           </main>
+
+        </div>
+        <script src="js/scripts.js"></script> 
+    </body>
+
+</html>
