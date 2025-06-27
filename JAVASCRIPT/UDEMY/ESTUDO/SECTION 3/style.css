@@ -1,0 +1,9 @@
+.conteudo, p {
+    font-family: sans-serif;
+    padding: 5px;
+    background-color: bisque;
+    margin: 3px 5px;
+    width: 250px;
+    transition: .5s;
+    cursor: pointer;
+}
