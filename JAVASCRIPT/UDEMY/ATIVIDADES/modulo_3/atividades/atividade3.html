@@ -140,7 +140,7 @@
         </div>
 
         <div>
-            <label for="faltas">Quantidade de faltas:</label>
+            <label for="faltas">Quantidade de presença:</label>
             <input id="faltas" name="faltas" type="number" value="10">
         </div>
         <button id="adicionar" type="button">Adicionar</button>
@@ -153,28 +153,83 @@
                 <th>Nota 1</th>
                 <th>Nota 2</th>
                 <th>Média</th>
-                <th>Faltas</th>
+                <th>Presença</th>
             </tr>
         </thead>
 
 
         <tbody id="corpoTabela">
-            <!-- <tr>
-                <td class="nome">Flávio</td>
-                <td>10.0</td>
-                <td>8.7</td>
-                <td>9.3</td>
-                <td>7</td>
-            </tr>
-            <tr>
-                <td colspan="6" style="text-align: center; font-weight: bold;">
-                    Falta acima de 60%.
-                </td>
-            </tr> -->
         </tbody>
     </table>
 
-    <script src="./script.js"></script>
+    <script>
+function gerarTabela(nome, nota1, nota2, faltas) {
+    var tabela = document.getElementById("corpoTabela");
+
+    const linha = document.createElement("tr");
+
+    const tdNome = document.createElement("td");
+    tdNome.textContent = nome;
+    linha.appendChild(tdNome);
+
+    const tdNota1 = document.createElement("td");
+    tdNota1.textContent = nota1;
+    linha.appendChild(tdNota1);
+
+    const tdNota2 = document.createElement("td");
+    tdNota2.textContent = nota2;
+    linha.appendChild(tdNota2);
+
+    const tdMedia = document.createElement("td");
+    tdMedia.textContent = (parseFloat(nota1) + parseFloat(nota2)) / 2;
+    linha.appendChild(tdMedia);
+
+    const tdFaltas = document.createElement("td");
+    tdFaltas.textContent = faltas;
+    linha.appendChild(tdFaltas);
+
+    const aviso = document.createElement("tr");
+    const tdAviso = document.createElement("td");
+    tdAviso.colSpan = 6;
+    tdAviso.style.textAlign = "center";
+    tdAviso.style.fontWeight = "bold";
+    tdAviso.style.padding = "5px";
+
+    var media =  (parseFloat(nota1) + parseFloat(nota2)) / 2;
+    var presenca = (20 - faltas) / 20;
+
+    if (media >= 6.5 && presenca <= 0.7) {
+        tdAviso.textContent = "Aprovado";
+    } else if (media < 6.5 && presenca < 0.7) {
+        tdAviso.textContent = "Reprovado por falta e falta de nota";
+    } else if (media < 6.5 ) {
+        tdAviso.textContent = "Reprovado por nota";
+    }
+
+    console.log(media);
+    console.log(presenca);
+
+    aviso.appendChild(tdAviso);
+
+    tabela.appendChild(linha);
+    tabela.appendChild(aviso);
+
+}
+
+var btnAdicionar = document.getElementById("adicionar");
+btnAdicionar.addEventListener("click", () => {
+
+    var nome = document.getElementById("nome").value;
+    var nota1 = document.getElementById("nota1").value;
+    var nota2 = document.getElementById("nota2").value;
+    var faltas = document.getElementById("faltas").value;
+
+    gerarTabela(nome, nota1, nota2, faltas);
+}
+
+);
+
+    </script>
 </body>
 
 </html>

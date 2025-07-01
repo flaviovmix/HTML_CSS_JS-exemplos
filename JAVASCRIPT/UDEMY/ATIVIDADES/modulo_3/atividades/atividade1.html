@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        h3 {
+            font-family: sans-serif;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+        border: 2px solid #222;
+        padding: 5px;
+        border-radius: 4px;
+        width: 40px;
+        }
+
+        button {
+            margin: 15px 0;
+            padding: 5px 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Temperatura</h3>
+    <input id="celso" type="number" value="38"><span> ºC</span>
+    <button id="calcular">Calcular</button>
+    <input id="firenrite" type="text"><span> ºF</span>
+
+    <script>
+        // Seleciona os elementos do DOM corretamente
+        var inputCelso = document.getElementById("celso");
+        var inputFirenrite = document.getElementById("firenrite");
+        var botaoCalcular = document.getElementById("calcular");
+
+        // Função que converte Celsius para Fahrenheit
+        function calculo(c) {
+            var firenrite = (9 * c / 5) + 32;
+            return firenrite;
+        }
+
+        function atualizaInput() {
+            var celsius = parseFloat(inputCelso.value);
+            inputFirenrite.value = calculo(celsius);
+        }
+
+        // Adiciona o event listener a um botão
+        botaoCalcular.addEventListener("click", atualizaInput);
+
+        // Adiciona o event listener a mudança do input
+        inputCelso.addEventListener("change", atualizaInput);
+
+        // Adiciona o event listener a digitação do input
+        inputCelso.addEventListener("input", atualizaInput);
+    </script>
+</body>
+</html>
