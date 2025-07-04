@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orçamento de Camiseta</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .formulario {
+            display: flex;
+            background: #fff;
+            margin: auto;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding: 20px;
+            width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-resumo {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            width: 800px;
+            margin: auto;
+        }
+
+        .area-quantidade {
+            width: 100px;
+        }
+
+        .btn-tom {
+            width: 100px;
+        }
+
+        .formulario label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 6px;
+            margin-top: 5px;
+        }
+
+        .opcoes {
+            margin-top: 10px;
+        }
+
+        button,
+        select {
+            margin-top: 5px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #e7e7e7;
+            cursor: pointer;
+        }
+
+        button.ativo {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .produto {
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .produto img {
+            height: 50vh;
+            max-width: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            transform-origin: top;
+            /* <-- ESSENCIAL */
+            transform: scale(1.0);
+            transition: transform 0.6s ease;
+        }
+
+        .container img:hover {
+            transform: scale(1.0);
+        }
+
+        .resumo {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 250px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .resumo2 {
+            margin-top: 15px;
+        }
+
+        .resumo h2 {
+            margin-top: 0;
+        }
+
+        .preco {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-top: 5px;
+        }
+
+        .comprar {
+            background: #30d158;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Demostração do personagem</h1>
+
+    <div class="container">
+
+        <div class="formulario">
+            <div class="opcoes">
+                <label>Personagem</label>
+                <select>
+                    <option>CHUN-LI</option>
+                    <option>BULMA</option>
+                    <option>HINATA</option>
+                    <option>MAI</option>
+                    <option>NUMERO 18</option>
+                    <option>PRINCESA PIT</option>
+                    <option>TEMARI</option>
+                    <option>RAVENA</option>
+                    <option>SAKURA</option>
+                    <option>VIDEL</option>
+                    <option>BETTY</option>
+                    <option>CAMMY</option>
+                    <option>JIll VALENTINE</option>
+                    <option>INO</option>
+                    <option>MAGA NEGRA</option>
+                    <option>MULHER MARAVILHA</option>
+
+                </select>
+            </div>
+
+            <div class="opcoes">
+                <label>Local</label>
+                <select>
+                    <option>BIBLIOTECA</option>
+                    <option>CASTELO</option>
+                    <option>DIABA</option>
+                    <option>DJ</option>
+                    <option>DORMINDO</option>
+                    <option>HOTEL</option>
+                    <option>JEDAI</option>
+                    <option>PISCINA</option>
+                    <option>PRAIA</option>
+                </select>
+            </div>
+            <!-- <div class="area-quantidade">
+                <label>Quantidade</label>
+                <input type="number" value="10" />
+            </div> -->
+
+            <div class="opcoes">
+                <label>Como está vestida</label>
+                <select>
+                    <option>TODA VESTIDA</option>
+                    <option>CALCINHA E SUTIAN</option>
+                    <option>SOMENTE SUTIAN</option>
+                    <option>SOMENTE CALCINHA</option>
+                    <option>PEITO DE FORA</option>
+                </select>
+            </div>
+
+            <div class="opcoes">
+                <label>Tom da ropa</label>
+                <button class="btn-tom ativo">Claro</button>
+                <button class="btn-tom">Escuro</button>
+            </div>
+
+        </div>
+
+        <div class="img-resumo">
+            <div class="produto">
+                <img src="./img/pixai.png" alt="Camiseta Estampada" />
+            </div>
+
+            <div>
+                <div class="resumo">
+                    <h2>Resumo</h2>
+                    <button class="comprar">Gerar</button>
+                    <p><strong>Nome:</strong> Camiseta Básica</p>
+                    <p><strong>Idade:</strong> Gola V</p>
+                    <p><strong>Nascionalidade:</strong> Com estampa</p>
+                    <p><strong>Altura:</strong> normal (150g / m²)</p>
+                    <p><strong>Peso:</strong> Branca</p>
+                    <p><strong>Quadril:</strong> Bulk - Sem Plástico</p>
+                    <p><strong>Busto:</strong> 10</p>
+                </div>
+
+                <div class="resumo resumo2">
+                    <p><strong>Local:</strong> Camiseta Básica</p>
+                    <p><strong>Vestida:</strong> Gola V</p>
+                    <p><strong>Tom da ropa:</strong> Com estampa</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
