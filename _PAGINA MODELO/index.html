@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="./style.css">
+  <title>Barra de Menu Elegante</title>
+
+</head>
+<body>
+  <header class="navbar-wrap">
+    <nav class="navbar" aria-label="Navegação principal">
+      <a href="#" class="brand">
+        <span>HOME</span>
+      </a>
+      <div class="nav" role="menubar">
+        <a href="#" role="menuitem">Novo Registro</a>
+        <a href="#" role="menuitem">Contato</a>
+        <div class="dropdown" role="none" aria-expanded="false">
+          <button class="navlink" aria-haspopup="true" aria-expanded="false" aria-controls="menu-recursos">Recursos ▾</button>
+          <div id="menu-recursos" class="menu" role="menu" aria-label="Recursos">
+            <a href="#" role="menuitem">Integrações</a>
+            <a href="#" role="menuitem">Templates</a>
+            <a href="#" role="menuitem">Documentação</a>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <!-- <button class="btn">Começar agora</button> -->
+        <button class="theme-toggle" id="theme-toggle">🌙</button>
+      </div>
+    </nav>
+  </header>
+  <main class="hero">
+
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
