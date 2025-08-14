@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do — Quadro estilo Trello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v2H5V6a2 2 0 0 1 2-2zm-2 6h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z" fill="currentColor"/></svg>
+      <span>To-Do</span>
+    </div>
+    <div class="actions">
+      <button id="btn-add" class="btn btn-primary">Adicionar tarefa</button>
+      <button id="btn-ordem" class="btn">Ver ordem</button>
+      <button id="btn-reset" class="btn btn-ghost">Reset</button>
+    </div>
+  </header>
+
+  <main class="boards">
+    <!-- COLUNA 1 -->
+    <section class="board" data-col="backlog">
+      <div class="board-head">
+        <h2>Backlog</h2>
+        <span class="count" id="count-backlog">0</span>
+      </div>
+      <ul id="lista-backlog" class="lista-tarefas" aria-label="Backlog">
+        <li class="todo" draggable="true" data-id="101" data-prio="baixa">
+          <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+          <div class="content">
+            <div class="title">Ler documentação</div>
+            <div class="meta">
+              <span class="badge prioridade">Baixa</span>
+              <span class="badge id">#101</span>
+            </div>
+          </div>
+          <button class="trash" title="Excluir" aria-label="Excluir">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+          </button>
+        </li>
+        <li class="todo" draggable="true" data-id="102" data-prio="media">
+          <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+          <div class="content">
+            <div class="title">Pesquisar referências</div>
+            <div class="meta">
+              <span class="badge prioridade">Média</span>
+              <span class="badge id">#102</span>
+            </div>
+          </div>
+          <button class="trash" title="Excluir" aria-label="Excluir">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- COLUNA 2 -->
+    <section class="board" data-col="progresso">
+      <div class="board-head">
+        <h2>Em progresso</h2>
+        <span class="count" id="count-progresso">0</span>
+      </div>
+      <ul id="lista-progresso" class="lista-tarefas" aria-label="Em progresso">
+        <li class="todo" draggable="true" data-id="201" data-prio="alta">
+          <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+          <div class="content">
+            <div class="title">Implementar drag & drop</div>
+            <div class="meta">
+              <span class="badge prioridade">Alta</span>
+              <span class="badge id">#201</span>
+            </div>
+          </div>
+          <button class="trash" title="Excluir" aria-label="Excluir">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- COLUNA 3 -->
+    <section class="board" data-col="revisao">
+      <div class="board-head">
+        <h2>Revisão</h2>
+        <span class="count" id="count-revisao">0</span>
+      </div>
+      <ul id="lista-revisao" class="lista-tarefas" aria-label="Revisão">
+        <li class="todo" draggable="true" data-id="301" data-prio="media">
+          <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+          <div class="content">
+            <div class="title">Revisar layout</div>
+            <div class="meta">
+              <span class="badge prioridade">Média</span>
+              <span class="badge id">#301</span>
+            </div>
+          </div>
+          <button class="trash" title="Excluir" aria-label="Excluir">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- COLUNA 4 -->
+    <section class="board" data-col="concluidas">
+      <div class="board-head">
+        <h2>Concluídas</h2>
+        <span class="count" id="count-concluidas">0</span>
+      </div>
+      <ul id="lista-concluidas" class="lista-tarefas" aria-label="Concluídas">
+        <li class="todo" draggable="true" data-id="401" data-prio="baixa">
+          <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+          <div class="content">
+            <div class="title">Configurar projeto</div>
+            <div class="meta">
+              <span class="badge prioridade">Baixa</span>
+              <span class="badge id">#401</span>
+            </div>
+          </div>
+          <button class="trash" title="Excluir" aria-label="Excluir">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+          </button>
+        </li>
+        <li class="todo" draggable="true" data-id="402" data-prio="media">
+          <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+          <div class="content">
+            <div class="title">Instalar dependências</div>
+            <div class="meta">
+              <span class="badge prioridade">Média</span>
+              <span class="badge id">#402</span>
+            </div>
+          </div>
+          <button class="trash" title="Excluir" aria-label="Excluir">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Template para “Adicionar tarefa” -->
+  <template id="tpl-li">
+    <li class="todo" draggable="true" data-prio="baixa">
+      <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+      <div class="content">
+        <div class="title"></div>
+        <div class="meta">
+          <span class="badge prioridade"></span>
+          <span class="badge id"></span>
+        </div>
+      </div>
+      <button class="trash" title="Excluir" aria-label="Excluir">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
