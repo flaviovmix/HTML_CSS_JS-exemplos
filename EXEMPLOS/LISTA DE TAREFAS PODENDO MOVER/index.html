@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do — Drag & Drop Elegante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v2H5V6a2 2 0 0 1 2-2zm-2 6h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z" fill="currentColor"/></svg>
+      <span>To-Do</span>
+    </div>
+    <div class="actions">
+      <button id="btn-add" class="btn btn-primary">Adicionar tarefa</button>
+      <button id="btn-ordem" class="btn">Ver ordem</button>
+      <button id="btn-reset" class="btn btn-ghost">Reset</button>
+    </div>
+  </header>
+
+  <main class="boards">
+    <section class="board">
+      <div class="board-head">
+        <h2>Ativas</h2>
+        <span class="count" id="count-ativas">0</span>
+      </div>
+      <ul id="lista-ativas" class="lista-tarefas" aria-label="Tarefas ativas"></ul>
+      
+    </section>
+
+    <section class="board">
+      <div class="board-head">
+        <h2>Concluídas</h2>
+        <span class="count" id="count-inativas">0</span>
+      </div>
+      <ul id="lista-inativas" class="lista-tarefas" aria-label="Tarefas concluídas"></ul>
+      
+    </section>
+  </main>
+
+
+  <template id="tpl-li">
+    <li class="todo" draggable="true">
+      <button class="handle" title="Arrastar" aria-label="Arrastar" tabindex="-1">⋮⋮</button>
+      <div class="content">
+        <div class="title"></div>
+        <div class="meta">
+          <span class="badge prioridade"></span>
+          <span class="badge id"></span>
+        </div>
+      </div>
+      <button class="trash" title="Excluir" aria-label="Excluir">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 7h2v8h-2v-8zm4 0h2v8h-2v-8z"/></svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
