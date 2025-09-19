@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E‑commerce Galáctico — Loja de Itens do Espaço</title>
+  <meta name="description" content="Loja elegante de itens do espaço, com tema claro, animações suaves e seção de estudo. Single‑file com Bootstrap." />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #6b7280;
+      --brand: #5b8def; /* azul "estudo" */
+      --brand-2:#8a5bff; /* lilás espacial */
+      --accent:#22c55e;  /* sucesso */
+      --ring: rgba(91,141,239,.35);
+    }
+    html,body{background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';}
+
+    /* --- Hero with cosmic gradient and floating stars --- */
+    .hero{
+      position: relative;
+      overflow: clip;
+      border-radius: 1.5rem;
+      background: radial-gradient(1200px 600px at 10% 20%, #ffffff 0%, #eef4ff 38%, #ecf3ff 40%, #eaf0ff 42%, #e7eeff 45%, #e3ecff 48%, #e0eaff 53%, #dbe6ff 60%, #d6e3ff 70%, #d2e1ff 80%, #cfe0ff 100%);
+      box-shadow: 0 10px 30px rgba(91,141,239,.15);
+    }
+    .hero::before, .hero::after{
+      content:""; position:absolute; inset:-20%;
+      background: radial-gradient(600px 300px at 80% 30%, rgba(138,91,255,.15), transparent 60%),
+                  radial-gradient(500px 260px at 30% 70%, rgba(91,141,239,.18), transparent 70%);
+      filter: blur(10px);
+      animation: drift 40s linear infinite;
+    }
+    .hero::after{ animation-direction: reverse; opacity:.6; }
+    @keyframes drift{ from{transform: translateX(0)} to{ transform: translateX(-6%) } }
+
+    .stars{
+      position:absolute; inset:0; pointer-events:none; overflow:hidden;
+    }
+    .star{ position:absolute; width:2px; height:2px; background: #9fb8ff; border-radius: 50%; opacity: .8; animation: float 9s ease-in-out infinite; }
+    @keyframes float{ 0%{transform: translateY(0)} 50%{transform: translateY(-14px)} 100%{transform: translateY(0)} }
+
+    .hero-illust{ max-width: 520px; }
+
+    /* Cards */
+    .product-card{
+      background: var(--card); border:1px solid #eef2ff; border-radius: 1.25rem;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .product-card:hover{ transform: translateY(-6px); box-shadow: 0 16px 40px rgba(91,141,239,.18); border-color: #dbe6ff; }
+    .badge-new{ background: linear-gradient(110deg,var(--brand),var(--brand-2)); }
+    .price{ font-weight: 700; letter-spacing: .2px; }
+    .icon-btn{ border-radius: 100rem; border:1px solid #e8edff; }
+
+    /* Scroll-reveal */
+    .reveal{ opacity:0; transform: translateY(16px); transition: .6s ease; }
+    .reveal.visible{ opacity:1; transform: none; }
+
+    /* Study section */
+    .study-card{ border-radius: 1rem; background: linear-gradient(180deg,#ffffff, #f7faff); border: 1px solid #ecf1ff; }
+
+    /* Footer */
+    footer a{ color: var(--muted); text-decoration: none; }
+    footer a:hover{ color: var(--ink); }
+
+    /* Tiny utility */
+    .ring:focus{ outline: none; box-shadow: 0 0 0 .35rem var(--ring); }
+  </style>
+</head>
+<body>
+  <header class="container py-4">
+    <nav class="navbar navbar-expand-lg bg-white border rounded-4 px-3 py-3 shadow-sm">
+      <a class="navbar-brand fw-bold" href="#">
+        <span class="text-primary">Galactic</span>Shop
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <form class="d-flex ms-auto me-3" role="search">
+          <input id="search" class="form-control ring" type="search" placeholder="Buscar itens do espaço…" aria-label="Buscar">
+        </form>
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item me-2"><a class="nav-link" href="#produtos">Produtos</a></li>
+          <li class="nav-item me-2"><a class="nav-link" href="#estudo">Estudo</a></li>
+          <li class="nav-item">
+            <button id="btnCart" class="btn btn-outline-primary icon-btn d-flex align-items-center" data-bs-toggle="offcanvas" data-bs-target="#offcart" aria-controls="offcart">
+              🛒 <span class="ms-2" id="cartCount">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero p-5 p-md-6 mb-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge badge-new text-white rounded-pill mb-3 px-3 py-2">Novo Catálogo 2025</span>
+          <h1 class="display-5 fw-bold">Itens autênticos do <span class="text-primary">Espaço</span> para sua coleção</h1>
+          <p class="lead text-secondary mt-3">Rochas lunares de estudo, mini sondas, pôsteres estelares e souvenires cósmicos — em um site claro, elegante e com animações suaves.</p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#produtos" class="btn btn-primary btn-lg">Explorar produtos</a>
+            <a href="#estudo" class="btn btn-outline-secondary btn-lg">Aprender primeiro</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <!-- Ilustração: SVG inline para manter single-file -->
+          <svg class="hero-illust" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustração espacial">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#5b8def"/>
+                <stop offset="1" stop-color="#8a5bff"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="600" height="400" rx="28" fill="#f6f9ff"/>
+            <g>
+              <circle cx="150" cy="160" r="70" fill="url(#g1)" opacity=".9"/>
+              <circle cx="150" cy="160" r="64" fill="none" stroke="#fff" stroke-width="2" opacity=".5"/>
+              <ellipse cx="150" cy="160" rx="120" ry="18" fill="#ffffff" opacity=".7"/>
+              <ellipse cx="150" cy="160" rx="120" ry="18" fill="#e8f0ff" transform="rotate(-12 150 160)"/>
+            </g>
+            <g>
+              <rect x="340" y="120" width="170" height="170" rx="18" fill="#ffffff" stroke="#e8edff"/>
+              <circle cx="425" cy="190" r="48" fill="url(#g1)"/>
+              <rect x="365" y="250" width="120" height="14" rx="7" fill="#e8edff"/>
+              <rect x="385" y="270" width="80" height="14" rx="7" fill="#e8edff"/>
+            </g>
+            <g>
+              <path d="M280 300c40-30 80-30 120 0" stroke="#c9d8ff" stroke-width="10" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="stars" aria-hidden="true"></div>
+    </section>
+
+    <!-- CONTROLES -->
+    <section class="mb-4 d-flex flex-wrap align-items-center gap-2">
+      <div class="btn-group" role="group" aria-label="Categorias">
+        <button class="btn btn-outline-secondary active" data-filter="all">Tudo</button>
+        <button class="btn btn-outline-secondary" data-filter="rochas">Rochas</button>
+        <button class="btn btn-outline-secondary" data-filter="sondas">Sondas</button>
+        <button class="btn btn-outline-secondary" data-filter="posteres">Pôsteres</button>
+        <button class="btn btn-outline-secondary" data-filter="souvenires">Souvenires</button>
+      </div>
+      <div class="ms-auto text-muted small">Dica: passe o mouse nos cards ✨</div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section id="produtos" class="row g-4">
+      <!-- Produto template (clonado via JS) será inserido aqui -->
+    </section>
+
+    <!-- ESTUDO / APRENDIZADO -->
+    <section id="estudo" class="mt-5 pt-4">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          <div class="study-card p-4 h-100 reveal">
+            <h2 class="fw-bold mb-3">Estude o cosmos antes de comprar</h2>
+            <p class="text-secondary">Nossa curadoria seleciona itens que também servem para aprendizado: rochas catalogadas, miniaturas de sondas com fichas técnicas e pôsteres com mapas estelares. Abaixo, um resumo rápido:</p>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2">🔹 <strong>Rochas lunares</strong>: amostras educativas (réplicas científicas) com densidade, porosidade e origem.</li>
+              <li class="mb-2">🔹 <strong>Sondas</strong>: miniaturas com datas de lançamento, órbitas e descobertas marcantes.</li>
+              <li class="mb-2">🔹 <strong>Pôsteres</strong>: constelações, escalas de distância e espectros de cor.</li>
+            </ul>
+            <p class="text-secondary">Tudo no tema claro, legível e pensado para estudantes, professores e entusiastas. ✨</p>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="study-card h-100 p-4 reveal">
+            <h5 class="fw-semibold">Perguntas frequentes</h5>
+            <div class="accordion mt-3" id="faq">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="q1">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true" aria-controls="a1">As rochas são reais?</button>
+                </h2>
+                <div id="a1" class="accordion-collapse collapse show" aria-labelledby="q1" data-bs-parent="#faq">
+                  <div class="accordion-body">Vendemos <em>réplicas científicas de alta fidelidade</em> para estudo em sala de aula e coleções. Itens reais são proibidos/raros e exigem licenças especiais.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="q2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">Como funcionam as garantias?</button>
+                </h2>
+                <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faq">
+                  <div class="accordion-body">7 dias para arrependimento e 90 dias contra defeitos de fabricação. Para pôsteres, garantimos impressão premium sem amarelamento.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="q3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">Vocês enviam para todo o Brasil?</button>
+                </h2>
+                <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faq">
+                  <div class="accordion-body">Sim. Frete calculado no checkout. Embalagens reforçadas e rastreio incluído.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container mt-5 pt-5 pb-4">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h5 class="fw-bold">GalacticShop</h5>
+        <p class="text-secondary">Loja educativa de astronomia e espaço — tema claro, animações suaves e experiência elegante.</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-semibold">Atalhos</h6>
+        <ul class="list-unstyled text-secondary">
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#estudo">Estudo</a></li>
+          <li><a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcart">Carrinho</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-semibold">Contato</h6>
+        <ul class="list-unstyled text-secondary">
+          <li>contato@galacticshop.example</li>
+          <li>Rio de Janeiro — Brasil</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="d-flex justify-content-between align-items-center small text-secondary">
+      <span>© 2025 GalacticShop. Todos os direitos reservados.</span>
+      <span>Feito com Bootstrap • Single‑file</span>
+    </div>
+  </footer>
+
+  <!-- OFFCANVAS CART -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcart" aria-labelledby="offcartLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcartLabel">Seu carrinho</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="cartItems" class="list-group list-group-flush small mb-3"></div>
+      <div class="mt-auto">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="fw-semibold">Total</span>
+          <span class="fw-bold" id="cartTotal">R$ 0,00</span>
+        </div>
+        <button id="btnCheckout" class="btn btn-success w-100">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST (Checkout) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+    <div id="toastOk" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Pedido criado! (simulação)</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar"></button>
+      </div>
+    </div>
+  </div>
+
+  <template id="tplProduct">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="product-card h-100 p-3 reveal" data-cat="">
+        <div class="ratio ratio-16x9 rounded-3 border mb-3 d-flex align-items-center justify-content-center bg-white">
+          <!-- inline SVG será injetado aqui -->
+        </div>
+        <div class="d-flex justify-content-between align-items-start mb-1">
+          <h5 class="fw-semibold mb-0 title">&nbsp;</h5>
+          <span class="badge text-bg-light border">Estudo</span>
+        </div>
+        <p class="text-secondary small mb-2 desc">&nbsp;</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="price text-primary fs-5">R$ 0,00</span>
+          <button class="btn btn-primary btn-sm add">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    // --- Tiny utilities ---
+    const money = (n) => n.toLocaleString('pt-BR',{ style:'currency', currency:'BRL' });
+    const el = (sel,root=document)=> root.querySelector(sel);
+    const els = (sel,root=document)=> [...root.querySelectorAll(sel)];
+
+    // --- Procedural stars in hero ---
+    const stars = el('.stars');
+    for(let i=0;i<90;i++){
+      const s = document.createElement('span');
+      s.className='star';
+      s.style.left = Math.random()*100+'%';
+      s.style.top = Math.random()*100+'%';
+      s.style.animationDelay = (Math.random()*9)+'s';
+      s.style.opacity = .4 + Math.random()*0.6;
+      stars.appendChild(s);
+    }
+
+    // --- Catalog data (single-file, imagens via SVG inline) ---
+    const products = [
+      {id:'luna-01', title:'Rocha Lunar — Série Estudo', cat:'rochas', price:189.9, desc:'Réplica científica com ficha de densidade e origem.', svg:planetSVG()},
+      {id:'mars-01', title:'Meteorito Marciano (réplica)', cat:'rochas', price:249.9, desc:'Textura porosa e etiqueta de catalogação.', svg:meteorSVG()},
+      {id:'probe-01', title:'Mini Sonda Voyager', cat:'sondas', price:149.0, desc:'Miniatura detalhada com datas de lançamento.', svg:probeSVG()},
+      {id:'probe-02', title:'Mini Sonda Luna 9', cat:'sondas', price:139.0, desc:'Aterrissagem histórica — placa informativa.', svg:landerSVG()},
+      {id:'poster-01', title:'Pôster Mapas Estelares (A2)', cat:'posteres', price:79.9, desc:'Constelações e escalas de distância.', svg:posterSVG()},
+      {id:'sou-01', title:'Chaveiro Planeta Anelado', cat:'souvenires', price:29.9, desc:'Acrílico translúcido com brilho suave.', svg:ringSVG()},
+    ];
+
+    // --- SVG makers ---
+    function planetSVG(){return `<svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b8def"/><stop offset="1" stop-color="#8a5bff"/></linearGradient></defs><rect width="300" height="168" rx="14" fill="#f8fbff"/><ellipse cx="120" cy="88" rx="60" ry="60" fill="url(#a)"/><ellipse cx="120" cy="88" rx="110" ry="16" fill="#e6eeff" transform="rotate(-12 120 88)"/><rect x="180" y="46" width="90" height="90" rx="12" fill="#fff" stroke="#e9efff"/></svg>`}
+    function meteorSVG(){return `<svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="168" rx="14" fill="#f8fbff"/><g><circle cx="110" cy="84" r="40" fill="#9fb8ff"/><circle cx="95" cy="80" r="6" fill="#7d9fff"/><circle cx="130" cy="95" r="8" fill="#7d9fff"/></g><path d="M220 40 L180 70 L240 80 Z" fill="#5b8def" opacity=".3"/></svg>`}
+    function probeSVG(){return `<svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="168" rx="14" fill="#f8fbff"/><g fill="#5b8def"><rect x="130" y="40" width="40" height="40" rx="6"/><rect x="90" y="60" width="40" height="6"/><rect x="170" y="60" width="40" height="6"/></g><circle cx="150" cy="120" r="18" fill="#8a5bff"/></svg>`}
+    function landerSVG(){return `<svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="168" rx="14" fill="#f8fbff"/><g><rect x="120" y="60" width="60" height="36" rx="8" fill="#8a5bff"/><rect x="100" y="96" width="20" height="28" fill="#5b8def"/><rect x="180" y="96" width="20" height="28" fill="#5b8def"/></g></svg>`}
+    function posterSVG(){return `<svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="168" rx="14" fill="#ffffff" stroke="#e9efff"/><g><circle cx="60" cy="60" r="10" fill="#5b8def"/><circle cx="120" cy="40" r="6" fill="#8a5bff"/><circle cx="200" cy="70" r="8" fill="#7aa4ff"/><rect x="40" y="110" width="220" height="8" rx="4" fill="#e6eeff"/></g></svg>`}
+    function ringSVG(){return `<svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="168" rx="14" fill="#f8fbff"/><circle cx="150" cy="84" r="34" fill="#8a5bff"/><ellipse cx="150" cy="84" rx="78" ry="16" fill="#ccd9ff" transform="rotate(-15 150 84)"/></svg>`}
+
+    // --- Render products ---
+    const grid = el('#produtos');
+    const tpl = el('#tplProduct');
+    products.forEach(p=>{
+      const node = tpl.content.cloneNode(true);
+      const card = el('.product-card', node);
+      card.dataset.cat = p.cat;
+      el('.title', node).textContent = p.title;
+      el('.desc', node).textContent = p.desc;
+      el('.price', node).textContent = money(p.price);
+      el('.ratio', node).innerHTML = p.svg;
+      el('.add', node).addEventListener('click', ()=> addToCart(p.id));
+      grid.appendChild(node);
+    });
+
+    // --- Search & Filter ---
+    el('#search').addEventListener('input', (e)=>{
+      const q = e.target.value.toLowerCase();
+      els('.product-card').forEach(c=>{
+        const title = el('.title', c).textContent.toLowerCase();
+        const desc  = el('.desc', c).textContent.toLowerCase();
+        c.parentElement.style.display = (title.includes(q) || desc.includes(q)) ? '' : 'none';
+      });
+    });
+
+    els('[data-filter]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        els('[data-filter]').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        els('#produtos > *').forEach(col=>{
+          const cat = el('.product-card', col).dataset.cat;
+          col.style.display = (f==='all' || cat===f) ? '' : 'none';
+        });
+      })
+    });
+
+    // --- Scroll reveal ---
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    els('.reveal').forEach(x=> io.observe(x));
+
+    // --- Cart state ---
+    const cart = JSON.parse(localStorage.getItem('cart-space')||'{}');
+    function saveCart(){ localStorage.setItem('cart-space', JSON.stringify(cart)); }
+
+    function addToCart(id){
+      cart[id] = (cart[id]||0) + 1;
+      saveCart();
+      renderCart();
+      // open offcanvas on add
+      const off = bootstrap.Offcanvas.getOrCreateInstance('#offcart');
+      off.show();
+    }
+
+    function removeFromCart(id){ delete cart[id]; saveCart(); renderCart(); }
+    function changeQty(id,delta){ cart[id] = Math.max(1,(cart[id]||1)+delta); saveCart(); renderCart(); }
+
+    function renderCart(){
+      const cont = el('#cartItems');
+      cont.innerHTML='';
+      let total=0; let count=0;
+      Object.entries(cart).forEach(([id,qty])=>{
+        const p = products.find(x=>x.id===id);
+        if(!p) return;
+        total += p.price*qty; count+=qty;
+        const row = document.createElement('div');
+        row.className='list-group-item d-flex align-items-center justify-content-between';
+        row.innerHTML = `
+          <div class="me-2">
+            <div class="fw-semibold small">${p.title}</div>
+            <div class="text-secondary small">${money(p.price)} × ${qty}</div>
+          </div>
+          <div class="btn-group btn-group-sm" role="group">
+            <button class="btn btn-outline-secondary" aria-label="Diminuir">−</button>
+            <button class="btn btn-outline-secondary" aria-label="Aumentar">＋</button>
+            <button class="btn btn-outline-danger" aria-label="Remover">✕</button>
+          </div>`;
+        const [btnDec, btnInc, btnDel] = row.querySelectorAll('button');
+        btnDec.addEventListener('click', ()=> changeQty(id,-1));
+        btnInc.addEventListener('click', ()=> changeQty(id, 1));
+        btnDel.addEventListener('click', ()=> removeFromCart(id));
+        cont.appendChild(row);
+      });
+      el('#cartTotal').textContent = money(total);
+      el('#cartCount').textContent = count;
+    }
+    renderCart();
+
+    // --- Checkout toast ---
+    el('#btnCheckout').addEventListener('click', ()=>{
+      const t = bootstrap.Toast.getOrCreateInstance('#toastOk');
+      t.show();
+    });
+  </script>
+</body>
+</html>
