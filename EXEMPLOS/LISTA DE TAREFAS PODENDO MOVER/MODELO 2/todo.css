@@ -1,0 +1,100 @@
+.todo{
+  display:grid;
+  grid-template-columns:24px 1fr auto;
+  align-items:center;
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:6px solid #aab;
+  border-radius:14px;
+  padding:10px 10px 10px 8px;
+  box-shadow:var(--shadow);
+  user-select:none;
+}
+
+.handle{
+  display:grid; place-items:center;
+  width:24px; height:28px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#f3f4f6;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.content{ display:flex; flex-direction:column; gap:6px }
+.title{ font-weight:600 }
+.meta{ display:flex; gap:6px; color:var(--muted); font-size:12px }
+
+.badge{
+  padding:2px 8px; border-radius:999px; border:1px solid var(--line);
+  background:#f3f4f6;
+}
+
+.trash{
+  appearance:none; border:1px solid var(--line);
+  background:transparent; color:var(--muted);
+  width:30px; height:30px; border-radius:10px;
+  cursor:pointer; display:grid; place-items:center;
+}
+
+/* === Toggle e ações laterais === */
+.actions-todo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Toggle estilo switch */
+.toggle {
+  position: relative;
+  width: 36px;
+  height: 18px;
+  display: inline-block;
+}
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: .3s;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+input:checked + .slider {
+  background-color: var(--pri);
+}
+input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+/* Efeito visual quando a tarefa está inativa */
+.todo.inativa {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+
+/* Cores por prioridade */
+.todo[data-prio="baixa"]  { border-left-color: var(--low); }
+.todo[data-prio="media"]  { border-left-color: var(--med); }
+.todo[data-prio="alta"]   { border-left-color: var(--high); }
+
+.todo[data-prio="baixa"]  .badge.prioridade{ color:var(--low); border-color:#d6eaf8; }
+.todo[data-prio="media"]  .badge.prioridade{ color:var(--med); border-color:#fdebd0; }
+.todo[data-prio="alta"]   .badge.prioridade{ color:var(--high); border-color:#fadbd8; }

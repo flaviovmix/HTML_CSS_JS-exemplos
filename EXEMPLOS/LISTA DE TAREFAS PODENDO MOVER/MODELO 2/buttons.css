@@ -1,0 +1,15 @@
+.btn{
+  border:1px solid var(--line);
+  background: var(--card);
+  color: var(--txt);
+  padding:8px 12px; border-radius:10px;
+  cursor:pointer; box-shadow: var(--shadow);
+}
+
+.btn-primary{
+  background: var(--pri); color:#fff; border-color:transparent;
+}
+
+.btn-ghost{
+  background:transparent; border-color:var(--line); box-shadow:none;
+}

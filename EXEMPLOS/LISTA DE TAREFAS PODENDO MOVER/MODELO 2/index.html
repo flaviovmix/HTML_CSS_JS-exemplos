@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do — Abas estilo navegador (corrigido)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* ====== Variáveis básicas (temas) ====== */
+    :root{
+      --bg: #f6f7fb;
+      --card:#ffffff;
+      --txt:#1e1f24;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --pri:#2563eb;
+      --shadow: 0 6px 24px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.04);
+      --hover:#f3f4f6;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0f1115; --card:#161a22; --txt:#e5e7eb; --muted:#9aa3b2; --line:#232834;
+        --shadow: 0 8px 28px rgba(0,0,0,.45), 0 2px 10px rgba(0,0,0,.35);
+        --hover:#1d2330;
+      }
+    }
+
+    /* ====== Reset mínimo ====== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--txt); font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+
+    /* ====== Container padrão p/ alinhar tudo ====== */
+    .container{max-width:1100px; margin:0 auto; padding:0 16px;}
+
+    /* ====== Topbar ====== */
+    .topbar{position:sticky; top:0; z-index:10; background:var(--card); border-bottom:1px solid var(--line);}
+    .topbar-inner{display:flex; align-items:center; gap:10px; padding:14px 16px;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+
+    /* ====== Abas estilo navegador ====== */
+    .tabs-wrap{background:var(--card); border-bottom:1px solid var(--line);}
+    .tab-bar{display:flex; align-items:flex-end; gap:6px; padding:0 8px; height:52px;}
+    .tab{
+      padding:10px 18px; border:1px solid var(--line); border-bottom:none;
+      background:var(--bg); color:var(--txt); border-top-left-radius:10px; border-top-right-radius:10px;
+      cursor:pointer; font-weight:600; transition:.2s; box-shadow:none;
+    }
+    .tab:hover:not(.active){background:var(--hover)}
+    .tab.active{background:var(--pri); color:#fff; border-color:var(--pri); transform:translateY(1px)}
+
+    /* ====== Conteúdo de cada aba ====== */
+    .tab-content{display:none; border:1px solid var(--line); border-top:none; background:var(--card);
+                 border-radius:0 0 12px 12px; padding:22px; box-shadow:var(--shadow); margin:0 0 28px;}
+    .tab-content.active{display:block}
+
+    /* ====== Board/títulos ====== */
+    .board-head{display:flex; align-items:center; justify-content:space-between; margin:6px 4px 16px}
+    .board-head h2{margin:0; font-size:28px}
+
+    /* ====== Lista/Tarefas ====== */
+    .lista-tarefas{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+    .todo{
+      display:grid; grid-template-columns: 28px 1fr auto; align-items:center; gap:12px;
+      background:var(--card); border:1px solid var(--line); border-left:6px solid #aab;
+      border-radius:14px; padding:12px; box-shadow:var(--shadow);
+    }
+    .todo.inativa{opacity:.75}
+    .handle{display:grid; place-items:center; width:28px; height:30px; border:1px solid var(--line);
+            border-radius:10px; background:#f3f4f6; color:var(--muted); font-weight:700; cursor:grab}
+    .content{display:flex; flex-direction:column; gap:6px}
+    .title{font-weight:700; font-size:18px}
+    .meta{display:flex; gap:8px; color:var(--muted); font-size:12px}
+    .badge{padding:2px 8px; border-radius:999px; border:1px solid var(--line); background:#f3f4f6}
+
+    /* Prioridades (cores) */
+    .prioridade.baixa{background:#e7f2ff; color:#1260c8; border-color:#cfe6ff}
+    .prioridade.media{background:#fff1d6; color:#b37500; border-color:#ffe2a8}
+    .prioridade.alta{ background:#ffe1e1; color:#c24040; border-color:#ffc4c4}
+
+    .actions-todo{display:flex; align-items:center; gap:8px}
+
+    /* Toggle (checkbox estilizado) */
+    .toggle{position:relative; width:40px; height:22px; display:inline-block}
+    .toggle input{opacity:0; width:0; height:0}
+    .slider{position:absolute; inset:0; background:#d1d5db; border-radius:22px; transition:.25s}
+    .slider:before{content:""; position:absolute; width:18px; height:18px; left:2px; top:2px; background:#fff; border-radius:50%; transition:.25s}
+    .toggle input:checked + .slider{background:var(--pri)}
+    .toggle input:checked + .slider:before{transform:translateX(18px)}
+
+    /* Lixeira */
+    .trash{appearance:none; border:1px solid var(--line); background:transparent; color:var(--muted);
+           width:32px; height:32px; border-radius:10px; display:grid; place-items:center; cursor:pointer}
+    .trash:hover{background:var(--hover)}
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v2H5V6a2 2 0 0 1 2-2zm-2 6h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z" fill="currentColor"/></svg>
+        <span>To-Do</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Abas (estilo navegador) -->
+  <div class="tabs-wrap">
+    <div class="container tab-bar">
+      <button class="tab active" data-tab="ativas">Ativas</button>
+      <button class="tab" data-tab="concluidas">Concluídas</button>
+    </div>
+  </div>
+
+  <!-- Conteúdo das abas (usa o MESMO container central) -->
+  <main class="container">
+    <!-- ATIVAS -->
+    <section id="tab-ativas" class="tab-content active" aria-labelledby="btn-ativas">
+      <div class="board-head"><h2>Tarefas Ativas</h2></div>
+      <ul id="lista-ativas" class="lista-tarefas" aria-label="Tarefas ativas">
+        <li class="todo" draggable="true" data-id="101">
+          <button class="handle">⋮⋮</button>
+          <div class="content">
+            <div class="title">Ler documentação</div>
+            <div class="meta"><span class="badge prioridade baixa">Baixa</span><span class="badge id">#101</span></div>
+          </div>
+          <div class="actions-todo">
+            <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+            <button class="trash" title="Excluir">🗑️</button>
+          </div>
+        </li>
+
+        <li class="todo" draggable="true" data-id="102">
+          <button class="handle">⋮⋮</button>
+          <div class="content">
+            <div class="title">Criar layout</div>
+            <div class="meta"><span class="badge prioridade media">Média</span><span class="badge id">#102</span></div>
+          </div>
+          <div class="actions-todo">
+            <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+            <button class="trash" title="Excluir">🗑️</button>
+          </div>
+        </li>
+
+        <li class="todo" draggable="true" data-id="103">
+          <button class="handle">⋮⋮</button>
+          <div class="content">
+            <div class="title">Implementar drag & drop</div>
+            <div class="meta"><span class="badge prioridade alta">Alta</span><span class="badge id">#103</span></div>
+          </div>
+          <div class="actions-todo">
+            <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+            <button class="trash" title="Excluir">🗑️</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONCLUÍDAS -->
+    <section id="tab-concluidas" class="tab-content" aria-labelledby="btn-concluidas">
+      <div class="board-head"><h2>Tarefas Concluídas</h2></div>
+      <ul id="lista-inativas" class="lista-tarefas" aria-label="Tarefas concluídas">
+        <li class="todo inativa" draggable="true" data-id="201">
+          <button class="handle">⋮⋮</button>
+          <div class="content">
+            <div class="title">Configurar projeto</div>
+            <div class="meta"><span class="badge prioridade baixa">Baixa</span><span class="badge id">#201</span></div>
+          </div>
+          <div class="actions-todo">
+            <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
+            <button class="trash" title="Excluir">🗑️</button>
+          </div>
+        </li>
+
+        <li class="todo inativa" draggable="true" data-id="202">
+          <button class="handle">⋮⋮</button>
+          <div class="content">
+            <div class="title">Instalar dependências</div>
+            <div class="meta"><span class="badge prioridade media">Média</span><span class="badge id">#202</span></div>
+          </div>
+          <div class="actions-todo">
+            <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
+            <button class="trash" title="Excluir">🗑️</button>
+          </div>
+        </li>
+
+        <li class="todo inativa" draggable="true" data-id="203">
+          <button class="handle">⋮⋮</button>
+          <div class="content">
+            <div class="title">Revisar testes</div>
+            <div class="meta"><span class="badge prioridade alta">Alta</span><span class="badge id">#203</span></div>
+          </div>
+          <div class="actions-todo">
+            <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
+            <button class="trash" title="Excluir">🗑️</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // -------- Abas --------
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll(".tab-content");
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabs.forEach(b => b.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    // -------- Drag & Drop (apenas mover) --------
+    const listas = document.querySelectorAll(".lista-tarefas");
+    listas.forEach(ul => {
+      ul.addEventListener("dragstart", e => {
+        const li = e.target.closest(".todo");
+        if (!li) return;
+        li.classList.add("dragging");
+        e.dataTransfer.effectAllowed = "move";
+      });
+      ul.addEventListener("dragend", e => {
+        const li = e.target.closest(".todo");
+        if (li) li.classList.remove("dragging");
+      });
+      ul.addEventListener("dragover", e => {
+        e.preventDefault();
+        const dragging = document.querySelector(".dragging");
+        if (!dragging) return;
+        const after = getAfter(ul, e.clientY);
+        if (after == null) ul.appendChild(dragging);
+        else ul.insertBefore(dragging, after);
+      });
+    });
+    function getAfter(container, y){
+      const els = [...container.querySelectorAll(".todo:not(.dragging)")];
+      return els.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - (box.top + box.height/2);
+        return (offset < 0 && offset > closest.offset) ? {offset, element:child} : closest;
+      }, {offset: Number.NEGATIVE_INFINITY, element:null}).element;
+    }
+  </script>
+</body>
+</html>

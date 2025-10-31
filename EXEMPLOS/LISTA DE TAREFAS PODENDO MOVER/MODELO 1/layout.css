@@ -1,0 +1,53 @@
+/* ===== TOPO (HEADER) ===== */
+.topbar {
+  width: 100%;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Conteúdo centralizado */
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo e título */
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+/* Grupo de botões */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.boards {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 16px 24px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 860px) {
+  .boards {
+    grid-template-columns: 1fr;
+  }
+}

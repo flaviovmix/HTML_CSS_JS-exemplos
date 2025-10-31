@@ -1,0 +1,10 @@
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1115;
+    --card:#161a22;
+    --txt:#e5e7eb;
+    --muted:#9aa3b2;
+    --line:#232834;
+    --shadow: 0 8px 28px rgba(0,0,0,.45), 0 2px 10px rgba(0,0,0,.35);
+  }
+}

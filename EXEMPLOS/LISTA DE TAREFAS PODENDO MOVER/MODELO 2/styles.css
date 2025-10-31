@@ -1,0 +1,150 @@
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --txt: #1e1f24;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --shadow: 0 6px 24px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.04);
+
+  --pri: #2563eb; /* azul botões */
+  --low:  #3498db; /* prioridade baixa (azul) */
+  --med:  #f39c12; /* prioridade média */
+  --high: #e74c3c; /* prioridade alta */
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1115;
+    --card:#161a22;
+    --txt:#e5e7eb;
+    --muted:#9aa3b2;
+    --line:#232834;
+    --shadow: 0 8px 28px rgba(0,0,0,.45), 0 2px 10px rgba(0,0,0,.35);
+  }
+}
+
+*{ box-sizing: border-box }
+html,body{ height:100% }
+body{
+  margin:0;
+  font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px;
+  position:sticky; top:0; z-index:10;
+  background: var(--card);
+  border-bottom:1px solid var(--line);
+}
+.brand{ display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.3px }
+.actions{ display:flex; gap:8px }
+
+.btn{
+  border:1px solid var(--line);
+  background: var(--card);
+  color: var(--txt);
+  padding:8px 12px; border-radius:10px; cursor:pointer;
+  box-shadow: var(--shadow);
+}
+.btn-primary{
+  background: var(--pri); color: #fff; border-color: transparent;
+}
+.btn-ghost{
+  background: transparent; border-color: var(--line); box-shadow: none;
+}
+
+.boards{
+  max-width: 1100px;
+  margin: 20px auto;
+  display: grid; gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 16px 24px;
+}
+
+.board{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+  min-height: 320px;
+  display:flex; flex-direction:column;
+}
+.board-head{
+  display:flex; align-items:center; justify-content:space-between; margin: 4px 2px 10px;
+}
+.board h2{ margin:0; font-size:16px; letter-spacing:.2px }
+.count{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width: 26px; padding: 4px 8px; border-radius:999px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #334155;
+  font-weight:600;
+}
+
+.lista-tarefas{
+  list-style:none; padding:0; margin:0; flex:1;
+  display:flex; flex-direction:column; gap:10px;
+}
+
+.todo{
+  display:grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items:center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid #aab; /* será sobrescrito pela prioridade */
+  border-radius: 14px;
+  padding: 10px 10px 10px 8px;
+  box-shadow: var(--shadow);
+  user-select:none;
+}
+
+/* “Puxador” visual (decorativo) */
+.handle{
+  display:grid; place-items:center;
+  width: 24px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f3f4f6;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.content{ display:flex; flex-direction:column; gap:6px }
+.title{ font-weight:600 }
+.meta{ display:flex; gap:6px; color: var(--muted); font-size:12px }
+.badge{
+  padding: 2px 8px; border-radius: 999px; border:1px solid var(--line);
+  background: #f3f4f6;
+}
+
+.trash{
+  appearance:none; border: 1px solid var(--line);
+  background: transparent; color: var(--muted);
+  width: 30px; height: 30px; border-radius: 10px; cursor:pointer;
+  display:grid; place-items:center;
+}
+
+/* Cores por prioridade */
+.todo[data-prio="baixa"]  { border-left-color: var(--low); }
+.todo[data-prio="media"]  { border-left-color: var(--med); }
+.todo[data-prio="alta"]   { border-left-color: var(--high); }
+
+.todo[data-prio="baixa"]  .badge.prioridade{ color: var(--low);  border-color: #d6eaf8; }
+.todo[data-prio="media"]  .badge.prioridade{ color: var(--med);  border-color: #fdebd0; }
+.todo[data-prio="alta"]   .badge.prioridade{ color: var(--high); border-color: #fadbd8; }
+
+/* Responsivo */
+@media (max-width: 860px){
+  .boards{ grid-template-columns: 1fr; }
+}
+
+

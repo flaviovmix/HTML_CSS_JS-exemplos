@@ -1,0 +1,28 @@
+.board{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:var(--shadow);
+  min-height:320px;
+  display:flex; flex-direction:column;
+}
+
+.board-head{
+  display:flex; align-items:center; justify-content:space-between;
+  margin:4px 2px 10px;
+}
+
+.board h2{ margin:0; font-size:16px; letter-spacing:.2px }
+
+.count{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:26px; padding:4px 8px; border-radius:999px;
+  background:#eef2ff; border:1px solid #c7d2fe;
+  color:#334155; font-weight:600;
+}
+
+.lista-tarefas{
+  list-style:none; padding:0; margin:0; flex:1;
+  display:flex; flex-direction:column; gap:10px;
+}
