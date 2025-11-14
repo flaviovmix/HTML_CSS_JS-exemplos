@@ -1,0 +1,38 @@
+:root {
+  --font-principal: Raleway,Arial,Helvetica,sans-serif;
+  --font-secundaria: Raleway,Arial,Helvetica,sans-serif;
+
+
+  --cor-cinza: #e5e5e5;
+  --cor-cinza-escuro: #333333;
+
+  --cor-body-background: #fff;
+
+  /* barra de menu */
+  --cor-fundo-barra-menu: #071d41;
+  --cor-texto-link-menu: #fff;
+
+  --font-barra-menu: Raleway,Arial,Helvetica,sans-serif;
+  --cor-texto-botao-menu: #071d41;
+  --cor-texto-botao-menu-hover: #222;
+
+  --cor-background-botao-menu: #e5e5e5;
+  
+  --cor-background-botao-menu-hover: #ccc;
+
+  --cor-background-link-menu-hover: #e5e5e5;
+  
+  --cor-texto-link-menu-hover: #222;
+  --cor-icones-lixeira_editar-info-personagem: rgba(30, 30, 30, 0.926);
+  --cor-sombra-icones-lixeira_editar-info-personagem: rgba(0, 0, 0, 0.2);
+  --cor-fundo-area-links: #f7f7f7;
+  --cor-links-area-links: #ff6a00;
+  --cor-braco: #fff;
+  --cor-cinza-claro: #f2f3f4;
+  --cor-bordas: #f2f3f4;
+  --cor-sombras: #c5c5c5;
+  --cor-cor-h2-info-personagem: #222;
+  --cor-cor-h3-info-personagem: #222;
+
+  --cor-background-info-personagem: rgba(255, 255, 255, 0.7);
+}

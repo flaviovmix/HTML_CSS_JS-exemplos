@@ -1,0 +1,194 @@
+        function loadMeninas() {
+
+        
+
+            let config = {
+                FASE1: { linha: "3", coluna: "3" },
+                FASE2: { linha: "4", coluna: "4" },
+                FASE3: { linha: "5", coluna: "5" },
+                FASE4: { linha: "6", coluna: "6" },
+                FASE5: { linha: "7", coluna: "7" },
+                FASE6: { linha: "8", coluna: "8" }
+            };
+
+            let personagens = [
+                {
+                    nome: "PRINCESA PEACH",
+                    bandeira: "japao",
+                    altura: "1.73 m",
+                    busto: "87 cm",
+                    cintura: "61 cm",
+                    quadril: "89 cm",
+                    idade: "24 anos",
+                    peso: "52 kg",
+                    hobbie: "Jardinagem e culinária",
+                    origen: "Super Mario Bros",
+                    habilidade: "Flutuar",
+                    obs: "Carismática e corajosa.",
+                    numFotos: '5'
+                },
+
+                {
+                    nome: "BULMA",
+                    bandeira: "japao",
+                    altura: "1.65 m",
+                    busto: "84 cm",
+                    cintura: "58 cm",
+                    quadril: "84 cm",
+                    idade: "28 anos",
+                    peso: "49 kg",
+                    hobbie: "Inventar e pesquisar",
+                    origen: "Dragon Ball",
+                    habilidade: "Gênio da ciência.",
+                    obs: "Sempre ajudando os guerreiros Z.",
+                    numFotos: '5'
+                },
+
+                {
+                    nome: "CHUN-LI",
+                    bandeira: "china",
+                    altura: "1.70 m",
+                    busto: "88 cm",
+                    cintura: "60 cm",
+                    quadril: "90 cm",
+                    idade: "26 anos",
+                    peso: "58 kg",
+                    hobbie: "Artes marciais",
+                    origen: "Street Fighter",
+                    habilidade: "Chutes poderosas",
+                    obs: "Primeira protagonista feminina.",
+                    numFotos: '6'
+                },
+                {
+                    nome: "HINATA",
+                    bandeira: "japao",
+                    altura: "1.60 m",
+                    busto: "83 cm",
+                    cintura: "58 cm",
+                    quadril: "86 cm",
+                    idade: "16 anos",
+                    peso: "45 kg",
+                    hobbie: "Treinar taijutsu",
+                    origen: "Naruto",
+                    habilidade: "Byakugan",
+                    obs: "Tímida, mas determinada.",
+                    numFotos: '4'
+                },
+                {
+                    nome: "VIDEL",
+                    bandeira: "japao",
+                    altura: "1.65 m",
+                    busto: "85 cm",
+                    cintura: "62 cm",
+                    quadril: "93 cm",
+                    idade: "27 anos",
+                    peso: "55 kg",
+                    hobbie: "Ajudar os outros",
+                    origen: "Dragon Ball Z",
+                    habilidade: "Voar",
+                    obs: "Nunca foge de uma luta.",
+                    numFotos: '4'
+                },
+            ]
+            for (let i = 0; i < personagens.length; i++) {
+                let p = personagens[i];
+                document.write(`
+
+                <div class="card">
+
+                    <div class="menu-bolinha btnMenuBolinhaCard amostra">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="349.569px" height="349.569px"
+                            viewBox="0 0 349.569 349.569" style="enable-background:new 0 0 349.569 349.569;"
+                            xml:space="preserve">
+                            <g>
+                                <g>
+                                    <circle cx="39.081" cy="54.785" r="39.081" />
+                                    <circle cx="39.081" cy="174.785" r="39.081" />
+                                    <circle cx="39.081" cy="294.785" r="39.081" />
+                                    <g>
+                                        <path d="M344.569,20.535H113.581c-2.757,0-5,2.243-5,5v58.5c0,2.757,2.243,5,5,5h230.988c2.757,0,5-2.243,5-5v-58.5
+                                        C349.569,22.778,347.326,20.535,344.569,20.535z" />
+                                        <path d="M344.569,140.535H113.581c-2.757,0-5,2.243-5,5v58.5c0,2.757,2.243,5,5,5h230.988c2.757,0,5-2.243,5-5v-58.5
+                                        C349.569,142.778,347.326,140.535,344.569,140.535z" />
+                                        <path d="M344.569,260.535H113.581c-2.757,0-5,2.243-5,5v58.5c0,2.757,2.243,5,5,5h230.988c2.757,0,5-2.243,5-5v-58.5
+                                        C349.569,262.778,347.326,260.535,344.569,260.535z" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="conteudo-card">
+                        <div class="area-info-personagem" id="areaInfoPersonagem">
+                            <div class="cabecalho">
+                                <img class="bandeira" src="./assets/pixel_ai/${p.bandeira}.png" alt="">
+                                <div class="are-face">
+                                    <img class="face" src="./assets/pixel_ai/${p.nome}/img.png" alt="">
+                                </div>
+                                    
+                                <div class="classificacao">
+                                    <a href="#"><img src="./assets/pixel_ai/ESTRELA_1-4.png" alt=""></a>
+                                    <a href="#"><img src="./assets/pixel_ai/ESTRELA_1-4.png" alt=""></a>
+                                    <a href="#"><img src="./assets/pixel_ai/ESTRELA_1-4.png" alt=""></a>
+                                    <a href="#"><img src="./assets/pixel_ai/ESTRELA_1-4.png" alt=""></a>
+                                    <a href="#"><img src="./assets/pixel_ai/ESTRELA_5.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="tabela">
+                                <table>
+                                    <tbody>
+                                        <tr><td class="chave"><strong>Origen:</strong></td><td>${p.origen}</td></tr>
+                                    <tr><td class="chave"><strong>Altura:</strong></td><td>${p.altura}</td></tr>
+                                    <tr><td class="chave"><strong>Busto:</strong></td><td>${p.busto}</td></tr>
+                                    <tr><td class="chave"><strong>Cintura:</strong></td><td>${p.cintura}</td></tr>
+                                    <tr><td class="chave"><strong>Quadril:</strong></td><td>${p.quadril}</td></tr>
+                                    <tr><td class="chave"><strong>idade:</strong></td><td>${p.idade}</td></tr>
+                                    <tr><td class="chave"><strong>Peso:</strong></td><td>${p.peso}</td></tr>
+                                    <tr><td class="chave"><strong>Hobbie:</strong></td><td>${p.hobbie}</td></tr>
+                                    <tr><td class="chave"><strong>Habilidade:</strong></td><td>${p.habilidade}</td></tr>
+                                    <tr class="obs"><td colspan="2" class="obs">${p.obs}</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <img class="img-principal" src="./assets/pixel_ai/${p.nome}/img.png" alt="imagem da personagem" />
+                        <div class="area-titulo-da-fase mostrar" id="area-titulo-da-fase">
+                            <span id="areaTituloTexto">${p.nome}</span>
+                        </div>
+                    </div>
+
+                    <div class="area-link-fases">
+                        <a href="./quebra-cabeca.html?nome=${encodeURIComponent(p.nome)}&fase=${encodeURIComponent('1_FASE1')}&numFotos=${encodeURIComponent(p.numFotos)}&linha=${encodeURIComponent(config.FASE1.linha)}&coluna=${encodeURIComponent(config.FASE1.coluna)}&aleatoria=0" data-titulo="FASE1">
+                        <img class="icone" src="./assets/pixel_ai/emoje-1.png" />
+                        </a>
+
+                        <a href="./quebra-cabeca.html?nome=${encodeURIComponent(p.nome)}&fase=${encodeURIComponent('2_FASE2')}&numFotos=${encodeURIComponent(p.numFotos)}&linha=${encodeURIComponent(config.FASE2.linha)}&coluna=${encodeURIComponent(config.FASE2.coluna)}&aleatoria=0" data-titulo="FASE2">
+                        <img class="icone" src="./assets/pixel_ai/emoje-2.png" />
+                        </a>
+
+                        <a href="./quebra-cabeca.html?nome=${encodeURIComponent(p.nome)}&fase=${encodeURIComponent('3_FASE3')}&numFotos=${encodeURIComponent(p.numFotos)}&linha=${encodeURIComponent(config.FASE3.linha)}&coluna=${encodeURIComponent(config.FASE3.coluna)}&aleatoria=0" data-titulo="FASE3">
+                        <img class="icone" src="./assets/pixel_ai/emoje-3.png" />
+                        </a>
+
+                        <a href="./quebra-cabeca.html?nome=${encodeURIComponent(p.nome)}&fase=${encodeURIComponent('4_FASE4')}&numFotos=${encodeURIComponent(p.numFotos)}&linha=${encodeURIComponent(config.FASE4.linha)}&coluna=${encodeURIComponent(config.FASE4.coluna)}&aleatoria=0" data-titulo="FASE4">
+                        <img class="icone" src="./assets/pixel_ai/emoje-4.png" />
+                        </a>
+
+                        <a href="./quebra-cabeca.html?nome=${encodeURIComponent(p.nome)}&fase=${encodeURIComponent('5_FASE5')}&numFotos=${encodeURIComponent(p.numFotos)}&linha=${encodeURIComponent(config.FASE5.linha)}&coluna=${encodeURIComponent(config.FASE5.coluna)}&aleatoria=0" data-titulo="FASE5">
+                        <img class="icone" src="./assets/pixel_ai/emoje-5.png" />
+                        </a>
+
+                        <a href="./quebra-cabeca.html?nome=${encodeURIComponent(p.nome)}&fase=${encodeURIComponent('6_FASE6')}&numFotos=${encodeURIComponent(p.numFotos)}&linha=${encodeURIComponent(config.FASE6.linha)}&coluna=${encodeURIComponent(config.FASE6.coluna)}&aleatoria=0" data-titulo="FASE6">
+                        <img class="icone" src="./assets/pixel_ai/emoje-6.png" />
+                        </a>
+
+
+
+                    </div>    
+
+                </div>                
+                `);
+            }
+
+        }

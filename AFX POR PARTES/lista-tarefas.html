@@ -1,0 +1,99 @@
+<div class="content" id="pageContent">
+  <div class="task-list">
+    <div class="tabs">
+
+      <input type="radio" name="tabs" id="tab-inativas">
+      <input type="radio" name="tabs" id="tab-ativas" checked>
+
+      <div class="tabs">
+        <label class="<%= check_ativa %>"
+          onclick="window.location.href='<%-- url(TarefasActions.ListarAtivas.class) --%>'">
+          Ativas
+        </label>
+
+        <label class="<%= check_inativa %>"
+          onclick="window.location.href='<%-- url(TarefasActions.ListarInativas.class) --%>'">
+          Inativas
+        </label>
+      </div>
+
+      <div class="tab-content content-ativas">
+        <div class="task-list">
+
+          <!-- TAREFA ATIVA -->
+          <div class="task baixa">
+            <div class="task-content">
+              <div class="task-title">
+                <a href="novaTarefa.html" class="link-sem-estilo">TAREFA ATIVA</a>
+              </div>
+              <div class="task-meta">
+                <a href="novaTarefa.html" class="link-sem-estilo">
+                  <span><i class="fas fa-layer-group"></i>0 subtarefas</span>
+                </a>
+                <span><i class="fas fa-calendar-alt"></i>14 ago - 2025</span>
+                <span><i class="fas fa-user-alt"></i>Pedro Henrique</span>
+              </div>
+              <span class="descricao">AQUI VAI A DESCRICAO DA TAREFA</span>
+            </div>
+
+            <div class="task-actions">
+              <div>
+                <label class="checkbox-container">
+                  <div class="usuario_concluir">
+                    <div class="assigned"><strong>Quinta-feira, 14 ago - 2025</strong></div>
+                    <form action="#" method="get" style="display:inline;">
+                      <input type="hidden" name="estado_atual" value="true">
+                      <input type="hidden" name="ativa" value="0">
+                      <input type="hidden" name="id_tarefa" value="118">
+                      <input type="checkbox" name="ativo">
+                    </form>
+                  </div>
+                </label>
+              </div>
+              <a href="#" class="deletar-link">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- TAREFA INATIVA -->
+          <div class="task baixa">
+            <div class="task-content">
+              <div class="task-title opaco">
+                <a href="novaTarefa.html" class="link-sem-estilo">TAREFA INATIVA</a>
+              </div>
+              <div class="task-meta opaco">
+                <a href="novaTarefa.html" class="link-sem-estilo">
+                  <span><i class="fas fa-layer-group"></i>0 subtarefas</span>
+                </a>
+                <span><i class="fas fa-calendar-alt"></i>14 ago - 2025</span>
+                <span><i class="fas fa-user-alt"></i>Pedro Henrique</span>
+              </div>
+              <span class="descricao opaco">AQUI VAI A DESCRICAO DA TAREFA</span>
+            </div>
+
+            <div class="task-actions">
+              <div>
+                <label class="checkbox-container">
+                  <div class="usuario_concluir">
+                    <div class="assigned"><strong>Quinta-feira, 14 ago - 2025</strong></div>
+                    <form action="#" method="get" style="display:inline;">
+                      <input type="hidden" name="estado_atual" value="true">
+                      <input type="hidden" name="inativo" value="0">
+                      <input type="hidden" name="id_tarefa" value="118">
+                      <input type="checkbox" name="inativo" checked>
+                    </form>
+                  </div>
+                </label>
+              </div>
+              <a href="#" class="deletar-link">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>

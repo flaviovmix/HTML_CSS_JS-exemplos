@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Datepicker em input text</title>
+
+  <!-- CSS do jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- jQuery UI -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+  <!-- jQuery Mask Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+
+  <label for="data_conclusao">Escolha uma data:</label>
+  <input type="text" id="data_conclusao" placeholder="dd/mm/aaaa">
+
+  <script>
+    $(function() {
+      // Ativa o calendário
+      $("#data_conclusao").datepicker({
+        dateFormat: "dd/mm/yy",   // formato brasileiro
+        showAnim: "slideDown"     // animação
+      });
+
+      // Aplica a máscara de data
+      $("#data_conclusao").mask("00/00/0000");
+    });
+  </script>
+
+</body>
+</html>

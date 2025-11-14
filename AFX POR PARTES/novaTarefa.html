@@ -1,0 +1,105 @@
+
+      
+
+
+<div class="container-tarefa-master-detail">
+
+    <!-- MASTER -->
+    <div class="area-principal">
+
+
+      <!-- <button type="reset" class="voltar" onclick="window.location.href = 'index.html'">Voltar</button>
+      <button class="btn-add" onclick="window.location.href='#'">Nova Tarefa</button> -->
+
+
+      <h2>Tarefa</h2>
+
+      <form id="formTarefa" method="get" action="#">
+
+        <div id="formTarefa" class="">
+          <input type="hidden" name="id_tarefa" id="id_tarefa" value="118">
+          <input type="text" name="titulo" id="titulo" placeholder="Título da tarefa" value="" required="">
+          <input type="text" name="responsavel" id="responsavel" placeholder="Responsável da tarefa" value=""
+            required="">
+
+          <textarea name="descricao" id="descricao" placeholder="Descrição da tarefa"></textarea>
+          
+          <div class="area-radio">
+
+            <div class="radio-group">
+              <span class="texto-prioridade">Prioridade</span>
+              <label class="radio radio--baixa">
+                <input type="radio" name="prioridade" value="baixa" required="" checked="">
+                <span class="dot"></span>
+                <span>Baixa</span>
+              </label>
+
+              <label class="radio radio--media">
+                <input type="radio" name="prioridade" value="media">
+                <span class="dot"></span>
+                <span>Média</span>
+              </label>
+
+              <label class="radio radio--alta">
+                <input type="radio" name="prioridade" value="alta">
+                <span class="dot"></span>
+                <span>Alta</span>
+              </label>
+            </div>
+          </div>
+          <label for="data" class="label-data-prevista">Data prevista para conclusão</label>
+          <input type="date" name="data_conclusao" id="data_conclusao" value="">
+        </div>
+
+        <div class="botoes">
+          <button id="btn-editar" type="reset" class="editar" onclick="link('#')">Editar</button>
+        </div>
+
+      </form>
+
+      <hr>
+
+      <h2>Detalhes da Tarefa</h2>
+      <form id="form-subtarefa" class="form" action="#" method="post">
+        <div class=" ">
+          <input type="hidden" name="fk_tarefa" id="fk_tarefa" value="118">
+
+          <div class="campo">
+            <textarea name="descricao" id="descricaoDetail" placeholder="Digite a descrição..." required=""></textarea>
+          </div>
+
+          <button type="submit" class="salvar">Adicionar subtarefa</button>
+        </div>
+      </form>
+
+    </div>
+
+    <!-- DETAIL -->
+    <div id="area-detail" class="detail ">
+
+      <h3>Lista de detalhes</h3>
+      <ul id="lista-tarefas">
+
+        <li>
+          <div>
+            <small> 15 ago - 2025 </small><br>
+            <!--<small> 2025-08-14 </small><br>-->
+            <small>RESOVOLVER PENDÊNCIA 1</small>
+          </div>
+          <a class="icone-lixeira" href="#"
+            onclick="openModalDeletar(247, 118, 'RESOVOLVER PENDENCIA 1'); return false;">
+            <i class="fas fa-trash"></i>
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+
+      
+
+  

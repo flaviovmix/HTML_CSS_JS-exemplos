@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Css personalizado -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsividade.css">
+
+    <title>AFX</title>
+</head>
+
+<body>
+
+    <header class="container barra-menu py-4">
+        <nav class="navbar navbar-expand-lg bg-white border rounded-4 px-5 py-3 shadow-sm">
+            <a class="navbar-brand fw-bold" href="#">
+                <span class="text-primary">AFX</span><span>Gallery</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu"
+                aria-controls="nav-menu" aria-expanded="false" aria-label="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav-menu">
+                <form class="d-flex ms-auto me-3" role="search">
+
+                    <input id="search" class="form-control my-3 my-lg-0" type="search"
+                        placeholder="Buscar itens do espaço…" aria-label="Buscar" style="width: 300px;">
+
+                </form>
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item me-2"><a class="nav-link" href="#produtos">Produtos</a></li>
+                    <li class="nav-item me-2"><a class="nav-link" href="#estudo">Estudo</a></li>
+                    <li class="nav-item">
+
+                        <!-- <button id="btnCart" class="btn btn-outline-primary icon-btn d-flex align-items-center"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcart" aria-controls="offcart">
+                            🛒 <span class="ms-2" id="cartCount">0</span>
+                        </button>  -->
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="hero my-4 pt-0 p-md-6 mb-5">
+            <div class="row align-items-center g-4 ">
+                <div class="col-lg-5 p-5">
+
+                    <h1 class="display-5 fw-bold titulo-principal">
+                        <span class="text-primary">Soluções</span>
+                        <span>profissionais de</span>
+                        <span class="text-primary">transmissão</span> 
+                        <span>para o seu evento</span>
+                    </h1>
+
+                    <p class="lead text-secondary mt-3">
+                        Transmissão ao vivo de shows, eventos e muito mais.
+                    </p>
+                    <div class="d-flex gap-3 area-botoes-hero">
+                        <a href="#produtos" class="btn btn-primary btn-lg">Explore nossos serviços</a>
+                        <!-- <a href="#estudo" class="btn btn-outline-secondary btn-lg">Fale conosco</a> -->
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7 hero-media my-0">
+                    <!-- <img src="./assets/img/img hero.png" alt="Logo da empresa"> -->
+                    <video autoplay muted loop playsinline controls>
+                        <source src="./assets/img/CINEMA_BRASILEIRO_NO_SECULO_XX 4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="stars" aria-hidden="true"></div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>

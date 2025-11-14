@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plataforma de Curso em Vídeo</title>
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #4f46e5;
+      --brand-2: #6366f1;
+      --line: #e5e7eb;
+      --success: #10b981;
+      --pendente: #f97316
+    }
+
+    h4 {
+      margin-bottom: -10px;
+    }
+
+    aside {
+      width: 100%;
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      width: 95%;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 24px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2.3fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      margin-top: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .concluida {
+      color: var(--success);
+      font-size: 0.85rem;
+    }
+
+    .pendente {
+      color: var(--pendente);
+      font-size: 0.85rem;
+    }
+
+    .card .card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 600;
+    }
+
+    .card .card-body {
+      padding: 16px 20px;
+    }
+
+    /* Player */
+    .player-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .player-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Descrição */
+    .descricao p {
+      line-height: 1.6;
+    }
+
+    /* Módulos */
+    .modulos-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modulos-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+
+    .modulos-list .titulo {
+      font-weight: 600;
+    }
+
+    .modulos-list .duracao {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      cursor: pointer;
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: none;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid var(--brand);
+    }
+
+    .btn.secondary {
+      background: #111827;
+    }
+
+    /* Chat */
+    .chat-log {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      height: 260px;
+      overflow-y: auto;
+      padding: 12px;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .msg .bubble {
+      background: #f3f4f6;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
+
+    .msg.you {
+      justify-content: flex-end;
+    }
+
+    .msg.you .bubble {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    /* Comentários */
+    .comment {
+      border-top: 1px dashed var(--line);
+      padding-top: 12px;
+      margin: 12px 0;
+    }
+
+    .comment .author {
+      font-weight: 600;
+    }
+
+    .comment .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Estrelas */
+    .stars {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .star {
+      width: 28px;
+      height: 28px;
+      color: #d1d5db;
+    }
+
+    .star.active {
+      color: #f59e0b;
+    }
+
+    /* Footer */
+    .micro {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 12px 30px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+    }
+
+    code .tag {
+      color: #569cd6;
+    }
+
+    /* azul tags */
+    code .attr {
+      color: #9cdcfe;
+    }
+
+    /* azul claro atributos */
+    code .value {
+      color: #ce9178;
+    }
+
+    /* laranja valores */
+    code .text {
+      color: #d4d4d4;
+    }
+
+    /* normal */
+    code .selector {
+      color: #d7ba7d;
+    }
+
+    /* cor do seletor (.sta*/
+    code .comment-code {
+      color: #b7b7b7;
+    }
+
+    /* cor do seletor (.sta*/
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Curso: Fundamentos de Desenvolvimento Web</h1>
+      <div class="subtitle">Aulas em vídeo, materiais e interação em tempo real</div>
+    </header>
+
+    <div class="grid">
+      <!-- COLUNA PRINCIPAL -->
+      <main>
+        <section class="card">
+          <div class="card-body">
+            <div class="player-wrapper">
+              <video controls preload="metadata">
+                <source src="./assets/img/CINEMA_BRASILEIRO_NO_SECULO_XX 4.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeo.
+              </video>
+            </div>
+          </div>
+        </section>
+        <section class="card descricao">
+          <div class="card-header">Descrição</div>
+          <div class="card-body">
+            <h4>Exemplo de código:</h4>
+            <pre><code>
+<span class="tag">&lt;section</span> class="<span class="value">card</span>"<span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> class="<span class="value">card-header</span>"<span class="tag">&gt;</span><span class="text">Módulos</span><span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> class="<span class="value">card-body</span>"<span class="tag">&gt;</span>
+    <span class="tag">&lt;ul</span> class="<span class="value">modulos-list</span>"<span class="tag">&gt;</span>
+      <span class="tag">&lt;li&gt;</span>
+        <span class="tag">&lt;div&gt;</span>
+          <span class="tag">&lt;div</span> class="<span class="value">titulo</span>"<span class="tag">&gt;</span>
+            <span class="text">Módulo 1 — Boas-vindas e Ambiente</span>
+            <span class="tag">&lt;span&gt;</span><span class="text">✔ Concluído</span><span class="tag">&lt;/span&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div</span> class="<span class="value">duracao</span>"<span class="tag">&gt;</span><span class="text">12:41</span><span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;button</span> class="<span class="value">btn ghost</span>"<span class="tag">&gt;</span><span class="text">Assistir</span><span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/section&gt;</span>
+
+<span class="comment-code">&lt;!-- Este é um comentário em HTML --&gt;</span>
+<span class="comment-code">/* Este é um comentário em CSS */</span>
+<span class="comment-code">// Isso é um comentário de uma linha</span>
+
+<span class="selector">.star {</span>
+  <span class="attr">width</span>: <span class="value">28px</span>;
+  <span class="attr">height</span>: <span class="value">28px</span>;
+  <span class="attr">color</span>: <span class="value">#d1d5db</span>;
+<span class="selector">}</span>
+    </code></pre>
+
+<h4>O que é CSS?</h4> <p><b>CSS (Cascading Style Sheets)</b> dá estilo ao HTML: cores, fontes, tamanhos, espaçamentos e até animações.</p> <p><b>Exemplo:</b></p> <pre><code> <span class="selector">body {</span> <span class="attr">background-color</span>: <span class="value">#f0f0f0</span>; <span class="attr">font-family</span>: <span class="value">Arial, sans-serif</span>; <span class="selector">}</span>
+
+<span class="selector">h1 {</span>
+<span class="attr">color</span>: <span class="value">blue</span>;
+<span class="attr">text-align</span>: <span class="value">center</span>;
+<span class="selector">}</span>
+
+<span class="selector">p {</span>
+<span class="attr">color</span>: <span class="value">#333</span>;
+<span class="attr">line-height</span>: <span class="value">1.5</span>;
+<span class="selector">}</span>
+</code></pre>
+<h4>Como eles funcionam juntos?</h4> 
+<p>O HTML cria a estrutura, o CSS deixa bonito e organizado.</p> 
+<h4>Exemplo completo:</h4> 
+
+<pre><code>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> lang="<span class="value">pt-br</span>"<span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> charset="<span class="value">UTF-8</span>"<span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">Exemplo</span><span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;style&gt;</span>
+      <span class="selector">body {</span>
+        <span class="attr">background</span>: <span class="value">#fafafa</span>;
+        <span class="attr">font-family</span>: <span class="value">Verdana</span>;
+      <span class="selector">}</span>
+
+      <span class="selector">h1 {</span>
+        <span class="attr">color</span>: <span class="value">darkred</span>;
+      <span class="selector">}</span>
+
+      <span class="selector">p {</span>
+        <span class="attr">color</span>: <span class="value">#555</span>;
+      <span class="selector">}</span>
+    <span class="tag">&lt;/style&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">Olá, mundo!</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Este é meu primeiro site com HTML e CSS.</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</code></pre>
+
+          </div>
+        </section>
+        
+        
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <section class="card">
+          <div class="card-header">Módulos 1 | INTERFACE HTML - CSS - JS</div>
+          <div class="card-body">
+            <ul class="modulos-list">
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>01 - Boas-vindas e preparação do ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="concluida">✔ Concluído</span>
+                    </div>
+
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>02 - Porjeto Olá Mundo para testar o ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="pendente">❗Pendente</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>03 - Porjeto Olá Mundo para testar o ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="pendente">❗Pendente</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>04 - Porjeto Olá Mundo para testar o ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="pendente">❗Pendente</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>05 - Porjeto Olá Mundo para testar o ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="pendente">❗Pendente</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>06 - Porjeto Olá Mundo para testar o ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="pendente">❗Pendente</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <li>
+                <div>
+                  <div class="titulo">
+                    <span>07 - Porjeto Olá Mundo para testar o ambiente</span>
+                    <div>
+                      <span class="duracao">12:41 - </span>
+                      <span class="pendente">❗Pendente</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn ghost">Assistir</button>
+              </li>
+
+              <!-- repete conforme necessário -->
+            </ul>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">Chat</div>
+          <div class="card-body">
+            <div class="chat-log">
+              <div class="msg">
+                <div class="bubble"><strong>Ana:</strong> Alguém conseguiu rodar o Live Server?</div>
+              </div>
+              <div class="msg">
+                <div class="bubble"><strong>Pedro:</strong> Usei o VS Code e deu bom.</div>
+              </div>
+            </div>
+            <div class="chat-input">
+              <input type="text" placeholder="Digite sua mensagem..." />
+              <button class="btn">Enviar</button>
+            </div>
+            <div class="micro">Dica: pressione Enter para enviar</div>
+          </div>
+        </section>
+
+        
+      </aside>
+    </div>
+<section class="card">
+          <div class="card-header">Comentários</div>
+          <div class="card-body">
+            <div class="comment">
+              <div class="author">Maria</div>
+              <div class="meta">01/10/2025</div>
+              <div class="text">Aula muito clara, valeu!</div>
+            </div>
+            <div class="comment">
+              <div class="author">João</div>
+              <div class="meta">01/10/2025</div>
+              <div class="text">Curti as dicas de CSS responsivo.</div>
+            </div>
+            <textarea placeholder="Escreva um comentário..."></textarea>
+            <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+              <div class="stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                <span class="star">★</span><span class="star">★</span>
+              </div>
+              <button class="btn">Enviar comentário</button>
+            </div>
+          </div>
+        </section>
+    <footer class="micro">© Plataforma de Curso — exemplo HTML/CSS</footer>
+  </div>
+</body>
+
+</html>

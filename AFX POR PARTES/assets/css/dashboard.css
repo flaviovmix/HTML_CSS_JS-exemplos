@@ -1,0 +1,120 @@
+/* ===== DASHBOARD LAYOUT ===== */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.dashboard-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+
+/* Grid responsivo */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* ===== CARD ===== */
+.dashboard-card {
+  position: relative; /* referência pros botões */
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+
+  /* IMPORTANTE → permite que os botões “saiam” do card */
+  overflow: visible;
+}
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* ===== ICONES ===== */
+.dashboard-icon {
+  width: 100%;
+  font-size: 60px;
+  margin-bottom: 16px;
+  color: #fff;
+  padding: 40px 0;
+  border-radius: 12px;
+  display: block;
+  text-align: center;
+}
+
+/* ===== TEXTOS ===== */
+.card-title {
+  font-size: 20px;
+  margin: 12px 0;
+}
+.card-text {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* ===== BOTÕES DE AÇÃO (Acessar) ===== */
+.dashboard-btn {
+  display: inline-block;
+  width: 80%;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 15px;
+  text-decoration: none;
+  border: 2px solid;
+  transition: background 0.2s, color 0.2s;
+  font-weight: bold;
+}
+
+/* ===== CARROSSEL ===== */
+.dashboard-carousel {
+  position: relative;
+  /* overflow: hidden; só corta o slide, não os botões */
+  min-height: 300px;
+}
+.carousel-item {
+  display: none;
+  animation: fade 0.5s ease-in-out;
+}
+.carousel-item.active {
+  display: block;
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== BOTÕES DE NAVEGAÇÃO DO CARROSSEL ===== */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.95);
+  border: none;
+  font-size: 22px;
+  color: #444;
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  z-index: 30;
+}
+.carousel-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Flutuando fora do card */
+.carousel-btn.prev {
+  left: -15px;
+}
+.carousel-btn.next {
+  right: -15px;
+}

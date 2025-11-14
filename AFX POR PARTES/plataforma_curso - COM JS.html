@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plataforma de Curso em Vídeo</title>
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #4f46e5;
+      /* indigo */
+      --brand-2: #6366f1;
+      --line: #e5e7eb;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 24px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      /* main | sidebar */
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      margin-top: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .card .card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 600;
+    }
+
+    .card .card-body {
+      padding: 16px 20px;
+    }
+
+    /* Player */
+    .player-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      /* fallback via padding if needed */
+      width: 100%;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .player-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Descrição */
+    .descricao p {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Módulos */
+    .modulos-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modulos-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+
+    .modulos-list .titulo {
+      font-weight: 600;
+    }
+
+    .modulos-list .duracao {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      appearance: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform .06s ease;
+    }
+
+    .btn.secondary {
+      background: #111827;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid var(--brand);
+    }
+
+    /* Chat */
+    .chat-box {
+      display: grid;
+      gap: 12px;
+    }
+
+    .chat-log {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      height: 260px;
+      overflow-y: auto;
+      padding: 12px;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .msg .bubble {
+      background: #f3f4f6;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
+
+    .msg.you {
+      justify-content: flex-end;
+    }
+
+    .msg.you .bubble {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      font: inherit;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    /* Comentários */
+    .comment {
+      border-top: 1px dashed var(--line);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    .comment .author {
+      font-weight: 600;
+    }
+
+    .comment .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Estrelas */
+    .stars {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .star {
+      width: 28px;
+      height: 28px;
+      display: inline-block;
+      cursor: pointer;
+      color: #d1d5db;
+      transition: transform .07s ease;
+    }
+
+    .star svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .star:hover {
+      transform: scale(1.05);
+    }
+
+    .star.active {
+      color: #f59e0b;
+    }
+
+    .rating-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-left: 8px;
+    }
+
+    /* Footer micro */
+    .micro {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Curso: Fundamentos de Desenvolvimento Web</h1>
+      <div class="subtitle">Aulas em vídeo, materiais e interação em tempo real</div>
+    </header>
+
+    <div class="grid">
+      <!-- COLUNA PRINCIPAL -->
+      <main class="col-main" aria-label="Conteúdo principal">
+        <!-- PLAYER -->
+        <section class="card">
+          <div class="card-body">
+            <div class="player-wrapper" aria-label="Player de vídeo">
+              <video id="player" controls poster="" preload="metadata">
+                <source src="./assets/img/CINEMA_BRASILEIRO_NO_SECULO_XX 4.mp4" type="video/mp4" />
+                Seu navegador não suporta o elemento <code>video</code>.
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <!-- DESCRIÇÃO -->
+        <section class="card descricao" aria-label="Descrição da aula">
+          <div class="card-header">Descrição</div>
+          <div class="card-body">
+            <p>
+              Nesta aula introdutória, vamos alinhar expectativas, revisar o ambiente de
+              desenvolvimento e preparar o terreno para HTML, CSS e JavaScript modernos.
+            </p>
+            <ul>
+              <li>Objetivo: publicar uma página simples e responsiva.</li>
+              <li>Recursos: editor, navegador, extensão Live Server (opcional).</li>
+              <li>Entrega: mini landing page com cabeçalho, seção e rodapé.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- COMENTÁRIOS + AVALIAÇÃO -->
+        <section class="card" aria-label="Comentários e avaliação">
+          <div class="card-header">Comentários</div>
+          <div class="card-body">
+            <div id="comments-list">
+              <!-- comentários renderizados via JS -->
+            </div>
+            <div class="comment-form" style="margin-top:16px; display:grid; gap:10px;">
+              <textarea id="comment-input" placeholder="Escreva um comentário..."></textarea>
+              <div style="display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap: wrap;">
+                <div>
+                  <span class="stars" id="rating-stars" aria-label="Avaliação por estrelas">
+                    <!-- estrelas via JS -->
+                  </span>
+                  <span class="rating-note" id="rating-note">Avalie esta aula</span>
+                </div>
+                <button class="btn" id="send-comment">Enviar comentário</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="col-side" aria-label="Navegação lateral">
+        <!-- MÓDULOS -->
+        <section class="card" aria-label="Módulos do curso">
+          <div class="card-header">Módulos</div>
+          <div class="card-body">
+            <ul class="modulos-list" id="modules-list">
+              <!-- lista via JS -->
+            </ul>
+          </div>
+        </section>
+
+        <!-- CHAT -->
+        <section class="card" aria-label="Chat da turma">
+          <div class="card-header">Chat</div>
+          <div class="card-body chat-box">
+            <div class="chat-log" id="chat-log" aria-live="polite" aria-relevant="additions">
+              <!-- mensagens via JS -->
+            </div>
+            <div class="chat-input">
+              <input id="chat-input" type="text" placeholder="Digite sua mensagem..." aria-label="Mensagem" />
+              <button class="btn" id="chat-send">Enviar</button>
+            </div>
+            <div class="micro">Dica: pressione Enter para enviar</div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="micro">© Plataforma de Curso — exemplo HTML/CSS/JS puro</footer>
+  </div>
+
+  <template id="star-template">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path
+        d="M11.48 3.5c.2-.58.84-.88 1.42-.68.33.12.57.39.67.7l1.5 4.61h4.86c.61 0 1.1.5 1.1 1.1 0 .36-.18.7-.47.9l-3.94 2.8 1.5 4.61c.19.58-.12 1.21-.7 1.4-.33.11-.68.07-.97-.12l-3.95-2.8-3.95 2.8c-.51.36-1.2.23-1.56-.28-.19-.28-.24-.64-.13-.97l1.5-4.62-3.94-2.8c-.5-.36-.62-1.05-.26-1.56.2-.29.54-.46.9-.46h4.86l1.5-4.61Z" />
+    </svg>
+  </template>
+
+  <script>
+    // ======= Dados mock =======
+  const modules = [ 
+    { id: 1, titulo: "Boas-vindas e Ambiente", duracao: "12:41", src: "sample-video.mp4", concluido: true },
+    { id: 2, titulo: "HTML Essencial", duracao: "18:03", src: "sample-video.mp4#t=1", concluido: false },
+    { id: 3, titulo: "CSS na Prática", duracao: "24:55", src: "sample-video.mp4#t=2", concluido: false },
+    { id: 4, titulo: "JS Interativo", duracao: "28:12", src: "sample-video.mp4#t=3", concluido: true },
+    { id: 5, titulo: "Projeto Final", duracao: "31:05", src: "sample-video.mp4#t=4", concluido: false }
+  ];
+
+    const initialComments = [
+      { author: "Maria", text: "Aula muito clara, valeu!", date: new Date() },
+      { author: "João", text: "Curti as dicas de CSS responsivo.", date: new Date() }
+    ];
+
+    const initialChat = [
+      { author: "Ana", text: "Alguém conseguiu rodar o Live Server?" },
+      { author: "Pedro", text: "Usei o VS Code e deu bom." }
+    ];
+
+    // ======= Helpers =======
+    const fmtDate = (d) => new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(d);
+
+    // ======= Módulos =======
+    const modulesListEl = document.getElementById('modules-list');
+    const player = document.getElementById('player');
+
+function renderModules() {
+  modulesListEl.innerHTML = '';
+  modules.forEach((m) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div>
+        <div class="titulo">${m.titulo} 
+          ${m.concluido ? '<span style="color:var(--success);font-size:0.85rem;">✔ Concluído</span>' : ''}
+        </div>
+        <div class="duracao">${m.duracao}</div>
+      </div>
+      <button class="btn ghost" data-id="${m.id}">Assistir</button>
+    `;
+    li.querySelector('button').addEventListener('click', () => {
+      if (m.src) {
+        player.src = m.src;
+        player.play().catch(() => {/* autoplay block */ });
+        // marcar como concluído quando assistir
+        m.concluido = true;
+        renderModules(); // re-renderiza
+      }
+    });
+    modulesListEl.appendChild(li);
+  });
+}
+
+
+    // ======= Comentários =======
+    const commentsEl = document.getElementById('comments-list');
+    const commentInput = document.getElementById('comment-input');
+    const sendCommentBtn = document.getElementById('send-comment');
+
+    let comments = JSON.parse(localStorage.getItem('comments') || 'null') || initialComments;
+
+    function renderComments() {
+      commentsEl.innerHTML = '';
+      comments.forEach((c) => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `
+          <div class="author">${c.author}</div>
+          <div class="meta">${fmtDate(new Date(c.date || Date.now()))}</div>
+          <div class="text">${c.text}</div>
+        `;
+        commentsEl.appendChild(div);
+      });
+    }
+
+    sendCommentBtn.addEventListener('click', () => {
+      const text = commentInput.value.trim();
+      if (!text) return;
+      const c = { author: 'Você', text, date: new Date() };
+      comments.push(c);
+      localStorage.setItem('comments', JSON.stringify(comments));
+      commentInput.value = '';
+      renderComments();
+    });
+
+    // ======= Estrelas (rating) =======
+    const starsWrap = document.getElementById('rating-stars');
+    const starTpl = document.getElementById('star-template');
+    const ratingNote = document.getElementById('rating-note');
+
+    let rating = Number(localStorage.getItem('rating') || 0);
+
+    function paintStars(temp = null) {
+      const activeTo = temp ?? rating;
+      [...starsWrap.children].forEach((el, idx) => {
+        el.classList.toggle('active', idx < activeTo);
+      });
+      ratingNote.textContent = activeTo ? `Sua avaliação: ${activeTo} ${activeTo === 1 ? 'estrela' : 'estrelas'}` : 'Avalie esta aula';
+    }
+
+    function buildStars() {
+      starsWrap.innerHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        const node = starTpl.content.firstElementChild.cloneNode(true);
+        const wrapper = document.createElement('span');
+        wrapper.className = 'star';
+        wrapper.setAttribute('role', 'button');
+        wrapper.setAttribute('aria-label', `${i} estrelas`);
+        wrapper.appendChild(node);
+        wrapper.addEventListener('mouseenter', () => paintStars(i));
+        wrapper.addEventListener('mouseleave', () => paintStars());
+        wrapper.addEventListener('click', () => {
+          rating = i;
+          localStorage.setItem('rating', String(rating));
+          paintStars();
+        });
+        starsWrap.appendChild(wrapper);
+      }
+      paintStars();
+    }
+
+    // ======= Chat =======
+    const chatLog = document.getElementById('chat-log');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+
+    let chatMsgs = JSON.parse(localStorage.getItem('chat') || 'null') || initialChat;
+
+    function renderChat() {
+      chatLog.innerHTML = '';
+      chatMsgs.forEach((m) => {
+        const row = document.createElement('div');
+        row.className = 'msg' + (m.author === 'Você' ? ' you' : '');
+        row.innerHTML = `<div class="bubble"><strong>${m.author}:</strong> ${m.text}</div>`;
+        chatLog.appendChild(row);
+      });
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function sendChatMsg() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      chatMsgs.push({ author: 'Você', text });
+      localStorage.setItem('chat', JSON.stringify(chatMsgs));
+      chatInput.value = '';
+      renderChat();
+    }
+
+    chatSend.addEventListener('click', sendChatMsg);
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendChatMsg();
+      }
+    });
+
+    // ======= Init =======
+    renderModules();
+    renderComments();
+    buildStars();
+    renderChat();
+  </script>
+</body>
+
+</html>
