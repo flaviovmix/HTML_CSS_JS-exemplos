@@ -1,0 +1,77 @@
+:root {
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --ink: #0f172a;
+    --muted: #6b7280;
+    --brand: #5b8def;
+    --brand-2: #8a5bff;
+    --accent: #22c55e;
+    --ring: rgba(91, 141, 239, .35);
+}
+
+html,
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+.titulo-principal {
+    font-size: 2rem;
+}
+
+.nav-link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 0;
+    height: 2px;
+    background-color: #6c757d;
+    transition: width 0.3s ease;
+}
+
+.hero {
+    position: relative;
+    overflow: clip;
+    border-radius: 1.5rem;
+    background: radial-gradient(1200px 600px at 10% 20%, #ffffff 0%, #eef4ff 38%, #ecf3ff 40%, #eaf0ff 42%, #e7eeff 45%, #e3ecff 48%, #e0eaff 53%, #dbe6ff 60%, #d6e3ff 70%, #d2e1ff 80%, #cfe0ff 100%);
+    box-shadow: 0 10px 30px rgba(91, 141, 239, .15);
+}
+
+.hero-media {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hero-media img {
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero .row {
+    height: 100%;
+    align-items: stretch !important;
+}
+
+.hero-media video {
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: center;
+}

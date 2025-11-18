@@ -1,0 +1,206 @@
+/* ===== BASE ===== */
+body {
+  background-color: #f5f5f5;
+  color: #222;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding-top: 80px;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 16px 32px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+header .container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header h1 {
+  margin: 0;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-add {
+  background: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.btn-add:hover {
+  background: #27ae60;
+}
+
+/* ===== SEÇÕES ===== */
+section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px 10px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.titulo-centro {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ===== FORMULÁRIO ===== */
+form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+form td {
+  padding: 0 10px;
+  vertical-align: middle;
+}
+form td:first-child {
+  width: 160px;
+  color: #555;
+  font-weight: bold;
+  white-space: nowrap;
+}
+form input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+form input:focus {
+  outline: none;
+  border-color: #2ecc71;
+  box-shadow: 0 0 4px rgba(46, 204, 113, 0.3);
+}
+form .actions {
+  text-align: center;
+  margin-top: 15px;
+}
+.save-btn,
+.cancel-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.save-btn {
+  background: #2ecc71;
+  color: #fff;
+}
+.save-btn:hover {
+  background: #27ae60;
+}
+.cancel-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+.cancel-btn:hover {
+  background: #c0392b;
+}
+
+/* ===== TABELA DE CONTATOS ===== */
+.tabela-contatos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.tabela-contatos tr {
+  border-bottom: 1px solid #eee;
+}
+.tabela-contatos th,
+.tabela-contatos td {
+  padding: 5px 10px;
+  text-align: left;
+}
+.tabela-contatos th {
+  background: #f0f0f0;
+  color: #444;
+  font-weight: bold;
+}
+.tabela-contatos td i {
+  margin-right: 6px;
+  color: #666;
+}
+.tabela-contatos tr:hover {
+  background: #fafafa;
+}
+
+/* ===== AÇÕES NA TABELA ===== */
+.tabela-contatos td.acoes {
+  text-align: center;
+  white-space: nowrap;
+}
+.acao-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0 6px;
+  transition: color 0.2s;
+}
+.acao-btn.edit { color: #f39c12; }
+.acao-btn.edit:hover { color: #d68910; }
+.acao-btn.delete { color: #e74c3c; }
+.acao-btn.delete:hover { color: #c0392b; }
+
+
+.form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  z-index: 1000;
+  width: 400px;
+}
+
+.form-popup table {
+  width: 100%;
+}
+
+.form-popup .actions {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #28a745;
+  color: white;
+}
+
+.cancel-btn {
+  background: #ccc;
+}
+
+

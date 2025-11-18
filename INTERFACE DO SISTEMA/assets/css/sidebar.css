@@ -1,0 +1,162 @@
+:root {
+  --bg: #ffffff;
+  --bg-weak: #f5f5f5;
+  --text: #222;
+  --muted: #666;
+  --hover: #f0f0f0;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+  --accent: #2ecc71;
+}
+
+/* ===== Botão Hambúrguer ===== */
+.menu-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 36px;
+  padding: 0 10px;
+  font-size: 18px;
+  border: 1px solid #e6e6e6;
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease;
+}
+
+.menu-lateral {
+  font-weight: 100;
+  font-size: 20px;
+  padding: 18px;
+  font-family: sans-serif;
+
+}
+
+.menu-btn:hover { background: var(--hover); }
+
+/* ===== Layout ===== */
+.layout {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;            /* não ocupa espaço quando fechado */
+  left: 0;
+  width: 280px;                  /* largura fixa */
+  height: 100vh;                 /* ocupa tela inteira */
+  background: var(--bg);
+  border-right: 1px solid #eee;
+  box-shadow: var(--shadow);
+  transform: translateX(-100%);  /* escondida inicialmente */
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  transform: translateX(0);      /* entra suavemente */
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px 12px 16px; /* espaço para não colidir com topo */
+}
+
+/* ===== Conteúdo principal ===== */
+.main-content {
+  flex: 1;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.active ~ .main-content {
+  margin-left: 280px;            /* empurra conteúdo */
+}
+
+/* Links principais */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 8px;           
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+.sidebar a:hover { background: var(--hover); }
+
+.sidebar .titilo-side-bar {
+  padding-left: 15px;
+}
+
+/* Botão fechar dentro da sidebar */
+.sidebar-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1101;
+  height: 32px;
+  width: 32px;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease;
+}
+.sidebar-close:hover { background: var(--hover); }
+
+/* ===== Submenu ===== */
+.submenu {
+  padding-left: 16px;
+  display: grid;
+  gap: 2px;
+}
+.submenu[hidden] { display: none; }
+.submenu a { font-size: 14px; padding: 8px 10px; }
+
+.submenu-toggle .caret {
+  transition: transform 0.2s ease;
+}
+.submenu-toggle[aria-expanded="true"] .caret {
+  transform: rotate(90deg);
+}
+
+/* ===== Backdrop ===== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.32);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.backdrop[hidden] { display: none; }
+.backdrop.show { opacity: 1; }
+
+/* ===== Conteúdo extra ===== */
+.content {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* ===== Scroll Lock quando menu aberto ===== */
+body.menu-open { overflow: hidden; }

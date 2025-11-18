@@ -1,0 +1,52 @@
+ .tabs {
+    width: 100%;
+  }
+  .tabs > input[type="radio"] {
+    display: none;
+  }
+  .tabs > label {
+    display: inline-block;
+    padding: 10px 16px;
+    margin-right: 8px;
+    border: 1px solid #444;
+    border-bottom: none;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    user-select: none;
+    font-weight: 600;
+    opacity: .8;
+  }
+  /* Linha base das abas */
+  .tabs .tab-underline {
+    height: 1px;
+    background: #444;
+    margin-top: -1px;
+  }
+  /* Conte�do */
+  .tab-content {
+    display: none;
+    border: 1px solid #444;
+    background-color: #f9f9f9;
+    border-radius: 0 6px 6px 6px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Aba ativa */
+  #tab-ativas:checked ~ label[for="tab-ativas"],
+  #tab-inativas:checked ~ label[for="tab-inativas"] {
+    opacity: 1;
+    background: transparent; /* deixe o fundo da sua p�gina aparecer */
+    border-bottom: 1px solid transparent;
+    color: orange;
+  }
+  /* Mostra o conte�do da aba selecionada */
+  #tab-ativas:checked ~ .content-ativas,
+  #tab-inativas:checked ~ .content-inativas {
+    display: block;
+  }
+  
+  .check {
+     color: orange; 
+  }
