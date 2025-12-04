@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Switch Personalizado</title>
+
+  <style>
+    :root {
+      --ativo: #3498db;
+      --inativo: #e5e7eb;
+      --bolinha: #ffffff;
+    }
+
+    /* ============================
+          SWITCH PERSONALIZADO
+       ============================ */
+    .alternador {
+      position: relative;
+      width: 65px;
+      height: 30px;
+      display: inline-block;
+    }
+
+    .alternador input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .alternador-slider {
+      position: absolute;
+      inset: 0;
+      background: var(--inativo);
+      border-radius: 99px;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .alternador-slider::before {
+      content: "";
+      position: absolute;
+      height: 25px;
+      width: 27px;
+      left: 3px;
+      top: 2px;
+      background: var(--bolinha);
+      border-radius: 50%;
+      transition: .25s;
+    }
+
+    /* quando marcado */
+    .alternador input:checked + .alternador-slider {
+      background: var(--ativo);
+    }
+
+    .alternador input:checked + .alternador-slider::before {
+      transform: translateX(32px);
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <label class="alternador">
+      <input type="checkbox" checked>
+      <span class="alternador-slider"></span>
+    </label>
+
+</body>
+
+</html>
