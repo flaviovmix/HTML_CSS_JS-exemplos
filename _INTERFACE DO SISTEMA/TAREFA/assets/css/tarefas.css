@@ -1,0 +1,282 @@
+/* ============================
+   VARIAVEIS
+============================ */
+
+
+
+/* ============================
+   EXTERNO
+============================ */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--txt);
+  background-color: var(--bg-pagina);
+}
+
+.area-main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* ============================
+   CARTÃO DE TAREFA (extrutura)
+============================ */
+.tarefa {
+  position: relative;
+  list-style: none;
+}
+
+.cartao-tarefa {
+  position: relative;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 10px;
+  background: var(--card);
+  border-left: 6px solid var(--laranja);
+  border-radius: var(--borda-card);
+  box-shadow: var(--shadow);
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.cartao-tarefa-wrapper {
+  border-radius: var(--borda-card);
+  display: flex;
+  width: 100%;
+  z-index: 2;
+}
+
+
+/* ============================
+   CARTÃO DE TAREFA (link)
+============================ */
+.cartao-tarefa-link {
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  padding: 12px 14px;
+  box-shadow: 6px 0 12px rgba(0, 0, 0, 0.10);
+  border-radius: var(--borda-card);
+  transform: translateX(0);
+  transition: transform .25s ease;
+
+  position: relative;
+  z-index: 5;
+
+  background: var(--card);
+}
+
+.cartao-tarefa-link:hover {
+  background-color: var(--card-hover);
+}
+
+.conteudo-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  padding-top: 0;
+  width: 100%;
+}
+
+.etiqueta {
+  padding: 3px 10px 4px 10px;
+  background-color: var(--bg-etiquetas);
+  color: var(--txt-claro);
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 50px;
+}
+
+.tarefa-titulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.area-titulo-responsavel {
+  width: 100%;
+}
+
+.rotulo-responsavel {
+  font-weight: 600;
+}
+
+.tarefa-area-status {
+  position: absolute;
+  right: 15px;
+  top: 60px;
+  z-index: 25;
+}
+
+.tarefa-descricao {
+  margin-top: 12px;
+}
+
+/* ============================
+   APARENCIA CHECKBOX
+============================ */
+
+
+
+
+
+
+
+
+
+
+.divisao-tarefa-data {
+  margin: 0 5px;
+}
+
+.botao-acao-tarefa {
+  display: block;
+  position: absolute;
+  padding: 10px 14px;
+  border: 2px solid #8e8e8e;
+  border-radius: 50%;
+  cursor: pointer;
+  right: 3px;
+  top: 3px;
+  z-index: 6;
+}
+
+.etiqueta-status {
+  position: absolute;
+  right: 50px;
+}
+
+.cartao-tarefa.mostrar-acoes .cartao-tarefa-link {
+  transform: translateX(-40%); /* CASO QUEIRA PADRÃO FIXO */
+}
+
+/* =============================
+PRIMEIRA QUEBRA
+============================= */
+@media (min-width: 755px) {
+  .conteudo-cartao {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .etiqueta-status {
+    right: 15px;
+  }
+
+  .area-titulo-responsavel {
+    width: 48%;
+  }
+
+  .tarefa-titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 70%;
+  }
+
+  .botao-acao-tarefa {
+    padding: 5px 8px;
+    top: 35px;
+    right: 0px;
+  }
+
+  .area-main {
+    width: 96%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .painel-acoes-tarefas {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding-right: 25px;
+    z-index: 1;
+
+  }
+}
+
+
+/* =============================
+SEGUNDA QUEBRA
+============================= */
+@media (min-width: 900px) {
+  .area-titulo-responsavel {
+    display: flex;
+    align-items: center;
+    width: 55%;
+  }
+
+  .rotulo-responsavel {
+    display: none;
+  }
+
+  .tarefa-titulo {
+    width: 50%;
+  }
+
+  .tarefa-area-status {
+    top: 45px;
+  }
+
+  .botao-acao-tarefa {
+    top: 25px;
+  }
+}
+
+
+/* =============================
+   3) Tablets em retrato
+   (a partir de 768px)
+============================= */
+@media (min-width: 768px) {
+  /* cartão mais largo, área-main centralizada, espaçamentos maiores */
+}
+
+
+/* =============================
+   4) Tablets paisagem / Desktop pequeno
+   (a partir de 1024px)
+============================= */
+@media (min-width: 1024px) {
+  /* reorganização mais sofisticada, elementos lado a lado */
+}
+
+
+/* =============================
+   5) Notebooks
+   (a partir de 1280px)
+============================= */
+@media (min-width: 1280px) {
+  /* cartão com largura fixa, texto mais confortável */
+}
+
+
+/* =============================
+   6) Telas grandes
+   (a partir de 1536px)
+============================= */
+@media (min-width: 1536px) {
+  /* aumentar larguras máximas, tipografia maior */
+}
+
+
+/* =============================
+   7) Full HD / 4K
+   (a partir de 1920px)
+============================= */
+@media (min-width: 1920px) {
+  /* layout mais espaçado, cards mais largos */
+}
