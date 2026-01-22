@@ -1,0 +1,44 @@
+.quadro-tarefas {
+    padding: 10px;
+    display: grid;
+
+    grid-template-rows: repeat(3, 70px);
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.itens {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color: red;
+}
+
+.descricao {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 7;
+
+    margin: auto 0px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    /* background-color: blue; */
+}
+
+.controle {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 5;
+    grid-column-end: 7;
+    background-color: yellow;
+}
+
+@media (min-width: 755px) {
+    .quadro-tarefas {
+        display: grid;
+        grid-template-rows: repeat(2, 50px);
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
