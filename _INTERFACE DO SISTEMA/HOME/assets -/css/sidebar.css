@@ -49,8 +49,7 @@
 
 /* ===== Sidebar ===== */
 .sidebar {
-  position: absolute;            /* não ocupa espaço quando fechado */
-  top: -18px;
+  position: fixed;            /* não ocupa espaço quando fechado */
   left: 0;
   width: 280px;                  /* largura fixa */
   height: 100vh;                 /* ocupa tela inteira */
@@ -158,6 +157,3 @@
   padding: 20px;
   transition: margin-left 0.3s ease;
 }
-
-/* ===== Scroll Lock quando menu aberto ===== */
-body.menu-open { overflow: hidden; }
