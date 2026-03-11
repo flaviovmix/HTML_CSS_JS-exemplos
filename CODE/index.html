@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Titulo da Página</title>
+
+    <!-- Vendors externos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <!-- Vendors locais -->
+    <link rel="stylesheet" href="./assets/css/vendors/swal.css">
+
+    <!-- Estilos do projeto -->
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css">
+    <link rel="stylesheet" href="./assets/css/index-claro.css">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <link rel="stylesheet" href="./assets/css/contatos.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div id="header">
+        <header>
+            <div class="container">
+                <div id="cabecalho"></div>
+
+                <div class="user-menu">
+                    <button class="user-btn" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="user-name">usuario</span>
+                        <i class="fas fa-caret-down caret"></i>
+                    </button>
+
+                    <div class="user-dropdown" id="userDropdown" hidden>
+                        <a href="#">
+                            <i class="fas fa-user"></i>
+                            <span class="opcoes-sub-menu">Meu Perfil</span>
+                        </a>
+                        <a href="#" onclick="openModalConfig(); return false;">
+                            <i class="fas fa-cog"></i>
+                            <span class="opcoes-sub-menu">Configurações</span>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="opcoes-sub-menu">Sair</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- ===== LAYOUT PRINCIPAL ===== -->
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <div id="barra-lateral">
+            <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="mySidebar" onclick="toggleSidebar()">
+                <i class="fas fa-bars">
+                    <span class="menu-lateral">Menu lateral</span>
+                </i>
+            </button>
+
+            <aside class="sidebar" id="mySidebar" aria-hidden="true">
+                <button class="sidebar-close" aria-label="Fechar menu" onclick="toggleSidebar()">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <nav class="sidebar-nav">
+                    <a href="#"><i class="fas fa-cog"></i> Configuração</a>
+                    <hr>
+                    <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="#"><i class="fas fa-tasks"></i> Tarefas</a>
+
+                    <a href="javascript:void(0)" class="submenu-toggle"
+                        onclick="toggleSubmenu('submenu-cardadventure', this)"
+                        aria-expanded="false">
+                        <span>
+                            <i class="fas fa-id-card"></i>
+                            <span class="titilo-side-bar">SubMenu</span>
+                        </span>
+                        <i class="fas fa-chevron-right caret"></i>
+                    </a>
+
+                    <div id="submenu-cardadventure" class="submenu" hidden>
+                        <a href="#">Ítem 1</a>
+                        <a href="#">Ítem 2</a>
+                    </div>
+                </nav>
+            </aside>
+        </div>
+
+        <div class="backdrop" id="sidebarBackdrop" hidden></div>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content" id="main">
+            <div class="dashboard-container">
+                <h2 class="dashboard-title">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </h2>
+
+                <div class="dashboard-grid">
+
+                    <div class="dashboard-card card-green">
+                        <div class="dashboard-icon">
+                            <i class="fa-solid fa-list"></i>
+                        </div>
+                        <h5 class="card-title">Tarefas</h5>
+                        <p class="card-text">Organize aqui suas atividades.</p>
+                        <a href="#" class="dashboard-btn"
+                            onclick="clearInput(); ajaxURL('db05abc2cd78d92b6136740811d416fe.jsap', 1, 1, 1);">
+                            Acessar
+                        </a>
+                    </div>
+
+                    <div class="dashboard-card card-purple">
+                        <div class="dashboard-icon">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <h5 class="card-title">Atletas</h5>
+                        <p class="card-text">Lista de atletas.</p>
+                        <a href="#" class="dashboard-btn" onclick="">Acessar</a>
+                    </div>
+
+                    <div class="dashboard-card card-orange">
+                        <div class="dashboard-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <h5 class="card-title">Usuários</h5>
+                        <p class="card-text">Lista de usuários.</p>
+                        <a href="#" class="dashboard-btn" onclick="">Acessar</a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Vendors locais -->
+    <script src="res/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="res/vendors/jquery/jquery-ui.min.js"></script>
+    <script src="res/scripts/jquery/jquery-ui-ptBr.js"></script>
+    <script src="res/vendors/sweetalert/sweetalert.js"></script>
+
+    <!-- Libs do sistema -->
+    <script src="res/js/XTLib.js"></script>
+    <script src="res/js/XTLibJqueryV1.js"></script>
+    <script src="res/js/jasapJquery.js"></script>
+    <script src="res/js/validate.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts do projeto -->
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/menu-usuario.js"></script>
+    <script src="./assets/js/dashboard.js"></script>
+
+</body>
+
+</html>
