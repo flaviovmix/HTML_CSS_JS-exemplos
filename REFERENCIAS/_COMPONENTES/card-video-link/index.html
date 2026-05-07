@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card-video — variante lista de links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="demo-stage">
+
+        <div class="card" data-href="https://example.com">
+            <div class="card-menu btnMenuCard">
+                <svg viewBox="0 0 350 350"><circle cx="39" cy="55" r="39"/><circle cx="39" cy="175" r="39"/><circle cx="39" cy="295" r="39"/><path d="M345,21H114c-3,0-5,2-5,5v58c0,3,2,5,5,5h231c3,0,5-2,5-5V26c0-3-2-5-5-5z"/><path d="M345,141H114c-3,0-5,2-5,5v58c0,3,2,5,5,5h231c3,0,5-2,5-5v-58c0-3-2-5-5-5z"/><path d="M345,261H114c-3,0-5,2-5,5v58c0,3,2,5,5,5h231c3,0,5-2,5-5v-58c0-3-2-5-5-5z"/></svg>
+            </div>
+            <div class="card-info">
+                <ul class="card-links">
+                    <li><a href="https://example.com/intro">Introdução <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li><a href="https://example.com/setup">Setup <i class="fa-solid fa-gear"></i></a></li>
+                    <li><a href="https://example.com/api">API <i class="fa-solid fa-code"></i></a></li>
+                    <li><a href="https://example.com/exemplos">Exemplos <i class="fa-solid fa-flask"></i></a></li>
+                    <li><a href="https://example.com/faq">FAQ <i class="fa-solid fa-circle-question"></i></a></li>
+                </ul>
+            </div>
+            <div class="card-img">
+                <button class="card-pause btnPauseCard" aria-label="Pausar/tocar vídeo">
+                    <svg class="ic-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                    <svg class="ic-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>
+                </button>
+                <video src="video.mp4#t=0.1" muted loop playsinline preload="auto" data-name="DEMO"></video>
+            </div>
+            <div class="card-bar">
+                <a href="https://example.com" class="card-tag" style="--tag-clr:#10b981;">Demo</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
