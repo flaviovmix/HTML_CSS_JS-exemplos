@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu-lateral — exemplo individual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Topbar mínima (só pro hambúrguer ter onde morar) -->
+    <div id="topbar">
+        <button id="hamburger" onclick="toggleDrawer()">
+            <span></span><span></span><span></span>
+        </button>
+        <div id="topbar-title">MENU LATERAL</div>
+    </div>
+
+    <!-- Drawer (preenchido por buildMenu em script.js) -->
+    <div id="drawer">
+        <div id="drawer-inner"></div>
+    </div>
+
+    <!-- Conteúdo de exemplo (desliza com margin-left quando drawer abre) -->
+    <div id="content">
+        <h2>Conteúdo da página</h2>
+        <p>Clique no hambúrguer pra abrir/fechar o menu lateral.</p>
+        <p>No desktop o conteúdo é empurrado pra direita; no mobile (≤768px) o menu vira overlay sobre o conteúdo.</p>
+        <p>Estado é persistido em <code>localStorage.drawerOpen</code> — recarregue a página com o menu aberto pra ver.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
